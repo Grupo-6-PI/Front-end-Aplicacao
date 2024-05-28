@@ -1,0 +1,21 @@
+/* css reset */
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", sans-serif;
+}
+
+/* variáveis */
+:root{
+    --primary-color: #670632;
+    --primary-color-low-opacity: #67063273;
+    --neutral-white: #ffffff;
+    --neutral-black: #000000;
+    --feedback-warning: #FFB648;
+    --feedback-danger: #FF4848;
+    --feedback-success: #27DD09;
+    --gradient: linear-gradient(180deg, #670632 31.17%, #CA2E74 100%);
+    --border-radius: 15px;
+    --box-shadow-01: 5px 4px 28.7px -7px rgba(0, 0, 0, 0.25);
+    --box-shadow-02: 4px 4px 64.2px 7px rgba(0, 0, 0, 0.25);
+}
