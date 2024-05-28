@@ -1,0 +1,123 @@
+
+/* css reset */
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", sans-serif;
+}
+
+/* variáveis */
+:root{
+    --primary-color: #670632;
+    --primary-color-low-opacity: #67063273;
+    --neutral-white: #ffffff;
+    --neutral-black: #000000;
+    --feedback-warning: #FFB648;
+    --feedback-danger: #FF4848;
+    --feedback-success: #27DD09;
+    --gradient: linear-gradient(180deg, #670632 31.17%, #CA2E74 100%);
+    --border-radius: 15px;
+    --box-shadow-01: 5px 4px 28.7px -7px rgba(0, 0, 0, 0.25);
+    --box-shadow-02: 4px 4px 64.2px 7px rgba(0, 0, 0, 0.25);
+    --font-size: 20px;
+}
+
+/* container principal (full-screen) */
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* banner de imagem */
+.banner{
+    width: inherit;
+    height: 50%;
+    background-image: url("../assets/imgs/bg-tfg.jpg");
+    background-position: 50%;
+    background-size: cover;
+}
+
+/* banner com cor para cor com opacidade */
+.banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: var(--primary-color-low-opacity);
+    z-index: 1;
+  }
+
+  /* card principal */
+  .card{
+    background-color: var(--neutral-white);
+    width: 45%;
+    height: 70vh;
+    position: absolute;
+    left: 27%;
+    top: 15%;
+    z-index: 1;
+    box-shadow: var(--box-shadow-02);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* container dentro do card */
+  .card-container{
+    width: 80%;
+    height: 55vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+
+    img{
+        width: auto;
+        height: 20vh;
+    }
+
+    h1{
+        color: var(--primary-color);
+        font-size: var(--font-size);
+    }
+
+    /* container que agrupa os botões */
+    .buttons-container{
+        width: 100%;
+        height: 10vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        gap: 20px;
+
+        button{
+            padding: 2.5vh;
+            width: 20vw;
+            border-style: none;
+            background-color: var(--primary-color);
+            color: var(--neutral-white);
+            border-radius: 10vh;
+            transition: 0.2s ease-in-out;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: var(--font-size);
+        }
+
+        button:hover{
+            background-color: #00000000;
+            border: 2.5px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+    }
+
+    
+
+  }
+
