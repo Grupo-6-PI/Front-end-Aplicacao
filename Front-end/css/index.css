@@ -93,7 +93,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        flex-direction: row;
+        /* flex-direction: row; */
         gap: 20px;
 
         button{
@@ -104,7 +104,6 @@
             color: var(--neutral-white);
             border-radius: 10vh;
             transition: 0.2s ease-in-out;
-            font-weight: bold;
             cursor: pointer;
             font-size: var(--font-size);
         }
@@ -118,4 +117,110 @@
     }
 
   }
+
+  
+/* responsividade para todas as telas */
+@media (max-width: 1024px) {
+    .card {
+        width: 60%;
+        left: 20%;
+        height: 80vh;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .card-container {
+        width: 90%;
+        height: 50vh;
+    }
+
+    .card-container img{
+        height: 17vh;
+    }
+
+    .card-container h1 {
+        font-size: 18px;
+        font-size: 2rem;
+    }
+
+    .buttons-container button {
+        width: 100% !important;
+        font-size: 18px;
+    }
+
+    .buttons-container{
+        height: 20vh;
+        margin-top: 10%;
+        width: 50vw !important;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 80%;
+        left: 10%;
+        height: 80vh;
+        font-size: 2rem;
+    }
+
+    .card-container {
+        width: 80%;
+        height: 60vh;
+    }
+
+    .card-container img {
+        height: 15vh;
+    }
+
+    .card-container h1 {
+        font-size: 2rem;
+    }
+
+    .buttons-container {
+        display: flex;
+        flex-direction: column ;
+        width: 60vw !important;
+        
+    }
+
+    .buttons-container button {
+        width: 100% !important; 
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 90%;
+        left: 5%;
+        height: 70vh;
+        top: 20%;
+        font-size: 1.4rem;
+    }
+
+    .card-container {
+        width: 90%;
+        height: 50vh;
+    }
+
+    .card-container img {
+        height: 10vh;
+    }
+
+    .card-container h1 {
+        font-size: 1.4rem;
+    }
+
+    .buttons-container {
+        gap: 5px;
+        flex-direction: column;
+        width: 70vw !important;
+    }
+
+    .buttons-container button {
+        width: 100% !important;
+        font-size: 14px;
+    }
+}
 
