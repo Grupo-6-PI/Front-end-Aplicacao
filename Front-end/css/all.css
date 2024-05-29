@@ -20,6 +20,7 @@
     --box-shadow-02: 4px 4px 64.2px 7px rgba(0, 0, 0, 0.25);
 }
 
+/* menu de acessibilidade */
 .acessibility{
     position: relative;
     width: 60px;
@@ -38,6 +39,30 @@
 }
 
 .acessibility:hover{
-    transform: scale(1.1);
-    box-shadow: var(--box-shadow-01);
+    box-shadow: var(--box-shadow-02);
+}
+
+/* opções do menu de acessibiilidade */
+.acessibility .options{
+    height: 20vh;
+    width: 10vw;
+    background-color: var(--primary-color);
+    position: absolute;
+    bottom: 110%;
+    right: 10%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-02);
+    display: none;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    color: white;
+
+    p{
+        transition: 0.3s ease-in-out;
+    }
+
+    p:hover{
+        color: #bcbcbc;
+    }
 }
