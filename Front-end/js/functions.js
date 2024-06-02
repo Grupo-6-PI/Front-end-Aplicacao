@@ -12,4 +12,8 @@
       window.location.href = './cadastro.html'
     }
 
+    function goToCadastroComplementar1() {
+      window.location.href = './cadastro_complmentar1.hmtl'
+    }
+
     

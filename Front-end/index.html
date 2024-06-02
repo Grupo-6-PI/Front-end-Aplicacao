@@ -33,18 +33,32 @@
         <div class="acessibility">
             <img src="./assets/imgs/icons8-acessibilidade-40.png" alt="">
             <div class="options">
-                <p>Alto-contraste</p>
-                <p>Ativar Libras</p>
+                <p onclick="altoContraste()">Alto-contraste</p>
+                <p>Aumentar fonte</p>
+                <p>Diminuir fonte</p>
             </div>
         </div>
+
     </div>
+
+    <!-- inserção do VLibras :) -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+      </div>
 </body>
+
+<!-- inserção do VLibras - leitor e tradutor para acessiblidade :) -->
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script> new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
 
 </html>
 
 <script>
 
-    /*função para abrir/fechar menu de acessibilidade*/
+    /* função para abrir/fechar menu de acessibilidade */
     document.querySelector('.acessibility').addEventListener('click', function () {
         var optionsMenu = this.querySelector('.options');
         if (optionsMenu.style.display === 'flex') {
@@ -53,4 +67,10 @@
             optionsMenu.style.display = 'flex';
         }
     });
+
+    /* adicionando a acessibilidade de alto contraste */
+    function altoContraste(){
+        document.body.classList.toggle('high-contrast');
+    };
+
 </script>
