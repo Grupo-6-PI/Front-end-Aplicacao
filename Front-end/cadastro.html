@@ -42,9 +42,9 @@
                 </div>
 
                 <div class="container-inputs-cad">
-                    <input type="text" placeholder="Digite seu nome completo">
-                    <input type="email" placeholder="Digite seu email">
-                    <input type="password" placeholder="Digite sua senha">
+                    <input type="text" id="nome" placeholder="Digite seu nome completo">
+                    <input type="email" id="email" placeholder="Digite seu email">
+                    <input type="password" id="senha" placeholder="Digite sua senha">
                 </div>
 
                 <div class="toggle-beneficiario">
@@ -88,24 +88,52 @@
 
 <script>
 
-     /* função para abrir/fechar menu de acessibilidade */
-     document.querySelector('.acessibility').addEventListener('click', function () {
+    /* função para abrir/fechar menu de acessibilidade */
+    document.querySelector('.acessibility').addEventListener('click', function () {
         var optionsMenu = this.querySelector('.options');
         if (optionsMenu.style.display === 'flex') {
             optionsMenu.style.display = 'none';
         } else {
             optionsMenu.style.display = 'flex';
         }
-    }); 
+    });
+
+    /* função de validação de formulário */
+    function validateForm() {
+        var nome = document.getElementById('nome').value;
+        var email = document.getElementById('email').value;
+        var senha = document.getElementById('senha').value;
+
+        if (nome === "" || email === "" || senha === "") {
+            alert("Todos os campos devem ser preenchidos!");
+            return false;
+        }
+
+        if (email.indexOf('@') === -1) {
+            alert("Por favor, insira um email válido!");
+            return false;
+        }
+
+        if (senha.length <= 5) {
+            alert("A senha deve ter mais que 5 caracteres!");
+            return false;
+        }
+
+        return true;
+    }
 
     /* finaliza cadastro comum */
     function submitForm() {
-        alert("Formulário enviado!");
+        if (validateForm()) {
+            alert("Formulário enviado!");
+        }
     }
 
-    /* redireciona para parte dois do cadastro caso for beneficiario */
+    /* redireciona para parte dois do cadastro caso for beneficiário */
     function continueBeneficiario() {
-        window.location.href = './cadastro_complementar1.html'
+        if (validateForm()) {
+            window.location.href = './cadastro_complementar1.html';
+        }
     }
 
     /* escuta o evento do toggle */
@@ -123,3 +151,4 @@
 </script>
 
 </html>
+    
