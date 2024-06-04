@@ -45,6 +45,7 @@
                     <input type="text" id="nome" placeholder="Digite seu nome completo">
                     <input type="email" id="email" placeholder="Digite seu email">
                     <input type="password" id="senha" placeholder="Digite sua senha">
+
                 </div>
 
                 <div class="toggle-beneficiario">
@@ -125,7 +126,9 @@
 
     /* finaliza cadastro comum */
     function submitForm() {
-        alert("Formulário enviado!");
+        if (validateForm()) {
+            alert("Formulário enviado!");
+        }
     }
 
     /* redireciona para parte dois do cadastro caso for beneficiário */
@@ -150,5 +153,4 @@
 </script>
 
 </html>
-    
     

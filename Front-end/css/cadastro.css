@@ -28,6 +28,8 @@
 .container-logo img {
     height: 25vh ;
     width: auto ;
+    height: 25vh ;
+    width: auto ;
 }
 
 /* container dos inputs de cadastro */
@@ -189,6 +191,7 @@
 
     .container-side-box {
         width: 80%;
+        height: fit-content;
     }
 
     .breadcrumbs a, b{
