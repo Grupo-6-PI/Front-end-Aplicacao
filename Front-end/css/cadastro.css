@@ -26,8 +26,8 @@
 }
 
 .container-logo img {
-    height: 25vh !important;
-    width: auto !important;
+    height: 25vh ;
+    width: auto ;
 }
 
 /* container dos inputs de cadastro */
@@ -181,18 +181,26 @@
         margin-top: -20px;
         border-radius: 20px;
         box-shadow: var(--box-shadow-01);
+      
+        overflow: scroll;
     }
 
     .container-side-box {
         width: 80%;
+        height: fit-content;
     }
 
     .container-logo img {
-        width: 40vw;
+       height: 7vh;
+       width: auto;
+    }
+
+    .container-header{
+        height: 13vh !important;
     }
 
     .container-header h1 {
-        font-size: 1.2rem;
+        font-size: 1.0rem;
     }
 
     .container-inputs input {
@@ -203,9 +211,17 @@
         height: 8vh;
         font-size: 1rem;
         border-radius: 40px;
+        margin-bottom: 4%;
+    }
+
+    .container-button span, p{
+        margin-top: 2%;
+        font-size: 0.8rem !important;
     }
 
     .acessibility {
         background-color: #000000;
     }
+
+
 }
