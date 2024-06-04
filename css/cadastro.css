@@ -191,14 +191,7 @@
 
     .container-side-box {
         width: 80%;
-    }
-
-    .breadcrumbs a, b{
-        font-size: 1rem !important;
-    }
-
-    .breadcrumbs a, b{
-        font-size: 1rem !important;
+        height: fit-content;
     }
 
     .container-logo img {
