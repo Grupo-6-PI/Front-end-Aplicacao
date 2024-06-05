@@ -101,7 +101,10 @@
         border-bottom: 1.5px solid var(--primary-color);
     }
 
+}
 
+.container-button button{
+    margin-top: 5%;
 }
 
 .small {
@@ -145,13 +148,12 @@
     width: 100%;
 }
 
+/* label do input de data */
 #labeldate {
     font-size: small;
     margin-top: 7%;
     color: #0000008d;
 }
-
-
 
 /* responsividade para todas as telas */
 @media (max-width: 1024px) {
@@ -187,7 +189,10 @@
 
     .container-side-box {
         width: 80%;
-        height: fit-content;
+    }
+
+    .breadcrumbs a, b{
+        font-size: 1rem !important;
     }
 
     .container-logo img {
@@ -200,6 +205,7 @@
     }
 
     .container-header h1 {
+        margin-top: 4% !important;
         font-size: 1.0rem;
     }
 
