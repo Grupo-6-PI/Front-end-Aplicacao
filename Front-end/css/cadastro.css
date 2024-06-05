@@ -191,7 +191,10 @@
 
     .container-side-box {
         width: 80%;
-        height: fit-content;
+    }
+
+    .breadcrumbs a, b{
+        font-size: 1rem !important;
     }
 
     .breadcrumbs a, b{
