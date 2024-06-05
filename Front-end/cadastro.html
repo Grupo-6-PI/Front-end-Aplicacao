@@ -85,6 +85,7 @@
 <script>
     new window.VLibras.Widget('https://vlibras.gov.br/app');
 </script>
+<script src="js/cadastroSimples.js"></script>
 
 <script>
 
@@ -96,7 +97,7 @@
         } else {
             optionsMenu.style.display = 'flex';
         }
-    });
+    }); 
 
     /* função de validação de formulário */
     function validateForm() {
@@ -122,13 +123,6 @@
         return true;
     }
 
-    /* finaliza cadastro comum */
-    function submitForm() {
-        if (validateForm()) {
-            alert("Formulário enviado!");
-        }
-    }
-
     /* redireciona para parte dois do cadastro caso for beneficiário */
     function continueBeneficiario() {
         if (validateForm()) {
@@ -151,4 +145,5 @@
 </script>
 
 </html>
+    
     
