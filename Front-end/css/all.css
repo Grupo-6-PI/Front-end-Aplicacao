@@ -19,3 +19,79 @@
     --box-shadow-01: 5px 4px 28.7px -7px rgba(0, 0, 0, 0.25);
     --box-shadow-02: 4px 4px 64.2px 7px rgba(0, 0, 0, 0.25);
 }
+
+/* menu de acessibilidade */
+.acessibility{
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    z-index: 9999;
+    left: 92%;
+    border-radius: 50%;
+    top: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    
+}
+
+.acessibility:hover{
+    box-shadow: var(--box-shadow-02);
+}
+
+/* opções do menu de acessibiilidade */
+.acessibility .options{
+    height: 20vh;
+    width: 10vw;
+    background-color: var(--primary-color);
+    position: absolute;
+    bottom: 110%;
+    right: 10%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-02);
+    display: none;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    color: white;
+
+    p{
+        transition: 0.3s ease-in-out;
+    }
+
+    p:hover{
+        color: #bcbcbc;
+    }
+}
+
+/* alto contraste */
+.high-contrast {
+    background-color: black !important;
+    color: white;
+    font-weight: bold;
+    transition: 0.5s ease-in-out;
+}
+
+.high-contrast .card {
+    background-color: black;
+    border: 2px solid white;
+}
+
+.high-contrast .card-container h1{
+    color: yellow;
+}
+
+.high-contrast .card-container button {
+    color: yellow;
+    border: 2px solid yellow;
+    background-color: black;
+   
+}
+
+.high-contrast .card-container button:hover {
+    background-color: yellow;
+    color: black;
+}

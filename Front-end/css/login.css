@@ -1,0 +1,248 @@
+/* css reset */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", sans-serif;
+}
+
+/* variáveis */
+:root {
+    --primary-color: #670632;
+    --primary-color-low-opacity: #67063273;
+    --neutral-white: #ffffff;
+    --neutral-black: #000000;
+    --feedback-warning: #FFB648;
+    --feedback-danger: #FF4848;
+    --feedback-success: #27DD09;
+    --gradient: linear-gradient(180deg, #670632 31.17%, #CA2E74 100%);
+    --border-radius: 15px;
+    --box-shadow-01: 5px 4px 28.7px -7px rgba(0, 0, 0, 0.25);
+    --box-shadow-02: 4px 4px 64.2px 7px rgba(0, 0, 0, 0.25);
+}
+
+/* container principal */
+.container-login {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+/* side-banner para foto na tela */
+.banner-login {
+    width: 50%;
+    height: 100vh;
+    background-image: url('../assets/imgs/bg-tfg.jpg');
+    background-size: cover;
+}
+
+/* banner com cor para opacidade  */
+.banner-login::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    background-color: var(--primary-color-low-opacity);
+    z-index: 1;
+}
+
+/* card login */
+.side-box-login {
+    width: 55%;
+    height: inherit;
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+    position: relative;
+    z-index: 9;
+    box-shadow: var(--box-shadow-02);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* container para card de login */
+.container-side-box {
+    width: 60%;
+    height: inherit;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+/* classe padrao para todos os containers abaixo */
+.container-inside {
+    width: 100%;
+    height: 17vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* container logo */
+.container-logo {
+    height: 10vh;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        width: 15vw;
+        height: auto;
+    }
+}
+
+/* container dos inputs */
+.container-inputs {
+    height: 20vh;
+    justify-content: space-between;
+
+    input {
+        height: 7vh;
+        align-items: baseline;
+        outline: none;
+        background-color: #00000000;
+        border-style: none;
+        border-bottom: 1px solid rgb(66, 66, 66);
+        font-size: 1rem;
+        transition: 0.2s ease-in-out;
+       
+    }
+
+    input:focus {
+        border-bottom: 1.5px solid var(--primary-color);
+    }
+}
+
+/* container da titulo do header */
+.container-header {
+    height: 10vh;
+
+    h1 {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin-bottom: 2%;
+    }
+}
+
+/* container que agrupa os botoes */
+.container-button{
+    align-items: baseline;
+    justify-content: space-between;
+
+    button{
+        border-style: none;
+        width: 100%;
+        height: 10vh;
+        color: white;
+        font-size: 1.3rem;
+        background-color: var(--primary-color);
+        border-radius: 30px;
+        cursor: pointer;
+        transition: 0.3s ease-in-out;
+       
+    }
+
+    button:hover{
+        background-color: #00000000;
+        border: 2.5px solid var(--primary-color);
+        color: var(--primary-color);
+    }
+
+    #span{
+        font-weight: bold;
+        color: var(--primary-color);
+        cursor: pointer;
+    }
+}
+
+/* classe para o botao de voltar para home */
+.icon-back{
+    width: 40px;
+    height: 40px;
+    background-color: #670632;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+    transition: 0.2s ease-in-out;
+
+    img{
+        width: auto;
+        height: 3vh;
+        
+    }
+}
+
+.icon-back:hover{
+    box-shadow: var(--box-shadow-02);
+}
+
+/* icone de acessibilidade */
+.acessibility{
+    position: fixed;
+}
+
+
+
+/* responsividade para todas as telas */
+@media (max-width: 1024px) {
+    .container-button button {
+        border-radius: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container-login {
+        flex-direction: column;
+    }
+
+    .banner-login {
+        width: 100%;
+        height: 40vh;
+    }
+
+    .banner-login::before {
+        width: 100%;
+        height: 100%;
+    }
+
+    .side-box-login {
+        width: 100%;
+        height: 70vh;
+        margin-top: -20px;
+        border-radius: 20px;
+        box-shadow: var(--box-shadow-01);
+    }
+
+    .container-side-box {
+        width: 80%;
+    }
+
+    .container-logo img {
+        width: 40vw;
+    }
+
+    .container-header h1 {
+        font-size: 1.2rem;
+    }
+
+    .container-inputs input {
+        font-size: 0.9rem;
+    }
+
+    .container-button button {
+        height: 8vh;
+        font-size: 1rem;
+        border-radius: 40px;
+    }
+
+    .acessibility{
+       background-color: #000000;
+    }
+}
