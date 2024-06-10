@@ -20,7 +20,7 @@ async function validarLogin() {
 
         if(requisicao.ok){
                 
-          window.location.href = './index.html'
+          window.location.href = './dash-requisicoes.html'
         
         }else{
 
