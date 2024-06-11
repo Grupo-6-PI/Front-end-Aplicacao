@@ -14,9 +14,10 @@
     <link rel="stylesheet" href="./css/all.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./js/functions.js"></script>
+    <script src="./js/DashBoard/acoes.js"></script>
 </head>
 
-<body>
+<body onload="carregarInformacoes()" id="body">
 
     <div class="container-principal">
         <div class="sidebar">
@@ -126,9 +127,9 @@
 
                 <div class="container-acoes">
                     <p class="label">Ações Pendentes</p>
-                    <div class="main-box">
+                    <div class="main-box" id="card-atividades">
 
-                        <div class="inner-box">
+                        <div class="inner-box" onclick="modal('myModal')">
                             <div class="container-inner-box">
                                 <div class="elipse">
                                     <img src="assets/imgs/icons8-voluntariado-30.png" alt="">
@@ -216,17 +217,20 @@
     </div>
 
     <!-- Modal -->
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close"> X</span>
-            <h2>Ação #010203</h2>
-            <i>Cestas básicas para XPTO</i>
-            <h3>Data prevista para acontecer: </h3> Terça-feira, 12/12/2000
-            <h3>Descrição: </h3>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, nostrum? Voluptatem, eum impedit inventore ex fugiat ratione quasi vitae voluptas optio veniam odit qui ducimus deserunt placeat nobis ea exercitationem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates ea incidunt unde optio voluptatibus culpa impedit, perferendis qui soluta error dignissimos quae eum fuga minima, officia eos magnam, numquam possimus! Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-            
+     <div id="modais">
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close"> X</span>
+                <h2>Ação #010203</h2>
+                <i>Cestas básicas para XPTO</i>
+                <h3>Data prevista para acontecer: </h3> Terça-feira, 12/12/2000
+                <h3>Descrição: </h3>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, nostrum? Voluptatem, eum impedit inventore ex fugiat ratione quasi vitae voluptas optio veniam odit qui ducimus deserunt placeat nobis ea exercitationem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates ea incidunt unde optio voluptatibus culpa impedit, perferendis qui soluta error dignissimos quae eum fuga minima, officia eos magnam, numquam possimus! Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                
+            </div>
         </div>
-    </div>
+     </div>
+    
 
     <div class="acessibility">
         <img src="./assets/imgs/icons8-acessibilidade-40.png" alt="" />
@@ -252,39 +256,53 @@
 </script>
 <script src="js/DashBoard/requisicoes.js"></script>
 <script src="js/login.js"></script>
+<script src="js/DashBoard/acoes.js"></script>
 
 </html>
 
 <script>
     
+    function carregarInformacoes(){
 
-    // pega o modal
-    var modal = document.getElementById("myModal");
+        CriarModais()
+        ListarAtividades()
 
-    // pega o botão que abre o modal
-    var btns = document.querySelectorAll(".inner-box");
+        var nomeUser = document.getElementById('nameUser');
+        nomeUser.innerHTML = sessionStorage.getItem('NOME_USER')
 
-    // pega o elemento <span> que fecha o modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // quando o usuário clicar em qualquer .inner-box abre o modal 
-    btns.forEach(function (btn) {
-        btn.onclick = function () {
-            modal.style.display = "block";
-        }
-    });
-
-    // quando o usuário clicar em <span> (x), fecha o modal
-    span.onclick = function () {
-        modal.style.display = "none";
     }
 
-    // quando o usuário clicar em qualquer lugar fora do modal, fecha o modal
-    window.onclick = function (event) {
-        if (event.target == modal) {
+    function modal(idModal,idAcao,idSpan){
+
+        var modal = document.getElementById(idModal)
+
+        // pega o botão que abre o modal
+        var btns = document.getElementById(idAcao);
+
+        // pega o elemento <span> que fecha o modal
+        var span = document.getElementById(idSpan);
+        
+        // quando o usuário clicar em qualquer .inner-box abre o modal 
+        
+            btns.onclick = function () {
+                modal.style.display = "block";
+            }
+        
+
+        // quando o usuário clicar em <span> (x), fecha o modal
+        span.onclick = function () {
             modal.style.display = "none";
         }
+
+        // quando o usuário clicar em qualquer lugar fora do modal, fecha o modal
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
     }
+
 
     /* função para abrir/fechar menu de acessibilidade */
     document.querySelector('.acessibility').addEventListener('click', function () {
