@@ -84,6 +84,12 @@ body {
     padding: 5%;
     text-align: center;
     cursor: pointer;
+    transition: 0.4s ease-in-out;
+
+    &:hover{
+        transform: scale(1.03);
+        box-shadow: var(--box-shadow-03);
+    }
 }
 
 .adicionar-acao{
@@ -101,6 +107,13 @@ body {
     font-size: 4vh !important;
     font-weight: bold;
     color: var(--primary-color);
+    transition: 0.4s ease-in-out;
+
+    &:hover{
+        transform: scale(1.03);
+        background-color: var(--primary-color);
+        color: var(--neutral-white);
+    }
 }
 
 .modal-content{
