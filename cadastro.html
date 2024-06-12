@@ -20,7 +20,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-
 </head>
 
 <body>
@@ -64,10 +63,11 @@
 
     <!-- menu de acessibilidade -->
     <div class="acessibility">
-        <img src="./assets/imgs/icons8-acessibilidade-40.png" alt="">
+        <img src="./assets/imgs/icons8-acessibilidade-40.png" alt="" />
         <div class="options">
+            <p onclick="aumentarFonte()">Aumentar Fonte</p>
+            <p onclick="diminuirFonte()">Diminuir Fonte</p>
             <p onclick="altoContraste()">Alto-contraste</p>
-            <p>Ativar Libras</p>
         </div>
     </div>
 
@@ -80,7 +80,7 @@
     </div>
 </body>
 
-<!-- inserção do VLibras - leitor e tradutor para acessiblidade :) -->
+<!-- inserção do VLibras - leitor e tradutor para acessibilidade :) -->
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 <script>
     new window.VLibras.Widget('https://vlibras.gov.br/app');
@@ -88,7 +88,6 @@
 <script src="js/cadastroSimples.js"></script>
 
 <script>
-
     /* função para abrir/fechar menu de acessibilidade */
     document.querySelector('.acessibility').addEventListener('click', function () {
         var optionsMenu = this.querySelector('.options');
@@ -138,7 +137,7 @@
     }
 
     /* escuta o evento do toggle */
-    document.getElementById('flexSwitchCheckChecked').addEventListener('change', function() {
+    document.getElementById('flexSwitchCheckChecked').addEventListener('change', function () {
         var actionButton = document.getElementById('actionButton');
         if (this.checked) {
             actionButton.innerText = 'Continuar';
@@ -149,6 +148,19 @@
         }
     });
 
+    /* adicionando a acessibilidade de alto contraste */
+    function altoContraste() {
+        document.body.classList.toggle('high-contrast');
+    }
+
+    /* funções para aumentar e diminuir a fonte */
+    function aumentarFonte() {
+        document.body.style.fontSize = 'larger';
+    }
+
+    function diminuirFonte() {
+        document.body.style.fontSize = 'smaller';
+    }
 </script>
 
 </html>
