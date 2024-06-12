@@ -109,3 +109,34 @@
 .high-contrast .adicionar-acao{
     color: yellow;
 }
+
+.high-contrast .banner-login{
+    background: black !important;
+}
+
+.high-contrast .side-box-login{
+    border-left: 2px solid yellow;
+    background-color: #000000;
+
+    h1{
+        color: yellow;
+    }
+
+    input{
+        border: 2px solid yellow;
+        border-radius: var(--border-radius);
+        padding-left: 4%;
+        font-weight: bolder;
+        color: white;
+    }
+
+    #span{
+        color: yellow;
+    }
+}
+
+.high-contrast .container-button button{
+    background-color: #000000;
+    border: 2px solid yellow;
+    font-weight: bold;
+}

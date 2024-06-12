@@ -1,81 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LOGIN | Mooca Solidária</title>
-    <link
-      rel="shortcut icon"
-      href="./assets/imgs/favicon-tfg.png"
-      type="image/x-icon"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./css/login.css" />
-    <link rel="stylesheet" href="./css/all.css" />
-    <script src="./js/functions.js"></script>
-  </head>
 
-  <body>
-    <div class="container-login">
-      <div class="banner-login">
-        <div class="icon-back" onclick="goToIndex()">
-          <img src="./assets/imgs/icons8-voltar-50.png" alt="" />
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LOGIN | Mooca Solidária</title>
+  <link rel="shortcut icon" href="./assets/imgs/favicon-tfg.png" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./css/login.css" />
+  <link rel="stylesheet" href="./css/all.css" />
+  <script src="./js/functions.js"></script>
+</head>
+
+<body>
+  <div class="container-login">
+    <div class="banner-login">
+      <div class="icon-back" onclick="goToIndex()">
+        <img src="./assets/imgs/icons8-voltar-50.png" alt="" />
       </div>
-      <div class="side-box-login">
-        <div class="container-side-box">
-          <div class="container-inside container-logo">
-            <img src="./assets/imgs/logo-mooca.png" alt="" />
-          </div>
+    </div>
+    <div class="side-box-login">
+      <div class="container-side-box">
+        <div class="container-inside container-logo">
+          <img src="./assets/imgs/logo-mooca.png" alt="" />
+        </div>
 
-          <div class="container-inside container-header">
-            <h1>Login</h1>
-            <p>Digite suas credenciais para acessar o sistema</p>
-          </div>
+        <div class="container-inside container-header">
+          <h1>Login</h1>
+          <p>Digite suas credenciais para acessar o sistema</p>
+        </div>
 
-          <div class="container-inside container-inputs">
-            <input type="email" id="email" placeholder="Digite seu email" />
-            <input type="password" id="senha" placeholder="Digite sua senha" />
-          </div>
+        <div class="container-inside container-inputs">
+          <input type="email" id="email" placeholder="Digite seu email" />
+          <input type="password" id="senha" placeholder="Digite sua senha" />
+        </div>
 
-          <div class="container-inside container-button">
-            <p>
-              Ainda não é cadastrado?
-              <span id="span" onclick="goToCadastro()">Cadastre-se.</span>
-            </p>
-            <button type="submit" onclick="Login()">Login</button>
-          </div>
+        <div class="container-inside container-button">
+          <p>
+            Ainda não é cadastrado?
+            <span id="span" onclick="goToCadastro()">Cadastre-se.</span>
+          </p>
+          <button type="submit" onclick="Login()">Login</button>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="acessibility">
-      <img src="./assets/imgs/icons8-acessibilidade-40.png" alt="" />
-      <div class="options">
-        <p>Alto-contraste</p>
-        <p>Ativar Libras</p>
-      </div>
+  <div class="acessibility">
+    <img src="./assets/imgs/icons8-acessibilidade-40.png" alt="" />
+    <div class="options">
+      <p>Aumentar Fonte</p>
+      <p>Diminuir Fonte</p>
+      <p onclick="altoContraste()">Alto-contraste</p>
+      
     </div>
+  </div>
 
-    <div vw class="enabled">
-      <div vw-access-button class="active"></div>
-      <div vw-plugin-wrapper>
-        <div class="vw-plugin-top-wrapper"></div>
-      </div>
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
     </div>
-  </body>
+  </div>
+</body>
 
-  <!-- inserção do VLibras - leitor e tradutor para acessiblidade :) -->
-  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-  <script>
-    new window.VLibras.Widget("https://vlibras.gov.br/app");
-  </script>
-  <script src="js/login.js"></script>
+<!-- inserção do VLibras - leitor e tradutor para acessiblidade :) -->
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget("https://vlibras.gov.br/app");
+</script>
+<script src="js/login.js"></script>
+
 </html>
 
 <script>
@@ -92,5 +90,9 @@
     });
 
 
+  /* adicionando a acessibilidade de alto contraste */
+  function altoContraste() {
+    document.body.classList.toggle('high-contrast');
+  };
 
 </script>
