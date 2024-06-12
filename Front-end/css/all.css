@@ -96,3 +96,16 @@
     background-color: yellow;
     color: black;
 }
+
+.high-contrast .kanban-column,.high-contrast .kanban-header,.high-contrast .acao-kanban, .high-contrast .adicionar-acao, .high-contrast #add-acao{
+    border: 2px solid yellow;
+    background-color: #000000;
+}
+
+.high-contrast #add-acao:hover{
+    color: yellow;
+}
+
+.high-contrast .adicionar-acao{
+    color: yellow;
+}
