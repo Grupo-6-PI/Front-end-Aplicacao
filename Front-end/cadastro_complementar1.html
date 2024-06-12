@@ -61,12 +61,13 @@
         </div>
     </div>
 
-    <!-- menu de acessibilidade -->
+    <!-- Menu de acessibilidade -->
     <div class="acessibility">
-        <img src="./assets/imgs/icons8-acessibilidade-40.png" alt="">
+        <img src="./assets/imgs/icons8-acessibilidade-40.png" alt="" />
         <div class="options">
+            <p>Aumentar Fonte</p>
+            <p>Diminuir Fonte</p>
             <p onclick="altoContraste()">Alto-contraste</p>
-            <p>Ativar Libras</p>
         </div>
     </div>
 
@@ -88,15 +89,19 @@
 <script>
 
      /* função para abrir/fechar menu de acessibilidade */
-     document.querySelector('.acessibility').addEventListener('click', function () {
-        console.log('passou')
+    document.querySelector('.acessibility').addEventListener('click', function () {
         var optionsMenu = this.querySelector('.options');
         if (optionsMenu.style.display === 'flex') {
             optionsMenu.style.display = 'none';
         } else {
             optionsMenu.style.display = 'flex';
         }
-    }); 
+    });
+
+    /* adicionando a acessibilidade de alto contraste */
+    function altoContraste(){
+        document.body.classList.toggle('high-contrast');
+    };
 
      /* função para formatar CPF */
      function formatCPF(cpf) {

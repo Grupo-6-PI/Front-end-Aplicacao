@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALENDÁRIO | Mooca Solidária</title>
+    <link rel="shortcut icon" href="./assets/imgs/favicon-tfg.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/calendario.css">
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="./css/all.css">
+    <script src="./js/functions.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container-principal">
+        <div class="sidebar">
+            <div class="container-sidebar">
+
+                <div class="container-logo">
+                    <img width="auto" height="80" src="./assets/imgs/logo-mooca.png" alt="">
+                </div>
+
+                <div class="sidebar-options">
+                    <div class="opt">
+                        <div class="icon-opt">
+                            <img src="./assets/imgs/icons8-casa-30.png" alt="">
+                        </div>
+                        <a href="dash-requisicoes.html">Home </a>
+                    </div>
+                    <div class="opt">
+                        <div class="icon-opt">
+                            <img src="./assets/imgs/icons8-saco-de-dinheiro-30.png" alt="">
+                        </div>
+                        <a href="">Financeiro </a>
+                    </div>
+                    <div class="opt">
+                        <div class="icon-opt">
+                            <img src="./assets/imgs/icons8-bem-estar-50.png" alt="">
+                        </div>
+                        <a href="">Doações </a>
+                    </div>
+                    <div class="opt" id="opt-highlight">
+                        <div class="icon-opt">
+                            <img src="./assets/imgs/icons8-calendário-30.png" alt="">
+                        </div>
+                        <a href="">Calendário </a>
+                    </div>
+                </div>
+
+                <div class="logoff">
+                    <img src="./assets/imgs/icons8-sair-30 (1).png" alt="">
+                    <p>Sair</p>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="content">
+            <div class="navbar">
+                <div class="container-navbar">
+                    <p>Calendário de ações</p>
+                    <div class="user">
+                        <img width="auto" height="35" src="./assets/imgs/icons8-usuário-30.png" alt="">
+                        <p id="nameUser">Admin</p>
+                    </div>
+                </div>
+            </div>
+            <div class="kanban-container">
+                <div class="kanban-column">
+                    <div class="kanban-header">Domingo</div>
+                    <div class="kanban-content">
+                        <div class="acao-kanban">
+                            Entregar cestas básicas no centro de São Paulo
+                        </div>
+
+                        <div class="acao-kanban">
+                            Movimento do agasalho solidário
+                        </div>
+
+                        <div class="adicionar-acao">
+                            +
+                        </div>
+
+                    </div>
+                </div>
+                <div class="kanban-column">
+                    <div class="kanban-header">Segunda-feira</div>
+                    <div class="kanban-content">
+                        <div class="acao-kanban">
+                            Movimento do agasalho solidário
+                        </div>
+
+                        <div class="acao-kanban">
+                            Sopão comunitário
+                        </div>
+
+                        <div class="acao-kanban">
+                            Itens de higiene para mulheres
+                        </div>
+
+                        <div class="adicionar-acao">
+                            +
+                        </div>
+                    </div>
+                </div>
+                <div class="kanban-column">
+                    <div class="kanban-header">Terça-feira</div>
+                    <div class="kanban-content">
+
+                        <div class="acao-kanban">
+                            Movimento do agasalho solidário
+                        </div>
+
+                        <div class="adicionar-acao">
+                            +
+                        </div>
+
+                    </div>
+                </div>
+                <div class="kanban-column">
+                    <div class="kanban-header">Quarta-feira</div>
+                    <div class="kanban-content">
+
+                        <div class="acao-kanban">
+                            Entregar cestas básicas no centro de São Paulo
+                        </div>
+
+                        <div class="acao-kanban">
+                            Movimento do agasalho solidário
+                        </div>
+
+                        <div class="adicionar-acao">
+                            +
+                        </div>
+
+                    </div>
+                </div>
+                <div class="kanban-column">
+                    <div class="kanban-header">Quinta-feira</div>
+                    <div class="kanban-content">
+                        <div class="acao-kanban">
+                            Entregar cestas básicas no centro de São Paulo
+                        </div>
+
+                        <div class="acao-kanban">
+                            Movimento do agasalho solidário
+                        </div>
+
+                        <div class="adicionar-acao">
+                            +
+                        </div>
+                    </div>
+                </div>
+                <div class="kanban-column">
+                    <div class="kanban-header">Sexta-feira</div>
+                    <div class="kanban-content">
+                        <div class="acao-kanban">
+                            Entregar cestas básicas no centro de São Paulo
+                        </div>
+
+                        <div class="adicionar-acao">
+                            +
+                        </div>
+                    </div>
+                </div>
+                <div class="kanban-column">
+                    <div class="kanban-header">Sábado</div>
+                    <div class="kanban-content">
+
+                        <div class="adicionar-acao">
+                            +
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <!-- Modal Visualização -->
+    <div id="myModal-view" class="modal">
+        <div class="modal-content">
+            <span class="close-view" style="align-self: flex-end; font-size: 10vh; cursor: pointer; font-weight: bolder;"> X</span>
+            <h2>Ação #010203</h2>
+            <i>Cestas básicas para XPTO</i>
+            <h3>Data prevista para acontecer: </h3> Terça-feira, 12/12/2000
+            <h3>Descrição: </h3>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, nostrum? Voluptatem, eum impedit inventore ex fugiat ratione quasi vitae voluptas optio veniam odit qui ducimus deserunt placeat nobis ea exercitationem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates ea incidunt unde optio voluptatibus culpa impedit, perferendis qui soluta error dignissimos quae eum fuga minima, officia eos magnam, numquam possimus! Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+            
+        </div>
+    </div>
+
+    <!-- Modal Adição -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Adicionar Ação</h2>
+            <form>
+
+                <div class="form-column">
+                    <label for="tipoDoacao">Tipo da Doação</label>
+                <select id="tipoDoacao" name="tipoDoacao">
+                    <option value="cestaBasica">Cesta Básica</option>
+                    <option value="agasalho">Agasalho</option>
+                    <option value="sopao">Sopão</option>
+                    <option value="higiene">Itens de Higiene</option>
+                </select>
+
+                <label for="nomeAcao">Nome da Ação</label>
+                <input placeholder="Digite o nome da ação" type="text" id="nomeAcao" name="nomeAcao" required>
+
+                <label for="descricaoAcao">Descrição da Ação</label>
+                <textarea placeholder="Digite a descrição da ação" id="descricaoAcao" name="descricaoAcao" rows="4" required></textarea>
+                </div>
+                
+                <div class="form-column">
+                    <label for="dataHoraInicio">Data e Hora de Início</label>
+                    <input type="datetime-local" id="dataHoraInicio" name="dataHoraInicio" required>
+    
+                    <label for="dataHoraFim">Data e Hora de Fim</label>
+                    <input type="datetime-local" id="dataHoraFim" name="dataHoraFim" required>
+    
+                    <button id="add-acao" type="submit">Adicionar</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+
+    <!-- Menu de acessibilidade -->
+    <div class="acessibility">
+        <img src="./assets/imgs/icons8-acessibilidade-40.png" alt="" />
+        <div class="options">
+            <p>Aumentar Fonte</p>
+            <p>Diminuir Fonte</p>
+            <p onclick="altoContraste()">Alto-contraste</p>
+        </div>
+    </div>
+
+    <!-- inserção do VLibras :) -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+</body>
+
+<!-- inserção do VLibras - leitor e tradutor para acessiblidade :) -->
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+<script>
+
+    // Encontra o elemento de adicionar ação
+    var adicionarAcao = document.querySelectorAll('.adicionar-acao');
+
+    // Adiciona um evento de clique a cada elemento encontrado
+    adicionarAcao.forEach(function (element) {
+        element.addEventListener('click', function () {
+            // Exibe o modal quando clicado
+            var modal = document.getElementById("myModal");
+            modal.style.display = "block";
+        });
+    });
+
+    // Encontra o elemento para fechar o modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // Fecha o modal quando clicado no botão de fechar
+    span.onclick = function () {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    };
+
+    // Fecha o modal se o usuário clicar fora dele
+    window.onclick = function (event) {
+        var modal = document.getElementById("myModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
+
+    /* função para abrir/fechar menu de acessibilidade */
+    document.querySelector('.acessibility').addEventListener('click', function () {
+        var optionsMenu = this.querySelector('.options');
+        if (optionsMenu.style.display === 'flex') {
+            optionsMenu.style.display = 'none';
+        } else {
+            optionsMenu.style.display = 'flex';
+        }
+    });
+
+    /* adicionando a acessibilidade de alto contraste */
+    function altoContraste() {
+        document.body.classList.toggle('high-contrast');
+    };
+
+    // Modal de visualização da ação
+
+    // pega o modal
+    var modal = document.getElementById("myModal-view");
+
+    // pega o botão que abre o modal
+    var btns = document.querySelectorAll(".acao-kanban");
+
+    // pega o elemento <span> que fecha o modal
+    var span = document.getElementsByClassName("close-view")[0];
+
+    // quando o usuário clicar em qualquer .inner-box abre o modal 
+    btns.forEach(function (btn) {
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+    });
+
+    // quando o usuário clicar em <span> (x), fecha o modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // quando o usuário clicar em qualquer lugar fora do modal, fecha o modal
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+</script>
+
+</html>

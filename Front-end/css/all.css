@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     font-family: "Open Sans", sans-serif;
-    font-size: 2.2vh !important;
+    font-size: 2.5vh !important;
 }
 
 /* variáveis */
@@ -71,18 +71,18 @@
 /* alto contraste */
 .high-contrast {
     background-color: black !important;
-    color: white;
-    font-weight: bold;
+    color: white !important;
+    font-weight: bold !important;
     transition: 0.5s ease-in-out;
 }
 
 .high-contrast .card {
-    background-color: black;
-    border: 2px solid white;
+    background-color: black !important;
+    border: 2px solid white !important;
 }
 
 .high-contrast .card-container h1{
-    color: yellow;
+    color: yellow !important;
 }
 
 .high-contrast .card-container button {
@@ -95,4 +95,17 @@
 .high-contrast .card-container button:hover {
     background-color: yellow;
     color: black;
+}
+
+.high-contrast .kanban-column,.high-contrast .kanban-header,.high-contrast .acao-kanban, .high-contrast .adicionar-acao, .high-contrast #add-acao{
+    border: 2px solid yellow;
+    background-color: #000000;
+}
+
+.high-contrast #add-acao:hover{
+    color: yellow;
+}
+
+.high-contrast .adicionar-acao{
+    color: yellow;
 }
