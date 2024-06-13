@@ -85,6 +85,7 @@ body {
     text-align: center;
     cursor: pointer;
     transition: 0.4s ease-in-out;
+    font-size: 2.3vh !important;
 
     &:hover{
         transform: scale(1.03);
@@ -158,4 +159,142 @@ body {
     align-items: column;
     width: 45%;
     flex-direction: column;
+}
+
+
+
+/* CSS para o ícone de hambúrguer */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.hamburger-menu div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+/* Menu lateral responsivo */
+.sidebar {
+    transition: 0.3s;
+}
+
+
+
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .kanban-column {
+        min-width: 200px;
+    }
+
+    .acao-kanban,
+    .adicionar-acao {
+        font-size: 2vh !important;
+    }
+
+    .adicionar-acao {
+        height: 3vh;
+        font-size: 3vh !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .kanban-container {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    .kanban-column {
+        width: 90%;
+        min-width: 250px;
+    }
+
+    .modal-content {
+        flex-direction: column;
+    }
+
+    .form-column {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+
+ 
+
+    .hamburger-menu {
+        display: block !important;
+    }
+
+    .sidebar {
+       width: 50vw;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: -60vw;
+        transition: left 0.3s ease-in-out;
+    }
+
+    .sidebar.active {
+        left: 0;
+        width: 50vw;
+
+        .icon-opt{
+            display: none !important;
+        }
+    }
+
+    .content {
+        margin-left: 0;
+        width: 100%;
+        transition: margin-left 0.3s;
+    }
+
+    .content.shift {
+        margin-left: 250px;
+    }
+
+    .content{
+        margin-left: 0px !important;
+        width: 100vw !important;
+    }
+    .kanban-column {
+        min-width: 100%;
+        margin: 10px 0;
+    }
+
+    .acao-kanban,
+    .adicionar-acao {
+        width: 90%;
+    }
+
+    .modal-content{
+        height: 80vh !important;
+    }
+
+    .acessibility{
+        left: 85% !important;
+        border: 2px solid white;
+    }
+}
+
+@media (max-width: 576px) {
+    .kanban-header {
+        font-size: 4vw;
+    }
+
+    .kanban-content {
+        padding: 5px;
+    }
+
+    .acao-kanban,
+    .adicionar-acao {
+        font-size: 3vw !important;
+    }
 }
