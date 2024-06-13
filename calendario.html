@@ -66,6 +66,11 @@
         <div class="content">
             <div class="navbar">
                 <div class="container-navbar">
+                    <div class="hamburger-menu" id="hamburger-menu">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
                     <p>Calendário de ações</p>
                     <div class="user">
                         <img width="auto" height="35" src="./assets/imgs/icons8-usuário-30.png" alt="">
@@ -263,6 +268,25 @@
 </script>
 
 <script>
+
+    // menu hamburger responsividade
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const sidebar = document.querySelector('.sidebar');
+        const content = document.querySelector('.content');
+
+        hamburgerMenu.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            content.classList.toggle('shift');
+        });
+
+        window.addEventListener('click', (event) => {
+            if (!sidebar.contains(event.target) && !hamburgerMenu.contains(event.target)) {
+                sidebar.classList.remove('active');
+                content.classList.remove('shift');
+            }
+        });
+    });
 
     // Encontra o elemento de adicionar ação
     var adicionarAcao = document.querySelectorAll('.adicionar-acao');
