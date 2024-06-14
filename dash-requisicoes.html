@@ -240,7 +240,7 @@
     <div class="acessibility">
         <img src="./assets/imgs/icons8-acessibilidade-40.png" alt="" />
         <div class="options">
-            <p>Aumentar Fonte</p>
+            <p onclick="aumentarFonte()">Aumentar Fonte</p>
             <p>Diminuir Fonte</p>
             <p onclick="altoContraste()">Alto-contraste</p>
         </div>
@@ -266,6 +266,20 @@
 </html>
 
 <script>
+
+function aumentarFonte() {
+        var body = document.getElementById('body');
+        var style = window.getComputedStyle(body, null).getPropertyValue('font-size');
+        var currentSize = parseFloat(style);
+        body.style.fontSize = (currentSize + 1) + 'px';
+    }
+
+    function diminuirFonte() {
+        var body = document.getElementById('body');
+        var style = window.getComputedStyle(body, null).getPropertyValue('font-size');
+        var currentSize = parseFloat(style);
+        body.style.fontSize = (currentSize - 1) + 'px';
+    }
     
     function carregarInformacoes(){
 
