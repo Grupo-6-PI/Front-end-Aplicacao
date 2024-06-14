@@ -304,7 +304,11 @@ body {
     }
 
     .modal-content{
-        height: 80vh !important;
+        height: 90vh !important;
+    }
+
+    .modal-acoes{
+        width: 100% !important;
     }
 
     .acessibility{
@@ -324,6 +328,6 @@ body {
 
     .acao-kanban,
     .adicionar-acao {
-        font-size: 3vw !important;
+        font-size: 3.5vw !important;
     }
 }
