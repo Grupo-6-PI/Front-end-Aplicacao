@@ -154,6 +154,35 @@ body {
     }
 }
 
+.modal-acoes{
+    width: 30%;
+    height: 6vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 3%;
+}
+
+.modal-acao{
+    transition: 0.4s ease-in-out;
+    cursor: pointer;
+    width: 45%;
+    height: inherit;
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    color: var(--neutral-white);
+
+    &:hover{
+        transform: scale(1.05);
+        box-shadow: var(--box-shadow-02);
+    }
+}
+
 .form-column{
     display: flex;
     align-items: column;
