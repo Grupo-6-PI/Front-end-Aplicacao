@@ -65,6 +65,11 @@
         <div class="content">
             <div class="navbar">
                 <div class="container-navbar">
+                    <div class="hamburger-menu" id="hamburger-menu">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
                     <p>Visão Geral</p>
                     <div class="user">
                         <img width="auto" height="35" src="./assets/imgs/icons8-usuário-30.png" alt="">
@@ -235,7 +240,7 @@
     <div class="acessibility">
         <img src="./assets/imgs/icons8-acessibilidade-40.png" alt="" />
         <div class="options">
-            <p>Aumentar Fonte</p>
+            <p onclick="aumentarFonte()">Aumentar Fonte</p>
             <p>Diminuir Fonte</p>
             <p onclick="altoContraste()">Alto-contraste</p>
         </div>
@@ -261,10 +266,24 @@
 </html>
 
 <script>
+
+function aumentarFonte() {
+        var body = document.getElementById('body');
+        var style = window.getComputedStyle(body, null).getPropertyValue('font-size');
+        var currentSize = parseFloat(style);
+        body.style.fontSize = (currentSize + 1) + 'px';
+    }
+
+    function diminuirFonte() {
+        var body = document.getElementById('body');
+        var style = window.getComputedStyle(body, null).getPropertyValue('font-size');
+        var currentSize = parseFloat(style);
+        body.style.fontSize = (currentSize - 1) + 'px';
+    }
     
     function carregarInformacoes(){
 
-        CriarModais()
+        CriarModaisAcoes()
         ListarAtividades()
 
         var nomeUser = document.getElementById('nameUser');
@@ -303,6 +322,24 @@
 
     }
 
+    // menu hamburger responsividade
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const sidebar = document.querySelector('.sidebar');
+        const content = document.querySelector('.content');
+
+        hamburgerMenu.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            content.classList.toggle('shift');
+        });
+
+        window.addEventListener('click', (event) => {
+            if (!sidebar.contains(event.target) && !hamburgerMenu.contains(event.target)) {
+                sidebar.classList.remove('active');
+                content.classList.remove('shift');
+            }
+        });
+    });
 
     /* função para abrir/fechar menu de acessibilidade */
     document.querySelector('.acessibility').addEventListener('click', function () {
