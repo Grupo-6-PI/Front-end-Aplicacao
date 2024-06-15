@@ -14,10 +14,11 @@
     <link rel="stylesheet" href="./css/dashboard.css">
     <link rel="stylesheet" href="./css/all.css">
     <script src="./js/functions.js"></script>
+    <script src="js/DashBoard/calendario.js"></script>
 
 </head>
 
-<body>
+<body onload="carregarInformacoes()">
 
     <div class="container-principal">
         <div class="sidebar">
@@ -56,7 +57,7 @@
 
                 <div class="logoff">
                     <img src="./assets/imgs/icons8-sair-30 (1).png" alt="">
-                    <p>Sair</p>
+                    <p onclick="Logout(sessionStorage.getItem('ID_USER'))">Sair</p>
                 </div>
 
             </div>
@@ -66,6 +67,11 @@
         <div class="content">
             <div class="navbar">
                 <div class="container-navbar">
+                    <div class="hamburger-menu" id="hamburger-menu">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
                     <p>Calendário de ações</p>
                     <div class="user">
                         <img width="auto" height="35" src="./assets/imgs/icons8-usuário-30.png" alt="">
@@ -76,108 +82,50 @@
             <div class="kanban-container">
                 <div class="kanban-column">
                     <div class="kanban-header">Domingo</div>
-                    <div class="kanban-content">
-                        <div class="acao-kanban">
-                            Entregar cestas básicas no centro de São Paulo
-                        </div>
-
-                        <div class="acao-kanban">
-                            Movimento do agasalho solidário
-                        </div>
-
-                        <div class="adicionar-acao">
-                            +
-                        </div>
+                    <div class="kanban-content" id="Domingo">
+                        
 
                     </div>
                 </div>
                 <div class="kanban-column">
                     <div class="kanban-header">Segunda-feira</div>
-                    <div class="kanban-content">
-                        <div class="acao-kanban">
-                            Movimento do agasalho solidário
-                        </div>
-
-                        <div class="acao-kanban">
-                            Sopão comunitário
-                        </div>
-
-                        <div class="acao-kanban">
-                            Itens de higiene para mulheres
-                        </div>
-
-                        <div class="adicionar-acao">
-                            +
-                        </div>
+                    <div class="kanban-content" id="Segunda">
+                        
                     </div>
                 </div>
                 <div class="kanban-column">
                     <div class="kanban-header">Terça-feira</div>
-                    <div class="kanban-content">
+                    <div class="kanban-content" id="Terca">
 
-                        <div class="acao-kanban">
-                            Movimento do agasalho solidário
-                        </div>
-
-                        <div class="adicionar-acao">
-                            +
-                        </div>
+                        
 
                     </div>
                 </div>
                 <div class="kanban-column">
                     <div class="kanban-header">Quarta-feira</div>
-                    <div class="kanban-content">
+                    <div class="kanban-content" id="Quarta">
 
-                        <div class="acao-kanban">
-                            Entregar cestas básicas no centro de São Paulo
-                        </div>
-
-                        <div class="acao-kanban">
-                            Movimento do agasalho solidário
-                        </div>
-
-                        <div class="adicionar-acao">
-                            +
-                        </div>
+                        
 
                     </div>
                 </div>
                 <div class="kanban-column">
                     <div class="kanban-header">Quinta-feira</div>
-                    <div class="kanban-content">
-                        <div class="acao-kanban">
-                            Entregar cestas básicas no centro de São Paulo
-                        </div>
-
-                        <div class="acao-kanban">
-                            Movimento do agasalho solidário
-                        </div>
-
-                        <div class="adicionar-acao">
-                            +
-                        </div>
+                    <div class="kanban-content" id="Quinta">
+                        
                     </div>
                 </div>
                 <div class="kanban-column">
                     <div class="kanban-header">Sexta-feira</div>
-                    <div class="kanban-content">
-                        <div class="acao-kanban">
-                            Entregar cestas básicas no centro de São Paulo
-                        </div>
-
-                        <div class="adicionar-acao">
-                            +
-                        </div>
+                    <div class="kanban-content" id="Sexta">
+                        
                     </div>
                 </div>
                 <div class="kanban-column">
                     <div class="kanban-header">Sábado</div>
-                    <div class="kanban-content">
+                    <div class="kanban-content" id="Sabado">
 
-                        <div class="adicionar-acao">
-                            +
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -188,18 +136,30 @@
     </div>
 
     <!-- Modal Visualização -->
-    <div id="myModal-view" class="modal">
-        <div class="modal-content">
-            <span class="close-view" style="align-self: flex-end; font-size: 10vh; cursor: pointer; font-weight: bolder;"> X</span>
-            <h2>Ação #010203</h2>
-            <i>Cestas básicas para XPTO</i>
-            <h3>Data prevista para acontecer: </h3> Terça-feira, 12/12/2000
-            <h3>Descrição: </h3>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, nostrum? Voluptatem, eum impedit inventore ex fugiat ratione quasi vitae voluptas optio veniam odit qui ducimus deserunt placeat nobis ea exercitationem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates ea incidunt unde optio voluptatibus culpa impedit, perferendis qui soluta error dignissimos quae eum fuga minima, officia eos magnam, numquam possimus! Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-            
-        </div>
+    <div id="modais-view">
+        <!-- <div id="myModal-view" class="modal">
+            <div class="modal-content">
+                <span class="close-view" style="align-self: flex-end; font-size: 10vh; cursor: pointer; font-weight: bolder;"> X</span>
+                <h2>Ação #010203</h2>
+                <i>Cestas básicas para XPTO</i>
+                <h3>Data prevista para acontecer: </h3> Terça-feira, 12/12/2000
+                <h3>Descrição: </h3>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, nostrum? Voluptatem, eum impedit inventore ex fugiat ratione quasi vitae voluptas optio veniam odit qui ducimus deserunt placeat nobis ea exercitationem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates ea incidunt unde optio voluptatibus culpa impedit, perferendis qui soluta error dignissimos quae eum fuga minima, officia eos magnam, numquam possimus! Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                <div class="modal-acoes">
+                    <div class="modal-acao">
+                        <img src="./assets/imgs/icons8-lápis-24.png" alt="">
+                        Editar
+                    </div>
+                    <div class="modal-acao">
+                        <img src="./assets/imgs/icons8-lixo-24.png" alt="">
+                        Excluir
+                    </div>
+                </div>
+                
+            </div>
+        </div> -->
     </div>
-
+    
     <!-- Modal Adição -->
     <div id="myModal" class="modal">
         <div class="modal-content">
@@ -230,7 +190,7 @@
                     <label for="dataHoraFim">Data e Hora de Fim</label>
                     <input type="datetime-local" id="dataHoraFim" name="dataHoraFim" required>
     
-                    <button id="add-acao" type="submit">Adicionar</button>
+                    <button id="add-acao" type="submit" onclick="teste()">Adicionar</button>
                 </div>
                 
             </form>
@@ -264,16 +224,74 @@
 
 <script>
 
+    function carregarInformacoes(){
+
+        ListarCalendario()
+
+        var nomeUser = document.getElementById('nameUser');
+        nomeUser.innerHTML = sessionStorage.getItem('NOME_USER')
+
+    }
+
+    function teste(){
+
+        let dataCriacao = document.getElementById('dataHoraInicio')
+
+        let time = dataCriacao.value.slice(11)
+
+        let hora = parseInt(time.slice(0,2))
+        let minutos = parseInt(time.slice(3))
+
+        let data = dataCriacao.value.slice(0,10)
+
+        let ano = data.slice(0,4)
+        let mes = data.slice(5,7)
+        let dia = data.slice(8)
+
+        console.log(data)
+        console.log(ano)
+        console.log(mes)
+        console.log(dia)
+
+    }
+
+    // menu hamburger responsividade
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const sidebar = document.querySelector('.sidebar');
+        const content = document.querySelector('.content');
+
+        hamburgerMenu.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            content.classList.toggle('shift');
+        });
+
+        window.addEventListener('click', (event) => {
+            if (!sidebar.contains(event.target) && !hamburgerMenu.contains(event.target)) {
+                sidebar.classList.remove('active');
+                content.classList.remove('shift');
+            }
+        });
+    });
+
+function adicionarAcao(){
+
     // Encontra o elemento de adicionar ação
     var adicionarAcao = document.querySelectorAll('.adicionar-acao');
 
     // Adiciona um evento de clique a cada elemento encontrado
     adicionarAcao.forEach(function (element) {
+        
         element.addEventListener('click', function () {
+            
             // Exibe o modal quando clicado
+            
             var modal = document.getElementById("myModal");
+            
             modal.style.display = "block";
+        
         });
+    
     });
 
     // Encontra o elemento para fechar o modal
@@ -287,11 +305,45 @@
 
     // Fecha o modal se o usuário clicar fora dele
     window.onclick = function (event) {
+    
         var modal = document.getElementById("myModal");
         if (event.target == modal) {
             modal.style.display = "none";
         }
     };
+}
+
+function modal(idModal,idAcao,isSpan){
+    // pega o modal
+    var modal = document.getElementById(idModal);
+
+    // pega o botão que abre o modal
+    var btns = document.getElementById(idAcao);
+
+    // pega o elemento <span> que fecha o modal
+    var span = document.getElementById(isSpan);
+
+    // quando o usuário clicar em qualquer .inner-box abre o modal 
+    
+    btns.onclick = function () {
+        modal.style.display = "block";
+    }
+    
+
+    // quando o usuário clicar em <span> (x), fecha o modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // quando o usuário clicar em qualquer lugar fora do modal, fecha o modal
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+}
+
+    
 
     /* função para abrir/fechar menu de acessibilidade */
     document.querySelector('.acessibility').addEventListener('click', function () {
@@ -310,33 +362,7 @@
 
     // Modal de visualização da ação
 
-    // pega o modal
-    var modal = document.getElementById("myModal-view");
-
-    // pega o botão que abre o modal
-    var btns = document.querySelectorAll(".acao-kanban");
-
-    // pega o elemento <span> que fecha o modal
-    var span = document.getElementsByClassName("close-view")[0];
-
-    // quando o usuário clicar em qualquer .inner-box abre o modal 
-    btns.forEach(function (btn) {
-        btn.onclick = function () {
-            modal.style.display = "block";
-        }
-    });
-
-    // quando o usuário clicar em <span> (x), fecha o modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-
-    // quando o usuário clicar em qualquer lugar fora do modal, fecha o modal
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+    
 
 </script>
 
