@@ -35,7 +35,7 @@ async function ListarAtividades() {
 
 }
 
-async function CriarModais() {
+async function CriarModaisAcoes() {
 
     var card = document.getElementById('modais')
     card.innerHTML = ""
