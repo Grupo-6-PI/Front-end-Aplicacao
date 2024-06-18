@@ -224,56 +224,6 @@
 
 <script>
 
-    function carregarInformacoes(){
-
-        ListarCalendario()
-
-        var nomeUser = document.getElementById('nameUser');
-        nomeUser.innerHTML = sessionStorage.getItem('NOME_USER')
-
-    }
-
-    function teste(){
-
-        let dataCriacao = document.getElementById('dataHoraInicio')
-
-        let time = dataCriacao.value.slice(11)
-
-        let hora = parseInt(time.slice(0,2))
-        let minutos = parseInt(time.slice(3))
-
-        let data = dataCriacao.value.slice(0,10)
-
-        let ano = data.slice(0,4)
-        let mes = data.slice(5,7)
-        let dia = data.slice(8)
-
-        console.log(data)
-        console.log(ano)
-        console.log(mes)
-        console.log(dia)
-
-    }
-
-    // menu hamburger responsividade
-    document.addEventListener('DOMContentLoaded', (event) => {
-        const hamburgerMenu = document.getElementById('hamburger-menu');
-        const sidebar = document.querySelector('.sidebar');
-        const content = document.querySelector('.content');
-
-        hamburgerMenu.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-            content.classList.toggle('shift');
-        });
-
-        window.addEventListener('click', (event) => {
-            if (!sidebar.contains(event.target) && !hamburgerMenu.contains(event.target)) {
-                sidebar.classList.remove('active');
-                content.classList.remove('shift');
-            }
-        });
-    });
-
 function adicionarAcao(){
 
     // Encontra o elemento de adicionar ação

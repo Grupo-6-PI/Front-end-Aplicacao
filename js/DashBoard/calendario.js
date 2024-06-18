@@ -70,6 +70,37 @@ async function ListarCalendario() {
 
 }
 
+async function ListarTipos(){
+
+    let retorno = await fetch(`http://localhost:8080/atividade/tipos`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+    if(retorno.status == 200){
+
+        let lista = await retorno.json()
+
+        let select = document.getElementById("tipoDoacao")
+        select.innerHTML=""
+
+        lista.map((tipo) => {
+
+            let opt = document.createElement("option")
+            opt.value = `${tipo.tipo}`
+            opt.innerHTML = `${tipo.tipo}`
+            select.appendChild(opt)
+        })
+
+    }else{
+        console.log(retorno.status)
+    }
+
+
+}
+
 function preencherKanban(dto,div){
 
     if(dto == []){
@@ -115,7 +146,7 @@ function CriarModaisCalendario(dados) {
                     <div class="modal-acoes">
                         <div class="modal-acao">
                             <img src="./assets/imgs/icons8-lápis-24.png" alt="">
-                            Editar
+                            <span onclick="BuscarAtividade(${atividade.id})"> Editar
                         </div>
                         <div class="modal-acao">
                             <img src="./assets/imgs/icons8-lixo-24.png" alt="">
@@ -129,10 +160,130 @@ function CriarModaisCalendario(dados) {
 
 }
 
+async function BuscarAtividade(id){
+
+    let retorno = await fetch(`http://localhost:8080/calendarios/${id}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    
+    if(retorno.status == 200){
+    
+        var acao = await retorno.json()
+    
+        console.log(acao)
+    
+        var modal = document.getElementById("myModal");
+    
+        var tipoDoacao = document.getElementById('tipoDoacao')
+        tipoDoacao.value = acao.atividade.tipoAtividade.tipo
+    
+        var nome = document.getElementById('nomeAcao')
+        nome.value = acao.atividade.nome
+    
+        var dataInicio = document.getElementById('dataHoraInicio')
+        
+        let mes = acao.calendario.mesNumeracao.toString().padStart(2, '0')
+        let dia = acao.calendario.diaNumeracao.toString().padStart(2, '0')
+    
+        let horaInicio = acao.atividade.horaComeco[0].toString().padStart(2, '0')
+        let minutosInicio = acao.atividade.horaComeco[1].toString().padStart(2, '0')
+    
+        dataInicio.value = `${acao.calendario.ano}-${mes}-${dia}T${horaInicio}:${minutosInicio}`
+        
+        var dataFim = document.getElementById('dataHoraFim')
+    
+        let horaFim = acao.atividade.horaFinal[0].toString().padStart(2, '0')
+        let minutosFim = acao.atividade.horaFinal[1].toString().padStart(2, '0')
+    
+        dataFim.value = `${acao.calendario.ano}-${mes}-${dia}T${horaFim}:${minutosFim}`
+    
+        var descricao = document.getElementById('descricaoAcao')
+        descricao.innerHTML = acao.atividade.descricao
+    
+        modal.style.display = "block";
+    
+        // Encontra o elemento para fechar o modal
+        var span = document.getElementsByClassName("close")[0];
+    
+        // Fecha o modal quando clicado no botão de fechar
+        span.onclick = function () {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        };
+    
+        // Fecha o modal se o usuário clicar fora dele
+        window.onclick = function (event) {
+        
+            var modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+    
+    }
+    
+    
+    }
+    
+        function carregarInformacoes(){
+    
+            ListarCalendario()
+            ListarTipos()
+    
+            var nomeUser = document.getElementById('nameUser');
+            nomeUser.innerHTML = sessionStorage.getItem('NOME_USER')
+    
+        }
+    
+        function teste(){
+    
+            let dataCriacao = document.getElementById('dataHoraInicio')
+    
+            let datetime = dataCriacao.value
+    
+            console.log(datetime)
+    
+            let time = dataCriacao.value.slice(11)
+    
+            let hora = parseInt(time.slice(0,2))
+            let minutos = parseInt(time.slice(3))
+    
+            let data = dataCriacao.value.slice(0,10)
+    
+            let ano = data.slice(0,4)
+            let mes = data.slice(5,7)
+            let dia = data.slice(8)
+    
+            console.log(data)
+            console.log(ano)
+            console.log(mes)
+            console.log(dia)
+    
+        }
+    
+        // menu hamburger responsividade
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const hamburgerMenu = document.getElementById('hamburger-menu');
+            const sidebar = document.querySelector('.sidebar');
+            const content = document.querySelector('.content');
+    
+            hamburgerMenu.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+                content.classList.toggle('shift');
+            });
+    
+            window.addEventListener('click', (event) => {
+                if (!sidebar.contains(event.target) && !hamburgerMenu.contains(event.target)) {
+                    sidebar.classList.remove('active');
+                    content.classList.remove('shift');
+                }
+            });
+        });
 
 async function deletaCalendario(id) {
-    
-    console.log(`http://localhost:8080/calendarios/${id}`)
 
     let retorno = await fetch(`http://localhost:8080/calendarios/${id}`, {
         method: 'DELETE',
@@ -153,3 +304,6 @@ async function deletaCalendario(id) {
         console.log(retorno.text)
     }
 }
+
+
+
