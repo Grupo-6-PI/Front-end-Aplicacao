@@ -2,12 +2,19 @@
 async function ListarCalendario() {
 
     let domingo = document.getElementById('Domingo')
+    domingo.innerHTML=""
     let segunda = document.getElementById('Segunda')
+    segunda.innerHTML=""
     let terca = document.getElementById('Terca')
+    terca.innerHTML=""
     let quarta = document.getElementById('Quarta')
+    quarta.innerHTML=""
     let quinta = document.getElementById('Quinta')
+    quinta.innerHTML=""
     let sexta = document.getElementById('Sexta')
+    sexta.innerHTML=""
     let sabado = document.getElementById('Sabado')
+    sabado.innerHTML=""
 
     let requisicao = await fetch("http://localhost:8080/calendarios",{
         method: 'GET',
@@ -112,7 +119,7 @@ function CriarModaisCalendario(dados) {
                         </div>
                         <div class="modal-acao">
                             <img src="./assets/imgs/icons8-lixo-24.png" alt="">
-                            Excluir
+                            <span onclick="deletaCalendario(${atividade.id})">Excluir</span>
                         </div>
                     </div>
                 </div>
@@ -122,3 +129,27 @@ function CriarModaisCalendario(dados) {
 
 }
 
+
+async function deletaCalendario(id) {
+    
+    console.log(`http://localhost:8080/calendarios/${id}`)
+
+    let retorno = await fetch(`http://localhost:8080/calendarios/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+    if(retorno.status == 200){
+
+
+        var modal = document.getElementById(`myModal${id}-view`);
+        modal.style.display = "none";
+        ListarCalendario()
+
+    }else{
+        console.log(retorno.status)
+        console.log(retorno.text)
+    }
+}
