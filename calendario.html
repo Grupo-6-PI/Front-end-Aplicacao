@@ -161,7 +161,7 @@
     </div>
     
     <!-- Modal Adição -->
-    <div id="myModal" class="modal">
+    <div id="myModal_add" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Adicionar Ação</h2>
@@ -169,7 +169,7 @@
 
                 <div class="form-column">
                     <label for="tipoDoacao">Tipo da Doação</label>
-                <select id="tipoDoacao" name="tipoDoacao">
+                <select id="tipoDoacao_add" name="tipoDoacao">
                     <option value="cestaBasica">Cesta Básica</option>
                     <option value="agasalho">Agasalho</option>
                     <option value="sopao">Sopão</option>
@@ -177,20 +177,57 @@
                 </select>
 
                 <label for="nomeAcao">Nome da Ação</label>
-                <input placeholder="Digite o nome da ação" type="text" id="nomeAcao" name="nomeAcao" required>
+                <input placeholder="Digite o nome da ação" type="text" id="nomeAcao_add" name="nomeAcao" required>
 
                 <label for="descricaoAcao">Descrição da Ação</label>
-                <textarea placeholder="Digite a descrição da ação" id="descricaoAcao" name="descricaoAcao" rows="4" required></textarea>
+                <textarea placeholder="Digite a descrição da ação" id="descricaoAcao_add" name="descricaoAcao" rows="4" required></textarea>
                 </div>
                 
                 <div class="form-column">
                     <label for="dataHoraInicio">Data e Hora de Início</label>
-                    <input type="datetime-local" id="dataHoraInicio" name="dataHoraInicio" required>
+                    <input type="datetime-local" id="dataHoraInicio_add" name="dataHoraInicio" required>
     
                     <label for="dataHoraFim">Data e Hora de Fim</label>
-                    <input type="datetime-local" id="dataHoraFim" name="dataHoraFim" required>
+                    <input type="datetime-local" id="dataHoraFim_add" name="dataHoraFim" required>
     
-                    <button id="add-acao" type="submit" onclick="teste()">Adicionar</button>
+                    <button id="add-acao" type="submit" onclick="salvarCalendario()">Adicionar</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Edição -->
+    <div id="myModal_edit" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Editar Ação</h2>
+            <form>
+
+                <div class="form-column">
+                    <label for="tipoDoacao">Tipo da Doação</label>
+                <select id="tipoDoacao_edit" name="tipoDoacao">
+                    <option value="cestaBasica">Cesta Básica</option>
+                    <option value="agasalho">Agasalho</option>
+                    <option value="sopao">Sopão</option>
+                    <option value="higiene">Itens de Higiene</option>
+                </select>
+
+                <label for="nomeAcao">Nome da Ação</label>
+                <input placeholder="Digite o nome da ação" type="text" id="nomeAcao_edit" name="nomeAcao" required>
+
+                <label for="descricaoAcao">Descrição da Ação</label>
+                <textarea placeholder="Digite a descrição da ação" id="descricaoAcao_edit" name="descricaoAcao" rows="4" required></textarea>
+                </div>
+                
+                <div class="form-column">
+                    <label for="dataHoraInicio">Data e Hora de Início</label>
+                    <input type="datetime-local" id="dataHoraInicio_edit" name="dataHoraInicio" required>
+    
+                    <label for="dataHoraFim">Data e Hora de Fim</label>
+                    <input type="datetime-local" id="dataHoraFim_edit" name="dataHoraFim" required>
+    
+                    <button id="add-acao" type="submit" onclick="editarCalendario()">Salvar Alterações</button>
                 </div>
                 
             </form>
@@ -224,56 +261,6 @@
 
 <script>
 
-    function carregarInformacoes(){
-
-        ListarCalendario()
-
-        var nomeUser = document.getElementById('nameUser');
-        nomeUser.innerHTML = sessionStorage.getItem('NOME_USER')
-
-    }
-
-    function teste(){
-
-        let dataCriacao = document.getElementById('dataHoraInicio')
-
-        let time = dataCriacao.value.slice(11)
-
-        let hora = parseInt(time.slice(0,2))
-        let minutos = parseInt(time.slice(3))
-
-        let data = dataCriacao.value.slice(0,10)
-
-        let ano = data.slice(0,4)
-        let mes = data.slice(5,7)
-        let dia = data.slice(8)
-
-        console.log(data)
-        console.log(ano)
-        console.log(mes)
-        console.log(dia)
-
-    }
-
-    // menu hamburger responsividade
-    document.addEventListener('DOMContentLoaded', (event) => {
-        const hamburgerMenu = document.getElementById('hamburger-menu');
-        const sidebar = document.querySelector('.sidebar');
-        const content = document.querySelector('.content');
-
-        hamburgerMenu.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-            content.classList.toggle('shift');
-        });
-
-        window.addEventListener('click', (event) => {
-            if (!sidebar.contains(event.target) && !hamburgerMenu.contains(event.target)) {
-                sidebar.classList.remove('active');
-                content.classList.remove('shift');
-            }
-        });
-    });
-
 function adicionarAcao(){
 
     // Encontra o elemento de adicionar ação
@@ -286,7 +273,7 @@ function adicionarAcao(){
             
             // Exibe o modal quando clicado
             
-            var modal = document.getElementById("myModal");
+            var modal = document.getElementById("myModal_add");
             
             modal.style.display = "block";
         
@@ -299,18 +286,19 @@ function adicionarAcao(){
 
     // Fecha o modal quando clicado no botão de fechar
     span.onclick = function () {
-        var modal = document.getElementById("myModal");
+        var modal = document.getElementById("myModal_add");
         modal.style.display = "none";
     };
 
     // Fecha o modal se o usuário clicar fora dele
     window.onclick = function (event) {
     
-        var modal = document.getElementById("myModal");
+        var modal = document.getElementById("myModal_add");
         if (event.target == modal) {
             modal.style.display = "none";
         }
     };
+    
 }
 
 function modal(idModal,idAcao,isSpan){
@@ -342,6 +330,61 @@ function modal(idModal,idAcao,isSpan){
         }
     }
 }
+
+function carregarInformacoes(){
+    
+    ListarCalendario()
+    ListarTipos()
+
+    var nomeUser = document.getElementById('nameUser');
+    nomeUser.innerHTML = sessionStorage.getItem('NOME_USER')
+
+}
+
+function teste(){
+
+    let dataCriacao = document.getElementById('dataHoraInicio')
+
+    let datetime = dataCriacao.value
+
+    console.log(datetime)
+
+    let time = dataCriacao.value.slice(11)
+
+    let hora = parseInt(time.slice(0,2))
+    let minutos = parseInt(time.slice(3))
+
+    let data = dataCriacao.value.slice(0,10)
+
+    let ano = data.slice(0,4)
+    let mes = data.slice(5,7)
+    let dia = data.slice(8)
+
+    console.log(data)
+    console.log(ano)
+    console.log(mes)
+    console.log(dia)
+
+}
+
+// menu hamburger responsividade
+document.addEventListener('DOMContentLoaded', (event) => {
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    const sidebar = document.querySelector('.sidebar');
+    const content = document.querySelector('.content');
+
+    hamburgerMenu.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+        content.classList.toggle('shift');
+    });
+
+    window.addEventListener('click', (event) => {
+        if (!sidebar.contains(event.target) && !hamburgerMenu.contains(event.target)) {
+            sidebar.classList.remove('active');
+            content.classList.remove('shift');
+        }
+    });
+});
 
     
 
