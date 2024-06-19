@@ -299,15 +299,21 @@ async function editarCalendario(){
     })
 
     if(retorno.status == 200){
-        alert("AEEE")
+        
+        var modalView = document.getElementById(`myModal${id}-view`);
+        modalView.style.display = "none";
+
+        var modal = document.getElementById(`myModal_edit`);
+        modal.style.display = "none";
+        
+        ListarCalendario()
+
     }else{
         alert(retorno.status)
     }
 
 }
     
-        
-
 async function deletaCalendario(id) {
 
     let retorno = await fetch(`http://localhost:8080/calendarios/${id}`, {
@@ -330,5 +336,15 @@ async function deletaCalendario(id) {
     }
 }
 
+async function salvarCalendario(){
 
+    var tipoDoacao = document.getElementById('tipoDoacao_add')
+    var nome = document.getElementById('nomeAcao_add')
+    var descricao = document.getElementById('descricaoAcao_add')
+    let dataInicio = document.getElementById('dataHoraInicio_add')
+    let dataFim = document.getElementById('dataHoraFim_add')
+
+    
+
+}
 
