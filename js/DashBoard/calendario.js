@@ -338,13 +338,58 @@ async function deletaCalendario(id) {
 
 async function salvarCalendario(){
 
-    var tipoDoacao = document.getElementById('tipoDoacao_add')
-    var nome = document.getElementById('nomeAcao_add')
-    var descricao = document.getElementById('descricaoAcao_add')
+    var tipoDoacao = document.getElementById('tipoDoacao_add').value
+    var nomeInsert = document.getElementById('nomeAcao_add').value
+    var descricao = document.getElementById('descricaoAcao_add').value
+    
+    var emailMod = sessionStorage.getItem('EMAIL_USER')
+
     let dataInicio = document.getElementById('dataHoraInicio_add')
     let dataFim = document.getElementById('dataHoraFim_add')
 
-    
+    let timeInicio = dataInicio.value.slice(11)
+
+    let horaComeco = parseInt(timeInicio.slice(0,2))
+    let minutosComeco = parseInt(timeInicio.slice(3))
+
+    let timeFim = dataFim.value.slice(11)
+
+    let horaFim = parseInt(timeFim.slice(0,2))
+    let minutosFim = parseInt(timeFim.slice(3))
+
+    let data = dataInicio.value.slice(0,10)
+
+    let ano = data.slice(0,4)
+    let mes = data.slice(5,7)
+    let dia = data.slice(8)
+
+    const atividade = {
+        nome:nomeInsert,
+        horaComeco:[horaComeco,minutosComeco],
+        horaFinal:[horaFim,minutosFim],
+        descricao:descricao,
+        tipoAtividadeId:tipoDoacao,
+        emailModificador:emailMod,
+    }
+
+    let retorno = await fetch(`http://localhost:8080/calendarios?ano=${ano}&mesNumeracao=${mes}&diaNumeracao=${dia}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(atividade)
+    })
+
+    if(retorno.status == 201){
+
+        alert("Criou")
+
+    }else{
+
+        console.log(retorno.status)
+        console.log(retorno.statusText)
+
+    }
 
 }
 
