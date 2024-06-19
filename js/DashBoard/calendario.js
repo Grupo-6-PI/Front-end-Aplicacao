@@ -83,15 +83,17 @@ async function ListarTipos(){
 
         let lista = await retorno.json()
 
-        let select = document.getElementById("tipoDoacao")
+        let select = document.getElementById("tipoDoacao_add")
         select.innerHTML=""
+
+        let selectEdit = document.getElementById("tipoDoacao_edit")
+        selectEdit.innerHTML=""
 
         lista.map((tipo) => {
 
-            let opt = document.createElement("option")
-            opt.value = `${tipo.tipo}`
-            opt.innerHTML = `${tipo.tipo}`
-            select.appendChild(opt)
+            select.innerHTML+= `<option value="${tipo.id}">${tipo.tipo}</option>`
+            selectEdit.innerHTML+= `<option value="${tipo.id}">${tipo.tipo}</option>`
+
         })
 
     }else{
@@ -173,115 +175,138 @@ async function BuscarAtividade(id){
     
         var acao = await retorno.json()
     
-        console.log(acao)
+        var modal = document.getElementById("myModal_edit");
+
+        sessionStorage.setItem("id_acao",acao.atividade.id)
     
-        var modal = document.getElementById("myModal");
+        var tipoDoacao = document.getElementById('tipoDoacao_edit')
+        
+        tipoDoacao.value = acao.atividade.tipoAtividade.id
     
-        var tipoDoacao = document.getElementById('tipoDoacao')
-        tipoDoacao.value = acao.atividade.tipoAtividade.tipo
-    
-        var nome = document.getElementById('nomeAcao')
+        var nome = document.getElementById('nomeAcao_edit')
+        
         nome.value = acao.atividade.nome
     
-        var dataInicio = document.getElementById('dataHoraInicio')
+        var dataInicio = document.getElementById('dataHoraInicio_edit')
         
         let mes = acao.calendario.mesNumeracao.toString().padStart(2, '0')
+        
         let dia = acao.calendario.diaNumeracao.toString().padStart(2, '0')
     
         let horaInicio = acao.atividade.horaComeco[0].toString().padStart(2, '0')
+        
         let minutosInicio = acao.atividade.horaComeco[1].toString().padStart(2, '0')
     
         dataInicio.value = `${acao.calendario.ano}-${mes}-${dia}T${horaInicio}:${minutosInicio}`
         
-        var dataFim = document.getElementById('dataHoraFim')
+        var dataFim = document.getElementById('dataHoraFim_edit')
     
         let horaFim = acao.atividade.horaFinal[0].toString().padStart(2, '0')
+        
         let minutosFim = acao.atividade.horaFinal[1].toString().padStart(2, '0')
     
         dataFim.value = `${acao.calendario.ano}-${mes}-${dia}T${horaFim}:${minutosFim}`
     
-        var descricao = document.getElementById('descricaoAcao')
+        var descricao = document.getElementById('descricaoAcao_edit')
+        
         descricao.innerHTML = acao.atividade.descricao
+
+        sessionStorage.setItem("alteracoes_acao",JSON.stringify(acao))
     
         modal.style.display = "block";
-    
+
+        var modal = document.getElementById(`myModal${acao.id}-view`);
+
+        modal.style.display = "none";
+
         // Encontra o elemento para fechar o modal
         var span = document.getElementsByClassName("close")[0];
     
         // Fecha o modal quando clicado no botão de fechar
         span.onclick = function () {
-            var modal = document.getElementById("myModal");
+
+            var modal = document.getElementById("myModal_edit");
+            
             modal.style.display = "none";
+
         };
     
         // Fecha o modal se o usuário clicar fora dele
         window.onclick = function (event) {
         
-            var modal = document.getElementById("myModal");
+            var modal = document.getElementById("myModal_edit");
+
             if (event.target == modal) {
+
                 modal.style.display = "none";
+
             }
+
         };
     
     }
     
+}
+
+function salvarAlteracoes(){
+
+    let acao = JSON.parse(sessionStorage.getItem('alteracoes_acao'))
+
+    var tipoDoacao = document.getElementById('tipoDoacao_edit')
     
+    acao.atividade.tipoAtividade.id = tipoDoacao.value
+
+    acao.atividade.nome = document.getElementById('nomeAcao_edit').value
+
+    acao.atividade.descricao = document.getElementById('descricaoAcao_edit').value
+
+    let dataInicio = document.getElementById('dataHoraInicio_edit')
+
+    let timeInicio = dataInicio.value.slice(11)
+
+    acao.atividade.horaComeco[0] = parseInt(timeInicio.slice(0,2))
+    acao.atividade.horaComeco[1] = parseInt(timeInicio.slice(3))
+
+    let data = dataInicio.value.slice(0,10)
+
+    acao.calendario.ano = data.slice(0,4)
+    acao.calendario.mesNumeracao = data.slice(5,7)
+    acao.calendario.diaNumeracao = data.slice(8)
+
+    let dataFim = document.getElementById('dataHoraFim_edit')
+
+    let timeFim = dataFim.value.slice(11)
+
+    acao.atividade.horaFinal[0] = parseInt(timeFim.slice(0,2))
+    acao.atividade.horaFinal[1] = parseInt(timeFim.slice(3))
+
+    sessionStorage.setItem('alteracoes_acao',JSON.stringify(acao))
+
+}
+
+async function editarCalendario(){
+
+    salvarAlteracoes()
+    
+    let acao = JSON.parse(sessionStorage.getItem('alteracoes_acao'))
+
+    let retorno = await fetch(`http://localhost:8080/calendarios/atualizacao`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(acao)
+    })
+
+    if(retorno.status == 200){
+        alert("AEEE")
+    }else{
+        alert(retorno.status)
     }
+
+}
     
-        function carregarInformacoes(){
-    
-            ListarCalendario()
-            ListarTipos()
-    
-            var nomeUser = document.getElementById('nameUser');
-            nomeUser.innerHTML = sessionStorage.getItem('NOME_USER')
-    
-        }
-    
-        function teste(){
-    
-            let dataCriacao = document.getElementById('dataHoraInicio')
-    
-            let datetime = dataCriacao.value
-    
-            console.log(datetime)
-    
-            let time = dataCriacao.value.slice(11)
-    
-            let hora = parseInt(time.slice(0,2))
-            let minutos = parseInt(time.slice(3))
-    
-            let data = dataCriacao.value.slice(0,10)
-    
-            let ano = data.slice(0,4)
-            let mes = data.slice(5,7)
-            let dia = data.slice(8)
-    
-            console.log(data)
-            console.log(ano)
-            console.log(mes)
-            console.log(dia)
-    
-        }
-    
-        // menu hamburger responsividade
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const hamburgerMenu = document.getElementById('hamburger-menu');
-            const sidebar = document.querySelector('.sidebar');
-            const content = document.querySelector('.content');
-    
-            hamburgerMenu.addEventListener('click', () => {
-                sidebar.classList.toggle('active');
-                content.classList.toggle('shift');
-            });
-    
-            window.addEventListener('click', (event) => {
-                if (!sidebar.contains(event.target) && !hamburgerMenu.contains(event.target)) {
-                    sidebar.classList.remove('active');
-                    content.classList.remove('shift');
-                }
-            });
-        });
+        
 
 async function deletaCalendario(id) {
 
