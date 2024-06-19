@@ -20,7 +20,8 @@
       });
       
       if(requisicao.ok){
-        window.location.href = './index.html'
+
+        window.location.href = './login.html'
       
       }else{
         console.log("Deu ruim")
