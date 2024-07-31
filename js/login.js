@@ -18,7 +18,7 @@ async function Login() {
       body: JSON.stringify(usuario),
     });
 
-    if(requisicao.ok){
+    if(requisicao.status == 200){
 
       let dados = await requisicao.json();
 
@@ -30,7 +30,7 @@ async function Login() {
         
     }else{
 
-      console.log("Deu ruim")
+      console.log("Codigo Erro:" + requisicao.status + "Mensagem de Erro"  + requisicao.statusText)
 
     }
 
@@ -81,7 +81,7 @@ async function Logout(id) {
         
     }else{
 
-      console.log("Deu ruim")
+      console.log("Codigo Erro:" + requisicao.status + "Mensagem de Erro"  + requisicao.statusText)
 
     }
     
