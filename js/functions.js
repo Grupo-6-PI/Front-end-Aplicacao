@@ -1,19 +1,26 @@
 
-    function goToLogin(){
+function goToLogin(){
 
-       window.location.href = './login.html'
-    }
+  window.location.href = './login.html'
 
-    function goToIndex() {
-      window.location.href = './index.html'
-    }
+}
 
-    function goToCadastro() {
-      window.location.href = './cadastro.html'
-    }
+function goToIndex() {
 
-    function goToCadastroComplementar1() {
-      window.location.href = './cadastro_complmentar1.hmtl'
-    }
+  window.location.href = './index.html'
+
+}
+
+function goToCadastro() {
+  
+  window.location.href = './cadastro.html'
+
+}
+
+function goToCadastroComplementar1() {
+  
+  window.location.href = './cadastro_complmentar1.hmtl'
+
+}
 
     
