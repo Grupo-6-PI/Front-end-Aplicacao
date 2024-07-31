@@ -6,8 +6,10 @@ async function ListarAtividades() {
     card.innerHTML = "";
 
     let requisicao = await fetch("http://localhost:8080/atividade/lista-atividade",{
-      method: 'GET',
-      headers: {"Content-type":"application/json; charset=UTF-8"}
+        
+        method: 'GET',
+        headers: {"Content-type":"application/json; charset=UTF-8"}
+    
     });
 
     if(requisicao.ok){
@@ -41,8 +43,10 @@ async function CriarModaisAcoes() {
     card.innerHTML = ""
 
     let requisicao = await fetch("http://localhost:8080/atividade/lista-atividade",{
-      method: 'GET',
-      headers: {"Content-type":"application/json; charset=UTF-8"}
+    
+        method: 'GET',
+        headers: {"Content-type":"application/json; charset=UTF-8"}
+    
     });
 
     if(requisicao.ok){
@@ -50,19 +54,20 @@ async function CriarModaisAcoes() {
         let dados = await requisicao.json();
 
         dados.map((atividade) => {
+        
             card.innerHTML += `
-<div id="myModal${atividade.id}" class="modal">
-        <div class="modal-content">
-            <span class="close" id="close${atividade.id}"> X</span>
-            <h2>Ação ${atividade.id}</h2>
-            <i>${atividade.nome}</i>
-            <h3>Data prevista para acontecer: </h3> Terça-feira, 12/12/2000
-            <h3>Descrição: </h3>
-            ${atividade.descricao}
-            
-        </div>
-    </div>
+                <div id="myModal${atividade.id}" class="modal">
+                    <div class="modal-content">
+                        <span class="close" id="close${atividade.id}"> X</span>
+                        <h2>Ação ${atividade.id}</h2>
+                        <i>${atividade.nome}</i>
+                        <h3>Data prevista para acontecer: </h3> Terça-feira, 12/12/2000
+                        <h3>Descrição: </h3>
+                        ${atividade.descricao}    
+                    </div>
+                </div>
             `
+        
         })
         
     }else{
