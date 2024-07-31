@@ -27,10 +27,14 @@ async function submitForm() {
       
     }else{
       
-      console.log("Deu ruim")
+      console.log("Codigo Erro:" + requisicao.status + "Mensagem de Erro"  + requisicao.statusText)
     
     }
         
+  }else{
+
+    console.log("Codigo Erro:" + 400 + "Mensagem de Erro: informação erra/insuficiente")
+
   }
 
 }
