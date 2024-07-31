@@ -3,22 +3,30 @@ async function ListarCalendario() {
 
     let domingo = document.getElementById('Domingo')
     domingo.innerHTML=""
+    
     let segunda = document.getElementById('Segunda')
     segunda.innerHTML=""
+    
     let terca = document.getElementById('Terca')
     terca.innerHTML=""
+    
     let quarta = document.getElementById('Quarta')
     quarta.innerHTML=""
+    
     let quinta = document.getElementById('Quinta')
     quinta.innerHTML=""
+    
     let sexta = document.getElementById('Sexta')
     sexta.innerHTML=""
+    
     let sabado = document.getElementById('Sabado')
     sabado.innerHTML=""
 
     let requisicao = await fetch("http://localhost:8080/calendarios",{
+        
         method: 'GET',
         headers: {"Content-type":"application/json; charset=UTF-8"}
+    
     });
 
     if(requisicao.ok){
@@ -26,39 +34,59 @@ async function ListarCalendario() {
         let dados = await requisicao.json();
 
         preencherKanban(dados.domingo,domingo)
+        
         preencherKanban(dados.segunda,segunda)
+        
         preencherKanban(dados.terca,terca)
+        
         preencherKanban(dados.quarta,quarta)
+        
         preencherKanban(dados.quinta,quinta)
+        
         preencherKanban(dados.sexta,sexta)
+        
         preencherKanban(dados.sabado,sabado)
 
         if(dados.domingo != []){
+            
             CriarModaisCalendario(dados.domingo)
+        
         }
 
         if(dados.segunda != []){
+            
             CriarModaisCalendario(dados.segunda)
+        
         }
 
         if(dados.terca != []){
+            
             CriarModaisCalendario(dados.terca)
+        
         }
 
         if(dados.quarta != []){
+            
             CriarModaisCalendario(dados.quarta)
+        
         }
 
         if(dados.quinta != []){
+            
             CriarModaisCalendario(dados.quinta)
+        
         }
 
         if(dados.sexta != []){
+            
             CriarModaisCalendario(dados.sexta)
+        
         }
 
         if(dados.sabado != []){
+            
             CriarModaisCalendario(dados.sabado)
+        
         }
 
         
@@ -73,10 +101,10 @@ async function ListarCalendario() {
 async function ListarTipos(){
 
     let retorno = await fetch(`http://localhost:8080/atividade/tipos`, {
+        
         method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
+        headers: {'Content-Type': 'application/json'}
+    
     })
 
     if(retorno.status == 200){
@@ -97,28 +125,33 @@ async function ListarTipos(){
         })
 
     }else{
-        console.log(retorno.status)
-    }
 
+        console.log(retorno.status)
+    
+    }
 
 }
 
 function preencherKanban(dto,div){
 
     if(dto == []){
+        
         div.innerHTML+= `
             <div class="adicionar-acao" onclick="adicionarAcao()">
                 +
             </div>
         `
+
     }else{
 
         dto.map((atividade) => {
+            
             div.innerHTML+= `
                 <div class="acao-kanban" id="acao${atividade.atividade.id}" onclick="modal('myModal${atividade.atividade.id}-view','acao${atividade.atividade.id}','span${atividade.atividade.id}')">
                     ${atividade.atividade.nome}
                 </div>
             `
+        
         })
 
         div.innerHTML+= `
@@ -136,6 +169,7 @@ function CriarModaisCalendario(dados) {
     var card = document.getElementById('modais-view')
           
     dados.map((atividade) => {
+        
         card.innerHTML += `
             <div id="myModal${atividade.atividade.id}-view" class="modal">
                 <div class="modal-content">
@@ -157,7 +191,8 @@ function CriarModaisCalendario(dados) {
                     </div>
                 </div>
             </div>
-        `
+        `;
+
     })
 
 }
@@ -165,10 +200,10 @@ function CriarModaisCalendario(dados) {
 async function BuscarAtividade(id){
 
     let retorno = await fetch(`http://localhost:8080/calendarios/${id}`, {
+        
         method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
+        headers: {'Content-Type': 'application/json'}
+    
     })
     
     if(retorno.status == 200){
@@ -291,11 +326,11 @@ async function editarCalendario(){
     let acao = JSON.parse(sessionStorage.getItem('alteracoes_acao'))
 
     let retorno = await fetch(`http://localhost:8080/calendarios/atualizacao`, {
+        
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(acao)
+    
     })
 
     if(retorno.status == 200){
@@ -309,7 +344,9 @@ async function editarCalendario(){
         ListarCalendario()
 
     }else{
+
         alert(retorno.status)
+    
     }
 
 }
@@ -318,22 +355,23 @@ async function deletaCalendario(id) {
 
     let retorno = await fetch(`http://localhost:8080/calendarios/${id}`, {
         method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
-        }
+        headers: {'Content-Type': 'application/json'}
+    
     })
 
     if(retorno.status == 200){
-
 
         var modal = document.getElementById(`myModal${id}-view`);
         modal.style.display = "none";
         ListarCalendario()
 
     }else{
+        
         console.log(retorno.status)
         console.log(retorno.text)
+    
     }
+
 }
 
 async function salvarCalendario(){
@@ -364,20 +402,22 @@ async function salvarCalendario(){
     let dia = data.slice(8)
 
     const atividade = {
+
         nome:nomeInsert,
         horaComeco:[horaComeco,minutosComeco],
         horaFinal:[horaFim,minutosFim],
         descricao:descricao,
         tipoAtividadeId:tipoDoacao,
         emailModificador:emailMod,
+    
     }
 
     let retorno = await fetch(`http://localhost:8080/calendarios?ano=${ano}&mesNumeracao=${mes}&diaNumeracao=${dia}`, {
+        
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(atividade)
+    
     })
 
     if(retorno.status == 201){
