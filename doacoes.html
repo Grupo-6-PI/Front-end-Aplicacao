@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOAÇÕES | Mooca Solidária</title>
+    <link rel="shortcut icon" href="./assets/imgs/favicon-tfg.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/doacoes.css">
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="./css/all.css">
+    <script src="./js/functions.js"></script>
+    <script src="js/DashBoard/calendario.js"></script>
+    <script src="js/login.js"></script>
+
+</head>
+
+<body onload="carregarInformacoes()">
+
+    <div class="container-principal">
+        <div class="sidebar">
+            <div class="container-sidebar">
+
+                <div class="container-logo">
+                    <img width="auto" height="80" src="./assets/imgs/logo-mooca.png" alt="">
+                </div>
+
+                <div class="sidebar-options">
+                    <div class="opt">
+                        <div class="icon-opt">
+                            <img src="./assets/imgs/icons8-casa-30.png" alt="">
+                        </div>
+                        <a href="dash-requisicoes.html">Home </a>
+                    </div>
+                    <div class="opt">
+                        <div class="icon-opt">
+                            <img src="./assets/imgs/icons8-saco-de-dinheiro-30.png" alt="">
+                        </div>
+                        <a href="">Financeiro </a>
+                    </div>
+                    <div class="opt" id="opt-highlight">
+                        <div class="icon-opt">
+                            <img src="./assets/imgs/icons8-bem-estar-50.png" alt="">
+                        </div>
+                        <a href="">Doações </a>
+                    </div>
+                    <div class="opt">
+                        <div class="icon-opt">
+                            <img src="./assets/imgs/icons8-calendário-30.png" alt="">
+                        </div>
+                        <a href="calendario.html">Calendário </a>
+                    </div>
+                </div>
+
+                <div class="logoff">
+                    <img src="./assets/imgs/icons8-sair-30 (1).png" alt="">
+                    <p onclick="Logout(sessionStorage.getItem('ID_USER'))">Sair</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="navbar">
+                <div class="container-navbar">
+                    <div class="hamburger-menu" id="hamburger-menu">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <p>Doações</p>
+                    <div class="user">
+                        <img width="auto" height="35" src="./assets/imgs/icons8-usuário-30.png" alt="">
+                        <p id="nameUser">Admin</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container-doacoes">
+                <div class="doacao">
+                    <div class="inside-doacao">
+                        <div class="requisicao-info">
+                            <p><strong>ID Requisição:</strong> 1001</p>
+                            <p><strong>Nome:</strong> Maria Da Silva Pereira</p>
+                            <p><strong>CPF:</strong> 123.123.123-11</p>
+                        </div>
+                        <div class="doacao-info">
+                            <div class="doacao-tipo">
+                                <img src="assets/imgs/icone-pizza.png" alt="Ícone de Doação" class="doacao-icon">
+                                <div id="label-doacao-tipo">
+                                    <p><strong>Tipo de doação:</strong></p>
+                                    <p>Alimentício</p>
+                                </div>
+                            </div>
+                            <div class="doacao-mensagem">
+                                <p>“Olá meu nome é Maria, estou passando necessidade, poderia ajudar com alimentos ou
+                                    itens de higiene, iria ajudar muito....”</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aceitar-negar">
+                        <img src="assets/imgs/aceitar.png" alt="">
+                        <img src="assets/imgs/negar.png" alt="">
+                    </div>
+
+
+                </div>
+
+                <div class="doacao">
+                    <div class="inside-doacao">
+                        <div class="requisicao-info">
+                            <p><strong>ID Requisição:</strong> 1001</p>
+                            <p><strong>Nome:</strong> Maria Da Silva Pereira</p>
+                            <p><strong>CPF:</strong> 123.123.123-11</p>
+                        </div>
+                        <div class="doacao-info">
+                            <div class="doacao-tipo">
+                                <img src="assets/imgs/icone-pizza.png" alt="Ícone de Doação" class="doacao-icon">
+                                <div id="label-doacao-tipo">
+                                    <p><strong>Tipo de doação:</strong></p>
+                                    <p>Alimentício</p>
+                                </div>
+                            </div>
+                            <div class="doacao-mensagem">
+                                <p>“Olá meu nome é Maria, estou passando necessidade, poderia ajudar com alimentos ou
+                                    itens de higiene, iria ajudar muito....”</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aceitar-negar">
+                        <img src="assets/imgs/aceitar.png" alt="">
+                        <img src="assets/imgs/negar.png" alt="">
+                    </div>
+
+
+                </div>
+
+                <div class="doacao">
+                    <div class="inside-doacao">
+                        <div class="requisicao-info">
+                            <p><strong>ID Requisição:</strong> 1001</p>
+                            <p><strong>Nome:</strong> Maria Da Silva Pereira</p>
+                            <p><strong>CPF:</strong> 123.123.123-11</p>
+                        </div>
+                        <div class="doacao-info">
+                            <div class="doacao-tipo">
+                                <img src="assets/imgs/icone-pizza.png" alt="Ícone de Doação" class="doacao-icon">
+                                <div id="label-doacao-tipo">
+                                    <p><strong>Tipo de doação:</strong></p>
+                                    <p>Alimentício</p>
+                                </div>
+                            </div>
+                            <div class="doacao-mensagem">
+                                <p>“Olá meu nome é Maria, estou passando necessidade, poderia ajudar com alimentos ou
+                                    itens de higiene, iria ajudar muito....”</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aceitar-negar">
+                        <img src="assets/imgs/aceitar.png" alt="">
+                        <img src="assets/imgs/negar.png" alt="">
+                    </div>
+
+
+                </div>
+
+                <div class="doacao">
+                    <div class="inside-doacao">
+                        <div class="requisicao-info">
+                            <p><strong>ID Requisição:</strong> 1001</p>
+                            <p><strong>Nome:</strong> Maria Da Silva Pereira</p>
+                            <p><strong>CPF:</strong> 123.123.123-11</p>
+                        </div>
+                        <div class="doacao-info">
+                            <div class="doacao-tipo">
+                                <img src="assets/imgs/icone-pizza.png" alt="Ícone de Doação" class="doacao-icon">
+                                <div id="label-doacao-tipo">
+                                    <p><strong>Tipo de doação:</strong></p>
+                                    <p>Alimentício</p>
+                                </div>
+                            </div>
+                            <div class="doacao-mensagem">
+                                <p>“Olá meu nome é Maria, estou passando necessidade, poderia ajudar com alimentos ou
+                                    itens de higiene, iria ajudar muito....”</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aceitar-negar">
+                        <img src="assets/imgs/aceitar.png" alt="">
+                        <img src="assets/imgs/negar.png" alt="">
+                    </div>
+
+
+                </div>
+
+                <div class="doacao">
+                    <div class="inside-doacao">
+                        <div class="requisicao-info">
+                            <p><strong>ID Requisição:</strong> 1001</p>
+                            <p><strong>Nome:</strong> Maria Da Silva Pereira</p>
+                            <p><strong>CPF:</strong> 123.123.123-11</p>
+                        </div>
+                        <div class="doacao-info">
+                            <div class="doacao-tipo">
+                                <img src="assets/imgs/icone-pizza.png" alt="Ícone de Doação" class="doacao-icon">
+                                <div id="label-doacao-tipo">
+                                    <p><strong>Tipo de doação:</strong></p>
+                                    <p>Alimentício</p>
+                                </div>
+                            </div>
+                            <div class="doacao-mensagem">
+                                <p>“Olá meu nome é Maria, estou passando necessidade, poderia ajudar com alimentos ou
+                                    itens de higiene, iria ajudar muito....”</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aceitar-negar">
+                        <img src="assets/imgs/aceitar.png" alt="">
+                        <img src="assets/imgs/negar.png" alt="">
+                    </div>
+
+
+                </div>
+
+                <div class="doacao">
+                    <div class="inside-doacao">
+                        <div class="requisicao-info">
+                            <p><strong>ID Requisição:</strong> 1001</p>
+                            <p><strong>Nome:</strong> Maria Da Silva Pereira</p>
+                            <p><strong>CPF:</strong> 123.123.123-11</p>
+                        </div>
+                        <div class="doacao-info">
+                            <div class="doacao-tipo">
+                                <img src="assets/imgs/icone-pizza.png" alt="Ícone de Doação" class="doacao-icon">
+                                <div id="label-doacao-tipo">
+                                    <p><strong>Tipo de doação:</strong></p>
+                                    <p>Alimentício</p>
+                                </div>
+                            </div>
+                            <div class="doacao-mensagem">
+                                <p>“Olá meu nome é Maria, estou passando necessidade, poderia ajudar com alimentos ou
+                                    itens de higiene, iria ajudar muito....”</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aceitar-negar">
+                        <img src="assets/imgs/aceitar.png" alt="">
+                        <img src="assets/imgs/negar.png" alt="">
+                    </div>
+
+
+                </div>
+
+                <div class="doacao">
+                    <div class="inside-doacao">
+                        <div class="requisicao-info">
+                            <p><strong>ID Requisição:</strong> 1001</p>
+                            <p><strong>Nome:</strong> Maria Da Silva Pereira</p>
+                            <p><strong>CPF:</strong> 123.123.123-11</p>
+                        </div>
+                        <div class="doacao-info">
+                            <div class="doacao-tipo">
+                                <img src="assets/imgs/icone-pizza.png" alt="Ícone de Doação" class="doacao-icon">
+                                <div id="label-doacao-tipo">
+                                    <p><strong>Tipo de doação:</strong></p>
+                                    <p>Alimentício</p>
+                                </div>
+                            </div>
+                            <div class="doacao-mensagem">
+                                <p>“Olá meu nome é Maria, estou passando necessidade, poderia ajudar com alimentos ou
+                                    itens de higiene, iria ajudar muito....”</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aceitar-negar">
+                        <img src="assets/imgs/aceitar.png" alt="">
+                        <img src="assets/imgs/negar.png" alt="">
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <!-- Modal -->
+            <div id="modais">
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                      <span class="close">&times;</span>
+                      <h2 id="id-requisicao">Requisição #1001</h2>
+                      <div class="modal-body">
+                        <div class="info-section">
+                          <div class="solicitante">
+                            <p>
+                                <strong>Solicitante:</strong> 
+                                <span id="nome_solicitante">Maria da Silva Pereira</span>
+                            </p>
+                            <p>
+                                <strong>CPF:</strong> 
+                                <span id="cpf_solicitante">123.123.123-13</span>
+                            </p>
+                            <p>
+                                <strong>Data de nasc.:</strong> 
+                                <span id="dt_nasc">12/12/2000</span>
+                            </p>
+                            <p>
+                                <strong>Endereço:</strong> 
+                                <span id="endereco">Rua das Flores, 123 - SP - Brasil</span>
+                            </p>
+                            <p>
+                                <strong>ID Família:</strong> 
+                                <span id="id_familia">1000</span>
+                            </p>
+                          </div>
+                          <div class="familia">
+                            <p>
+                                <strong>Família de Origem:</strong> 
+                                <span id="familia_origem">Família 1000 - Silva Pereira</span>
+                            </p>
+                            <p>
+                                <strong>Qtd Pessoas:</strong> 
+                                <span id="qtd_pessoas">3</span>
+                            </p>
+                            <p>
+                                <strong>Possui crianças?</strong> 
+                                <span id="boolean_criancas">Sim</span>
+                            </p>
+                            <p>
+                                <strong>Possui PCD?</strong> 
+                                <span id="boolean_pcd">Não</span>
+                            </p>
+                            <p>
+                                <strong>Urgência:</strong> 
+                                <span class="urgencia-media">Média</span>
+                            </p>
+                            <p>
+                                <strong>Renda Familiar:</strong> 
+                                <span id="renda_familia">1.000 R$ / mês</span>
+                            </p>
+                          </div>
+                        </div>
+                        <div class="doacao-section">
+                          <p>
+                            <strong>Tipo de doação:</strong> 
+                            <span id="tipo_doacao">Alimentício</span>
+                        </p>
+                          <p>
+                            <strong>Requisição:</strong> 
+                            <span id="msg_requisicao">"Olá meu nome é Maria, estou passando necessidade, poderia ajudar com alimentos ou itens de higiene, iria ajudar muito pois estou desempregada...."</span> 
+                        </p>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="accept-btn">&#10004;</button>
+                          <button class="decline-btn">&#10008;</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+            </div>
+        </div>
+
+        <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+    <!-- Menu de acessibilidade -->
+    <div class="acessibility">
+        <img src="./assets/imgs/icons8-acessibilidade-40.png" alt="" />
+        <div class="options">
+            <p>Aumentar Fonte</p>
+            <p>Diminuir Fonte</p>
+            <p onclick="altoContraste()">Alto-contraste</p>
+        </div>
+    </div>
+
+    <!-- inserção do VLibras :) -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+</body>
+
+<!-- inserção do VLibras - leitor e tradutor para acessiblidade :) -->
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+<script>
+
+
+    // Obter o modal
+    var modal = document.getElementById("myModal");
+
+    // Obter o botão de fechar o modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // Adicionar evento de clique em cada elemento de doação
+    var doacoes = document.querySelectorAll('.doacao');
+    doacoes.forEach(function (doacao) {
+        doacao.addEventListener('click', function () {
+            modal.style.display = "block"; // Mostrar o modal ao clicar em uma doação
+        });
+    });
+
+    // Fechar o modal ao clicar no botão "X"
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // Fechar o modal ao clicar fora do conteúdo do modal
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // menu hamburger responsividade
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const sidebar = document.querySelector('.sidebar');
+        const content = document.querySelector('.content');
+
+        hamburgerMenu.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            content.classList.toggle('shift');
+        });
+
+        window.addEventListener('click', (event) => {
+            if (!sidebar.contains(event.target) && !hamburgerMenu.contains(event.target)) {
+                sidebar.classList.remove('active');
+                content.classList.remove('shift');
+            }
+        });
+    });
+
+    /* função para abrir/fechar menu de acessibilidade */
+    document.querySelector('.acessibility').addEventListener('click', function () {
+        var optionsMenu = this.querySelector('.options');
+        if (optionsMenu.style.display === 'flex') {
+            optionsMenu.style.display = 'none';
+        } else {
+            optionsMenu.style.display = 'flex';
+        }
+    });
+
+    /* adicionando a acessibilidade de alto contraste */
+    function altoContraste() {
+        document.body.classList.toggle('high-contrast');
+    };
+
+
+
+</script>
+
+</html>

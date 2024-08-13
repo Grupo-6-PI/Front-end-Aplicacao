@@ -222,4 +222,12 @@
         width: 100% !important;
         font-size: 14px;
     }
+
+    .acessibility{
+        left: 82vw !important;
+    }
+
+    .options{
+        width: 50vw !important;
+    }
 }
