@@ -23,6 +23,17 @@
 </head>
 
 <body>
+
+    <!-- Menu de acessibilidade -->
+    <div class="acessibility">
+        <img src="./assets/imgs/icons8-acessibilidade-40.png" alt="" />
+        <div class="options">
+            <p>Aumentar Fonte</p>
+            <p>Diminuir Fonte</p>
+            <p onclick="altoContraste()">Alto-contraste</p>
+        </div>
+    </div>
+
     <div class="container-login">
         <div class="banner-login">
             <div class="icon-back" onclick="goToIndex()">
@@ -30,6 +41,7 @@
             </div>
         </div>
         <div class="side-box-login">
+            
             <div class="container-side-box">
                 <div class="container-inside container-logo">
                     <img src="./assets/imgs/logo-mooca.png" alt="">
@@ -59,16 +71,7 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- menu de acessibilidade -->
-    <div class="acessibility">
-        <img src="./assets/imgs/icons8-acessibilidade-40.png" alt="" />
-        <div class="options">
-            <p onclick="aumentarFonte()">Aumentar Fonte</p>
-            <p onclick="diminuirFonte()">Diminuir Fonte</p>
-            <p onclick="altoContraste()">Alto-contraste</p>
-        </div>
+        
     </div>
 
     <!-- inserção do VLibras :) -->
@@ -88,16 +91,17 @@
 <script src="js/cadastroSimples.js"></script>
 
 <script>
+
     /* função para abrir/fechar menu de acessibilidade */
     document.querySelector('.acessibility').addEventListener('click', function () {
         var optionsMenu = this.querySelector('.options');
         if (optionsMenu.style.display === 'flex') {
             optionsMenu.style.display = 'none';
+            console.log("passou")
         } else {
             optionsMenu.style.display = 'flex';
         }
     });
-
 
     /* função de validação de formulário */
     function validateForm() {
@@ -158,4 +162,3 @@
 </script>
 
 </html>
-    

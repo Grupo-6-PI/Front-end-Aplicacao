@@ -3,7 +3,6 @@
     margin: 0;
     padding: 0;
     font-family: "Open Sans", sans-serif;
-    overflow: hidden;
 }
 
 /* variáveis */
@@ -21,15 +20,14 @@
     --box-shadow-02: 4px 4px 64.2px 7px rgba(0, 0, 0, 0.25);
 }
 
+
 .container-logo {
     height: 15vh !important;
 }
 
 .container-logo img {
-    height: 25vh ;
-    width: auto ;
-    height: 25vh ;
-    width: auto ;
+    height: 15vh;
+    width: auto;
 }
 
 /* container dos inputs de cadastro */
@@ -227,9 +225,12 @@
         font-size: 0.8rem !important;
     }
 
-    .acessibility {
+    .acessibility{
+        left: 82vw !important;
         background-color: #000000;
     }
 
-
+    .options{
+        width: 50vw !important;
+    }
 }

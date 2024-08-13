@@ -58,6 +58,7 @@
     justify-content: space-evenly;
     flex-direction: column;
     color: white;
+    z-index: 99999;
 
     p{
         transition: 0.3s ease-in-out;
@@ -139,4 +140,8 @@
     background-color: #000000;
     border: 2px solid yellow;
     font-weight: bold;
+}
+
+.high-contrast .card-container img {
+    content: url('../assets/imgs/logo-alto-contraste.png');
 }
