@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINANCEIRO BAZAR | Mooca Solidária</title>
+    <link rel="shortcut icon" href="./assets/imgs/favicon-tfg.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/financeiro.css">
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="./css/all.css">
+    <script src="./js/functions.js"></script>
+    <script src="js/DashBoard/calendario.js"></script>
+    <script src="js/login.js"></script>
+
+</head>
+
+<body onload="carregarInformacoes()">
+
+    <div class="container-principal">
+        <div class="sidebar">
+            <div class="container-sidebar">
+
+                <div class="container-logo">
+                    <img width="auto" height="80" src="./assets/imgs/logo-mooca.png" alt="">
+                </div>
+
+                <div class="sidebar-options">
+                    <div class="opt">
+                        <div class="icon-opt">
+                            <img src="./assets/imgs/icons8-casa-30.png" alt="">
+                        </div>
+                        <a href="dash-requisicoes.html">Home </a>
+                    </div>
+                    <div class="opt" id="opt-highlight">
+                        <div class="icon-opt">
+                            <img src="./assets/imgs/icons8-saco-de-dinheiro-30.png" alt="">
+                        </div>
+                        <a href="financeiro.html">Financeiro/Bazar </a>
+                    </div>
+                    <div class="opt">
+                        <div class="icon-opt">
+                            <img src="./assets/imgs/icons8-bem-estar-50.png" alt="">
+                        </div>
+                        <a href="doacoes.html">Doações </a>
+                    </div>
+                    <div class="opt">
+                        <div class="icon-opt">
+                            <img src="./assets/imgs/icons8-calendário-30.png" alt="">
+                        </div>
+                        <a href="calendario.html">Calendário </a>
+                    </div>
+                </div>
+
+                <div class="logoff">
+                    <img src="./assets/imgs/icons8-sair-30 (1).png" alt="">
+                    <p onclick="Logout(sessionStorage.getItem('ID_USER'))">Sair</p>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="content">
+            <div class="navbar">
+                <div class="container-navbar">
+                    <div class="hamburger-menu" id="hamburger-menu">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <p>Financeiro/Bazar</p>
+                    <div class="user">
+                        <img width="auto" height="35" src="./assets/imgs/icons8-usuário-30.png" alt="">
+                        <p id="nameUser">Admin</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-financeiro">
+                <div class="left-financeiro">
+                    <p>Adicionar Produto</p>
+                    <div class="line"></div>
+
+                    <div class="container-select-categoria">
+                        <label for="select_categoria">Categoria</label>
+                        <select name="select_categoria" id="select_categoria">
+                            <option value="">Calçado Adulto</option>
+                            <option value="">Calçado Infantil</option>
+                            <option value="">Vestuário Adulto</option>
+                            <option value="">Vestuário Infantil</option>
+                        </select>
+                    </div>
+
+                    <div class="max-container-preco">
+                        <label id="container-preco-label" for="container-preco">Preço</label>
+                        <div class="container-preco">
+                            <p>R$</p>
+                            <input type="text" placeholder="10,00">
+                        </div>
+                    </div>
+
+
+                    <button class="button">Adicionar Produto</button>
+
+                </div>
+
+                <div class="right-financeiro">
+                    <div class="card-right">
+                        <div class="header-card">
+                            <img src="./assets/imgs/cart.png" alt="">
+                            <p> Extrato da Compra</p>
+                        </div>
+
+                        <div class="body-card">
+                            <div class="cart-summary">
+                                <div class="cart-header">
+                                    <div class="cart-total-items">Total de Itens: 3</div>
+                                    <button class="clear-cart">Limpar cesta</button>
+                                </div>
+                                <div class="cart-items">
+                                    <div class="cart-item">
+                                        <div class="item-info">
+                                            <span>10,00 Calçado Adulto</span>
+                                        </div>
+                                        <button class="remove-item">x</button>
+                                    </div>
+                                    <div class="cart-item">
+                                        <div class="item-info">
+                                            <span>15,00 Roupa Infantil</span>
+                                        </div>
+                                        <button class="remove-item">x</button>
+                                    </div>
+                                    <div class="cart-item">
+                                        <div class="item-info">
+                                            <span>20,00 Decoração</span>
+                                        </div>
+                                        <button class="remove-item">x</button>
+                                    </div>
+                                </div>
+                                <div class="cart-footer">
+                                    <div class="cart-subtotal"><b>Subtotal: </b>R$ 45,00</div>
+                                    <button class="finalize-button">Finalizar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                  
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+    <!-- Menu de acessibilidade -->
+    <div class="acessibility">
+        <img src="./assets/imgs/icons8-acessibilidade-40.png" alt="" />
+        <div class="options">
+            <p>Aumentar Fonte</p>
+            <p>Diminuir Fonte</p>
+            <p onclick="altoContraste()">Alto-contraste</p>
+        </div>
+    </div>
+
+    <!-- inserção do VLibras :) -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+</body>
+
+<!-- inserção do VLibras - leitor e tradutor para acessiblidade :) -->
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+<script>
+
+
+    function carregarInformacoes() {
+
+        var nomeUser = document.getElementById('nameUser');
+        nomeUser.innerHTML = sessionStorage.getItem('NOME_USER')
+
+    }
+
+
+
+    // menu hamburger responsividade
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const sidebar = document.querySelector('.sidebar');
+        const content = document.querySelector('.content');
+
+        hamburgerMenu.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            content.classList.toggle('shift');
+        });
+
+        window.addEventListener('click', (event) => {
+            if (!sidebar.contains(event.target) && !hamburgerMenu.contains(event.target)) {
+                sidebar.classList.remove('active');
+                content.classList.remove('shift');
+            }
+        });
+    });
+
+    /* função para abrir/fechar menu de acessibilidade */
+    document.querySelector('.acessibility').addEventListener('click', function () {
+        var optionsMenu = this.querySelector('.options');
+        if (optionsMenu.style.display === 'flex') {
+            optionsMenu.style.display = 'none';
+        } else {
+            optionsMenu.style.display = 'flex';
+        }
+    });
+
+    /* adicionando a acessibilidade de alto contraste */
+    function altoContraste() {
+        document.body.classList.toggle('high-contrast');
+    };
+
+
+</script>
+
+</html>
