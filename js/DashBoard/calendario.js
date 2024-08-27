@@ -174,7 +174,7 @@ function CriarModaisCalendario(dados) {
             <div id="myModal${atividade.atividade.id}-view" class="modal">
                 <div class="modal-content">
                     <span id="span${atividade.atividade.id}" class="close-view" style="align-self: flex-end; font-size: 10vh; cursor: pointer; font-weight: bolder;"> X</span>
-                    <h2>${atividade.atividade.id}</h2>
+                    <h2>Número identificador: ${atividade.atividade.id}</h2>
                     <i>${atividade.atividade.nome}</i>
                     <h3>Data prevista para acontecer: </h3> ${atividade.calendario.diaNomeacao}, ${atividade.calendario.diaNumeracao}/${atividade.calendario.mesNumeracao}/${atividade.calendario.ano}
                     <h3>Descrição: </h3>
