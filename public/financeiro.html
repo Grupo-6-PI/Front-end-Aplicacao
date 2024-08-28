@@ -41,6 +41,10 @@
                             <img src="./assets/imgs/icons8-saco-de-dinheiro-30.png" alt="">
                         </div>
                         <a href="financeiro.html">Financeiro/Bazar </a>
+                        <div class="goToExport" onclick="openPopup()">+</div>
+                        <div class="frameExport" style="display: none;">
+                            <a href="relatorio_export.html">Exportar Relatório</a>
+                        </div>
                     </div>
                     <div class="opt">
                         <div class="icon-opt">
@@ -94,6 +98,11 @@
                             <option value="">Vestuário Adulto</option>
                             <option value="">Vestuário Infantil</option>
                         </select>
+                    </div>
+
+                    <div class="container-select-categoria">
+                        <label for="select_categoria">Quantidade</label>
+                        <input type="text" id="quantidade" placeholder="Ex.: 3">
                     </div>
 
                     <div class="max-container-preco">
@@ -199,6 +208,15 @@
 
     }
 
+    function openPopup() {
+    const popup = document.getElementsByClassName('frameExport')[0]; 
+
+    if (popup.style.display === 'none' || popup.style.display === '') { 
+        popup.style.display = 'flex'; 
+    } else {
+        popup.style.display = 'none'; 
+    }
+}
 
 
     // menu hamburger responsividade

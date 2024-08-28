@@ -1,0 +1,129 @@
+/* css reset */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", sans-serif;
+}
+
+/* variáveis */
+:root {
+    --primary-color: #670632;
+    --primary-color-low-opacity: #67063273;
+    --neutral-white: #ffffff;
+    --neutral-black: #000000;
+    --feedback-warning: #FFB648;
+    --feedback-danger: #FF4848;
+    --feedback-success: #27DD09;
+    --gradient: linear-gradient(180deg, #670632 31.17%, #CA2E74 100%);
+    --border-radius: 15px;
+    --box-shadow-01: 5px 4px 28.7px -7px rgba(0, 0, 0, 0.25);
+    --box-shadow-02: 4px 4px 64.2px 7px rgba(0, 0, 0, 0.25);
+    --font-size: 20px;
+}
+
+body {
+    display: flex;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden !important;
+}
+
+.container-export {
+    box-shadow: var(--box-shadow-01);
+    border-radius: var(--border-radius);
+    width: 70vw;  
+    height: 80vh; 
+    margin-top: 3.5%;
+    background-color: var(--neutral-white); 
+    overflow-y: auto; 
+    padding: 30px; 
+    box-sizing: border-box;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-inside{
+    width: 60vw;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+}
+
+.header-container{
+    width: 100%;
+    margin-top: 3%;
+}
+
+.form-group{
+    margin-top: 5%;
+    margin-bottom: 3%;
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.input-div{
+    display: flex;
+    flex-direction: column;
+
+    input{
+        width: 25vw;
+        height: 4vh;
+        border-style: none;
+        background-color: #dcdcdc;
+        border-radius: var(--border-radius);
+        padding: 5%;
+    }
+
+    label{
+        margin-bottom: 3%;
+    }
+}
+
+#categoria{
+    width: 27vw !important;
+    height: 9.2vh !important;
+    border-style: none;
+    background-color: #dcdcdc;
+    border-radius: var(--border-radius);
+    padding-left: 5%;
+}
+
+.button-row{
+    width: 100%;
+    display: flex;
+    margin-top: 7%;
+    flex-direction: row;
+    justify-content: space-between;
+
+    button{
+        display: flex;
+        flex-direction: row;
+        background-color: var(--primary-color);
+        border-radius: 10vh;
+        align-items: center;
+        justify-content: center;
+        border-style: none;
+        cursor: pointer;
+        height: 7vh;
+        width: 30%;
+        color: white;
+        font-size: 2vh !important;
+        transition: 0.3s ease-in-out;
+
+        &:hover{
+            background-color: #440320;
+        }
+
+        img{
+            width: auto;
+            height: 4vh;
+            margin-right: 5%;
+        }
+    }
+}
+
