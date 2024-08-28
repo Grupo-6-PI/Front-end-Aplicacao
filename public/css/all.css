@@ -157,8 +157,30 @@
     content: url('../assets/imgs/logo-alto-contraste.png');
 }
 
-.high-contrast .banner-login,
-.high-contrast #dependentes-container,
-.high-contrast .dependente {
-    background: black !important;
+.high-contrast .container-export{
+    background-color: black;
+    border: 2px solid yellow;
+
+}
+
+.high-contrast .button-row button{
+    border: 2px solid yellow;
+    font-weight: bold;
+
+    &:hover{
+        background-color: yellow;
+        color: black;
+    }
+}
+
+.high-contrast .input-div input{
+    background-color: black;
+    border: 2px solid yellow;
+    color: white;
+}
+
+.high-contrast .input-div select{
+    background-color: black !important;
+    border: 2px solid yellow !important;
+    color: white;
 }
