@@ -1,15 +1,13 @@
+
 async function buscarDados(){
 
-    let retorno = await fetch(`http://localhost:8080/requisicoes/dash_requisicao`, {
-        
-        method: 'GET',
-        headers: {'Content-Type': 'application/json'}
-    
-    })
+    let retorno = await axios.get('http://localhost:8080/requisicoes/dash_requisicao')
 
     if(retorno.status == 200){
 
-        let dados = await retorno.json()
+        let dados = retorno.data
+
+        console.log(dados)
 
         const data = {
             
