@@ -1,4 +1,4 @@
-
+const axios = require('axios');
 
 async function Login() {
 
@@ -12,13 +12,13 @@ async function Login() {
       "senha": senhaUser
     }
 
-    let requisicao = await fetch("http://localhost:8080/autenticacao/login",{
-      method: 'POST',
-      headers: {"Content-type":"application/json; charset=UTF-8"},
-      body: JSON.stringify(usuario),
-    });
+    try {
 
-    if(requisicao.status == 200){
+      let requisicao = await fetch("http://localhost:8080/autenticacao/login",{
+        method: 'POST',
+        headers: {"Content-type":"application/json; charset=UTF-8"},
+        body: JSON.stringify(usuario),
+      });
 
       let dados = await requisicao.json();
 
@@ -27,11 +27,9 @@ async function Login() {
       sessionStorage.setItem('EMAIL_USER',dados.email);
                 
       window.location.href = './dash-requisicoes.html'
-        
-    }else{
 
-      console.log("Codigo Erro:" + requisicao.status + "Mensagem de Erro"  + requisicao.statusText)
-
+    } catch (error) {
+      console.log(error)
     }
 
   }
