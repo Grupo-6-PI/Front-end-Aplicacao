@@ -1,4 +1,4 @@
-const axios = require('axios');
+
 
 async function Login() {
 
@@ -7,20 +7,14 @@ async function Login() {
 
   if (validarEmail(emailUser) && validarSenha(senhaUser)) {
 
-    let usuario = {
-      "email": emailUser,
-      "senha": senhaUser
-    }
-
     try {
 
-      let requisicao = await fetch("http://localhost:8080/autenticacao/login",{
-        method: 'POST',
-        headers: {"Content-type":"application/json; charset=UTF-8"},
-        body: JSON.stringify(usuario),
-      });
+      let requisicao = await axios.post('http://localhost:8080/autenticacao/login',{
+        email: emailUser,
+        senha: senhaUser
+      })
 
-      let dados = await requisicao.json();
+      let dados = requisicao.data;
 
       sessionStorage.setItem('ID_USER',dados.id);
       sessionStorage.setItem('NOME_USER',dados.nome);
