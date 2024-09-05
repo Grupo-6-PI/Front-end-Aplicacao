@@ -1,27 +1,19 @@
 
-const ambiente_processo = require('../../ambiente');
-
 async function submitForm() {
 
-  let nomeUser = document.getElementById("nome").value;
-  let emailUser = document.getElementById("email").value;
-  let senhaUser = document.getElementById("senha").value;
+  var usuarioSimples = sessionStorage.getItem("USUARIO_SIMPLES")
       
   if (validateForm(nomeUser,emailUser,senhaUser)) {
-
-    let baseURL = ambiente_processo.ambiente_processo === 'producao' 
-    ? 'https://daring-bat-mostly.ngrok-free.app/'
-    : 'http://localhost:8080';
       
-    let requisicao = await axios.post(`${baseURL}/usuarios/cadastro`,{
-      nome:nomeUser.toString(),
-      email:emailUser.toString(),
-      senha:senhaUser.toString()
-    })
+    let requisicao = await fetch("http://localhost:8080/usuarios/cadastro",{
       
-    if(requisicao.status == 201){
-
-      var new_user = await requisicao.data
+      method: 'POST',
+      headers: {"Content-type":"application/json; charset=UTF-8"},
+      body: JSON.stringify(usuario),
+    
+    });
+      
+    if(requisicao.ok){
 
       window.location.href = './login.html'
       

@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="./css/cadastro_complementar.css">
     <link rel="stylesheet" href="./css/all.css">
     <script src="./js/functions.js"></script>
+    <script src="./js/cadastroCompleto.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </head>
@@ -112,33 +113,6 @@
     function altoContraste(){
         document.body.classList.toggle('high-contrast');
     };
-
-     /* função para formatar CPF */
-     function formatCPF(cpf) {
-        cpf = cpf.replace(/\D/g, ""); // remove tudo que não é dígito
-        cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2"); // coloca um ponto entre o terceiro e o quarto dígitos
-        cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2"); // coloca um ponto entre o sexto e o sétimo dígitos
-        cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2"); // coloca um hífen entre o nono e o décimo dígitos
-        return cpf;
-    }
-
-    /* aplica a formatação ao campo CPF */
-    document.getElementById('cpf').addEventListener('input', function() {
-        this.value = formatCPF(this.value);
-    });
-
-     /* função para formatar CEP */
-     function formatCEP(cep) {
-        cep = cep.replace(/\D/g, ""); // remove tudo que não é dígito
-        cep = cep.replace(/(\d{5})(\d)/, "$1-$2"); // coloca um hífen entre o quinto e o sexto dígitos
-        return cep;
-    }
-
-    /* aplica a formatação ao campo CEP */
-    document.getElementById('cep').addEventListener('input', function() {
-        this.value = formatCEP(this.value);
-    });
-
 
      /* função para formatar CPF */
      function formatCPF(cpf) {
