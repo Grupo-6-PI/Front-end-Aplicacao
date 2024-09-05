@@ -206,6 +206,10 @@ body{
         flex-direction: column;
     }
 
+    .container-inputs{
+        height: 15vh;
+    }
+
     .banner-login {
         width: 100%;
         height: 40vh;
@@ -216,20 +220,34 @@ body{
         height: 100%;
     }
 
+    .container-header{
+        margin-bottom: -30px !important;
+    }
+
+    .container-inputs{
+        margin-bottom: -30px !important;
+    }
+
     .side-box-login {
         width: 100%;
-        height: 70vh;
         margin-top: -20px;
         border-radius: 20px;
         box-shadow: var(--box-shadow-01);
     }
 
+    .container-logo{
+        height: fit-content;
+    }
+
     .container-side-box {
         width: 80%;
+        height: 85vh !important;
     }
 
     .container-logo img {
         width: 40vw;
+        margin-bottom: -30px !important;
+        margin-top: -30px !important;
     }
 
     .container-header h1 {
@@ -248,5 +266,19 @@ body{
 
     .acessibility{
        background-color: #000000;
+       top: 75% !important;
+    }
+
+    .acessibility{
+        left: 82vw !important;
+        background-color: #000000;
+    }
+
+    .options{
+        width: 50vw !important;
+    }
+
+    .container-header{
+        height: fit-content;
     }
 }

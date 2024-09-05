@@ -12,9 +12,9 @@
         rel="stylesheet">
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/cadastro.css">
-    <link rel="stylesheet" href="./css/cadastro_complementar.css">
     <link rel="stylesheet" href="./css/all.css">
     <script src="./js/functions.js"></script>
+    <!-- biblioteca Inputmask p/ formatação -->
 
 </head>
 
@@ -27,13 +27,9 @@
         </div>
         <div class="side-box-login">
             <div class="container-side-box">
-               
-                <div class="container-inside container-logo">
-                    <img src="./assets/imgs/logo-mooca.png" alt="">
-                </div>
 
                 <div class="breadcrumbs">
-                    <a href="./cadastro.html">Cadastro</a> / <b>Informações Complementares</b>
+                    <a href="./cadastro.html">Cadastro</a> / <b>Informações Complementares / Telefone e Dependentes</b>
                 </div>
 
                 <div class="container-inside container-header" style="height: 7vh !important;">
@@ -41,12 +37,11 @@
                 </div>
 
                 <div class="container-inputs-cad-complementar">
-                    <input id="cpf" type="text" placeholder="Digite seu CPF" maxlength="14">
-                    <label id="labeldate" for="date">Data de nascimento</label>
-                    <input type="date" id="date" placeholder="Digite sua data de nascimento">
+                    <input id="telefone" type="number" placeholder="Digite seu telefone" maxlength="11">
+
                 </div>
 
-                <p id="info_endereco">Informações de Endereço</p>
+                <p id="info_endereco">Dependentes</p>
 
                 <div class="container-inputs-cad-complementar small">
                     <input id="cep" type="text" placeholder="Digite seu nome CEP" maxlength="9">
@@ -60,7 +55,7 @@
                 </div>
 
                 <div class="container-inside container-button">
-                    <button type="button" id="actionButton" onclick="goToCadastro2()">Continuar</button>
+                    <button type="button" id="actionButton" onclick="submitForm()">Continuar</button>
                 </div>
             </div>
         </div>
@@ -93,11 +88,12 @@
 
 <script>
 
-    function goToCadastro2(){
-        window.location.href = './cadastro_complementar2.html'
-    }
 
-     /* função para abrir/fechar menu de acessibilidade */
+    /* Aplicando a máscara ao input de telefone */
+    var telefoneInput = document.getElementById('telefone');
+    Inputmask("(99) 99999-9999").mask(telefoneInput);
+
+    /* função para abrir/fechar menu de acessibilidade */
     document.querySelector('.acessibility').addEventListener('click', function () {
         var optionsMenu = this.querySelector('.options');
         if (optionsMenu.style.display === 'flex') {
@@ -108,64 +104,14 @@
     });
 
     /* adicionando a acessibilidade de alto contraste */
-    function altoContraste(){
+    function altoContraste() {
         document.body.classList.toggle('high-contrast');
     };
 
-     /* função para formatar CPF */
-     function formatCPF(cpf) {
-        cpf = cpf.replace(/\D/g, ""); // remove tudo que não é dígito
-        cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2"); // coloca um ponto entre o terceiro e o quarto dígitos
-        cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2"); // coloca um ponto entre o sexto e o sétimo dígitos
-        cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2"); // coloca um hífen entre o nono e o décimo dígitos
-        return cpf;
-    }
-
-    /* aplica a formatação ao campo CPF */
-    document.getElementById('cpf').addEventListener('input', function() {
-        this.value = formatCPF(this.value);
-    });
-
-     /* função para formatar CEP */
-     function formatCEP(cep) {
-        cep = cep.replace(/\D/g, ""); // remove tudo que não é dígito
-        cep = cep.replace(/(\d{5})(\d)/, "$1-$2"); // coloca um hífen entre o quinto e o sexto dígitos
-        return cep;
-    }
-
-    /* aplica a formatação ao campo CEP */
-    document.getElementById('cep').addEventListener('input', function() {
-        this.value = formatCEP(this.value);
-    });
-
-
-     /* função para formatar CPF */
-     function formatCPF(cpf) {
-        cpf = cpf.replace(/\D/g, ""); // remove tudo que não é dígito
-        cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2"); // coloca um ponto entre o terceiro e o quarto dígitos
-        cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2"); // coloca um ponto entre o sexto e o sétimo dígitos
-        cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2"); // coloca um hífen entre o nono e o décimo dígitos
-        return cpf;
-    }
-
-    /* aplica a formatação ao campo CPF */
-    document.getElementById('cpf').addEventListener('input', function() {
-        this.value = formatCPF(this.value);
-    });
-
-     /* função para formatar CEP */
-     function formatCEP(cep) {
-        cep = cep.replace(/\D/g, ""); // remove tudo que não é dígito
-        cep = cep.replace(/(\d{5})(\d)/, "$1-$2"); // coloca um hífen entre o quinto e o sexto dígitos
-        return cep;
-    }
-
-    /* aplica a formatação ao campo CEP */
-    document.getElementById('cep').addEventListener('input', function() {
-        this.value = formatCEP(this.value);
-    });
 
 
 </script>
 
 </html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/inputmask.es6.js" integrity="sha512-2w9AHa2ixK/ulBpiUMa2caaC5rDnUckJzUC1FwE80qSfmrOb8cE37v36427rDSqHwco+D5BJsCAHA2fNAYtmYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

@@ -121,6 +121,7 @@ body {
     padding-left: 5%;
     color: #000000a0;
     font-size: 3vh !important;
+    background-color: white;
   }
 }
 
@@ -326,4 +327,121 @@ body {
   color: white !important;
   text-decoration: none;
 
+}
+
+
+@media (max-width: 768px) {
+ 
+
+  .container-principal {
+    flex-direction: column;
+  }
+
+  .container-financeiro {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .left-financeiro, .right-financeiro {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .card-right {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .header-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cart-items {
+    height: auto;
+    max-height: 50vh;
+  }
+
+  .button, .container-select-categoria, .container-preco {
+    width: 100%;
+  }
+
+  .finalize-button {
+    width: 100%;
+  }
+
+  .hamburger-menu {
+    display: block;
+    cursor: pointer;
+  }
+
+  .hamburger-menu div {
+    width: 30px;
+    height: 4px;
+    background-color: var(--primary-color);
+    margin: 6px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-financeiro {
+    width: 90%;
+    padding: 10px;
+    height: fit-content !important;
+    overflow: scroll;
+  }
+
+  .button{
+    margin-bottom: 6% !important;
+  }
+
+  .line{
+    width: 86vw;
+  }
+
+  .cart-footer{
+    align-self: flex-end  !important;
+  }
+
+  .cart-summary{
+    display: grid;
+    height: 70vh !important;
+  }
+
+  .cart-header{
+    height: 8vh !important;
+  }
+
+  .cart-items{
+    align-self: flex-start !important;
+  }
+
+  .header-card{
+    flex-direction: row;
+  }
+
+  .left-financeiro p, .line{
+    margin-bottom: 6%;
+  }
+
+  #quantidade{
+    margin-bottom: 6%;
+  }
+
+  .container-preco {
+    width: 124% !important;
+    margin-bottom: 10%;
+
+    p{
+      margin-bottom: 0% !important;
+    }
+  }
+
+  .finalize-button {
+    width: 100%;
+  }
+
+  .cart-items {
+    max-height: 40vh;
+  }
 }
