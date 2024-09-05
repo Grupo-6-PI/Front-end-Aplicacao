@@ -130,6 +130,13 @@
     border: 2px solid yellow;
 }
 
+.high-contrast .dependente select{
+    background-color: black;
+    border: 2px solid yellow;
+    color: white;
+    border-radius: var(--border-radius);
+} 
+
 .high-contrast .card-container button:hover,
 .high-contrast .button-row button:hover {
     background-color: yellow;
