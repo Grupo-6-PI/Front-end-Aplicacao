@@ -101,8 +101,7 @@
 .high-contrast .doacao p,
 .high-contrast .cart-total-items,
 .high-contrast .container-select-categoria select,
-.high-contrast .container-select-categoria #quantidade,
-.high-contrast .breadcrumbs a {
+.high-contrast .container-select-categoria #quantidade {
     color: white;
 }
 
@@ -124,13 +123,8 @@
     color: yellow !important;
 }
 
-.high-contrast .card-container button,
-.high-contrast .button-row button,
-.high-contrast .container-button button,
-.high-contrast #adicionarDependenteBtn,
-.high-contrast .dependente input,
-.high-contrast .removerDependenteBtn {
-    background-color: black;
+.high-contrast .card-container button {
+    color: yellow;
     border: 2px solid yellow;
 }
 
@@ -141,6 +135,8 @@
     border-radius: var(--border-radius);
 } 
 
+.high-contrast .card-container button:hover,
+.high-contrast .button-row button:hover {
 .high-contrast .card-container button:hover,
 .high-contrast .button-row button:hover {
     background-color: yellow;
@@ -157,30 +153,6 @@
     content: url('../assets/imgs/logo-alto-contraste.png');
 }
 
-.high-contrast .container-export{
-    background-color: black;
-    border: 2px solid yellow;
-
-}
-
-.high-contrast .button-row button{
-    border: 2px solid yellow;
-    font-weight: bold;
-
-    &:hover{
-        background-color: yellow;
-        color: black;
-    }
-}
-
-.high-contrast .input-div input{
-    background-color: black;
-    border: 2px solid yellow;
-    color: white;
-}
-
-.high-contrast .input-div select{
-    background-color: black !important;
-    border: 2px solid yellow !important;
-    color: white;
+.high-contrast .banner-login {
+    background: black !important;
 }
