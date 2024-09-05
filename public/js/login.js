@@ -1,4 +1,5 @@
 
+const ambiente_processo = require('../../ambiente');
 
 async function Login() {
 
@@ -9,7 +10,11 @@ async function Login() {
 
     try {
 
-      let requisicao = await axios.post('http://localhost:8080/autenticacao/login',{
+      let baseURL = ambiente_processo.ambiente_processo === 'producao' 
+        ? 'https://daring-bat-mostly.ngrok-free.app/'
+        : 'http://localhost:8080';
+
+      let requisicao = await axios.post(`${baseURL}/autenticacao/login`,{
         email: emailUser,
         senha: senhaUser
       })

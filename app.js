@@ -1,9 +1,7 @@
-//var ambiente_processo = 'producao';
-var ambiente_processo = 'desenvolvimento';
 
-var caminho_env = ambiente_processo === 'producao' ? '.env' : '.env.dev';
+const caminho_env = require('./caminho_DotEnv')
 
-require("dotenv").config({ path: caminho_env });
+require("dotenv").config({ path: caminho_env.caminho_env });
 
 var express = require("express");
 var cors = require("cors");
