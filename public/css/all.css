@@ -1,5 +1,5 @@
 /* css reset */
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: "Open Sans", sans-serif;
@@ -7,7 +7,7 @@
 }
 
 /* variáveis */
-:root{
+:root {
     --primary-color: #670632;
     --primary-color-low-opacity: #67063273;
     --neutral-white: #ffffff;
@@ -22,7 +22,7 @@
 }
 
 /* menu de acessibilidade */
-.acessibility{
+.acessibility {
     position: fixed;
     width: 60px;
     height: 60px;
@@ -36,15 +36,15 @@
     justify-content: center;
     cursor: pointer;
     transition: 0.3s ease-in-out;
-    
+
 }
 
-.acessibility:hover{
+.acessibility:hover {
     box-shadow: var(--box-shadow-02);
 }
 
 /* opções do menu de acessibiilidade */
-.acessibility .options{
+.acessibility .options {
     height: 20vh;
     width: 10vw;
     background-color: var(--primary-color);
@@ -60,16 +60,16 @@
     color: white;
     z-index: 99999;
 
-    p{
+    p {
         transition: 0.3s ease-in-out;
     }
 
-    p:hover{
+    p:hover {
         color: #bcbcbc;
     }
 }
 
-/* alto contraste */
+/* Alto contraste */
 .high-contrast {
     background-color: black !important;
     color: white !important;
@@ -77,99 +77,75 @@
     transition: 0.5s ease-in-out;
 }
 
-.high-contrast .card {
+.high-contrast .card,
+.high-contrast .container-export,
+.high-contrast .kanban-column,
+.high-contrast .kanban-header,
+.high-contrast .acao-kanban,
+.high-contrast .adicionar-acao,
+.high-contrast #add-acao,
+.high-contrast .side-box-login,
+.high-contrast .container-doacoes,
+.high-contrast .doacao,
+.high-contrast .card-right,
+.high-contrast .cart-summary,
+.high-contrast .finalize-button,
+.high-contrast .container-select-categoria select,
+.high-contrast .container-select-categoria #quantidade
+{
     background-color: black !important;
-    border: 2px solid white !important;
+    border: 2px solid yellow !important;
 }
 
-.high-contrast .card-container h1{
+
+.high-contrast .doacao p,
+.high-contrast .cart-total-items,
+.high-contrast .container-select-categoria select,
+.high-contrast .container-select-categoria #quantidade {
+    color: white;
+}
+
+.high-contrast .clear-cart,
+.high-contrast .remove-item{
+    color: yellow;
+}
+
+.high-contrast .card-container h1,
+.high-contrast .adicionar-acao,
+.high-contrast .input-div select,
+.high-contrast .input-div input,
+.high-contrast #add-acao:hover,
+.high-contrast .container-button button,
+.high-contrast .button-row button,
+.high-contrast .side-box-login h1,
+.high-contrast .side-box-login input,
+.high-contrast #span {
     color: yellow !important;
 }
 
-.high-contrast .card-container button {
-    color: yellow;
-    border: 2px solid yellow;
+.high-contrast .card-container button,
+.high-contrast .button-row button,
+.high-contrast .container-button button {
     background-color: black;
-   
+    border: 2px solid yellow;
 }
 
-.high-contrast .card-container button:hover {
+.high-contrast .card-container button:hover,
+.high-contrast .button-row button:hover {
     background-color: yellow;
     color: black;
 }
 
-.high-contrast .kanban-column,.high-contrast .kanban-header,.high-contrast .acao-kanban, .high-contrast .adicionar-acao, .high-contrast #add-acao{
-    border: 2px solid yellow;
-    background-color: #000000;
-}
-
-.high-contrast #add-acao:hover{
-    color: yellow;
-}
-
-.high-contrast .adicionar-acao{
-    color: yellow;
-}
-
-.high-contrast .banner-login{
-    background: black !important;
-}
-
-.high-contrast .side-box-login{
-    border-left: 2px solid yellow;
-    background-color: #000000;
-
-    h1{
-        color: yellow;
-    }
-
-    input{
-        border: 2px solid yellow;
-        border-radius: var(--border-radius);
-        padding-left: 4%;
-        font-weight: bolder;
-        color: white;
-    }
-
-    #span{
-        color: yellow;
-    }
-}
-
-.high-contrast .container-button button{
-    background-color: #000000;
-    border: 2px solid yellow;
-    font-weight: bold;
+.high-contrast .side-box-login input {
+    border-radius: var(--border-radius);
+    padding-left: 4%;
+    font-weight: bolder;
 }
 
 .high-contrast .card-container img {
     content: url('../assets/imgs/logo-alto-contraste.png');
 }
 
-.high-contrast .container-export{
-    background-color: black;
-    border: 2px solid yellow;
-
-}
-
-.high-contrast .button-row button{
-    border: 2px solid yellow;
-    font-weight: bold;
-
-    &:hover{
-        background-color: yellow;
-        color: black;
-    }
-}
-
-.high-contrast .input-div input{
-    background-color: black;
-    border: 2px solid yellow;
-    color: white;
-}
-
-.high-contrast .input-div select{
-    background-color: black !important;
-    border: 2px solid yellow !important;
-    color: white;
+.high-contrast .banner-login {
+    background: black !important;
 }
