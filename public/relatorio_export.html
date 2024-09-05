@@ -41,6 +41,10 @@
                             <img src="./assets/imgs/icons8-saco-de-dinheiro-30.png" alt="">
                         </div>
                         <a href="financeiro.html">Financeiro/Bazar </a>
+                        <div class="goToExport" onclick="openPopup()"><</div>
+                        <div class="frameExport" style="display: none;">
+                            <a href="financeiro.html">Voltar</a>
+                        </div>
                     </div>
                     <div class="opt">
                         <div class="icon-opt">
@@ -102,7 +106,7 @@
 
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group" id="last">
                             <div class="input-div">
                                 <div class="input-div">
                                     <label for="categoria">Categoria</label>
@@ -215,5 +219,15 @@
     function altoContraste() {
         document.body.classList.toggle('high-contrast');
     };
+
+    function openPopup() {
+        const popup = document.getElementsByClassName('frameExport')[0];
+
+        if (popup.style.display === 'none' || popup.style.display === '') {
+            popup.style.display = 'flex';
+        } else {
+            popup.style.display = 'none';
+        }
+    }
 </script>
 </script>
