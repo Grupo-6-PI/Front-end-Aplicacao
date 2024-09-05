@@ -101,7 +101,8 @@
 .high-contrast .doacao p,
 .high-contrast .cart-total-items,
 .high-contrast .container-select-categoria select,
-.high-contrast .container-select-categoria #quantidade {
+.high-contrast .container-select-categoria #quantidade,
+.high-contrast .breadcrumbs a {
     color: white;
 }
 
@@ -125,10 +126,20 @@
 
 .high-contrast .card-container button,
 .high-contrast .button-row button,
-.high-contrast .container-button button {
+.high-contrast .container-button button,
+.high-contrast #adicionarDependenteBtn,
+.high-contrast .dependente input,
+.high-contrast .removerDependenteBtn {
     background-color: black;
     border: 2px solid yellow;
 }
+
+.high-contrast .dependente select{
+    background-color: black;
+    border: 2px solid yellow;
+    color: white;
+    border-radius: var(--border-radius);
+} 
 
 .high-contrast .card-container button:hover,
 .high-contrast .button-row button:hover {
@@ -146,6 +157,8 @@
     content: url('../assets/imgs/logo-alto-contraste.png');
 }
 
-.high-contrast .banner-login {
+.high-contrast .banner-login,
+.high-contrast #dependentes-container,
+.high-contrast .dependente {
     background: black !important;
 }

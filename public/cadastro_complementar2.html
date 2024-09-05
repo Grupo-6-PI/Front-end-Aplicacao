@@ -12,9 +12,9 @@
         rel="stylesheet">
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/cadastro.css">
+    <link rel="stylesheet" href="./css/cadastro_complementar.css">
     <link rel="stylesheet" href="./css/all.css">
     <script src="./js/functions.js"></script>
-    <!-- biblioteca Inputmask p/ formatação -->
 
 </head>
 
@@ -36,23 +36,15 @@
                     <h1>Informações Complementares</h1>
                 </div>
 
-                <div class="container-inputs-cad-complementar">
-                    <input id="telefone" type="number" placeholder="Digite seu telefone" maxlength="11">
 
+                <input id="telefone" type="number" placeholder="Digite seu telefone" maxlength="11">
+
+                <div class="dependente-section">
+                    <h1>Dependentes</h1>
+                    <button id="adicionarDependenteBtn" type="button">Adicionar Dependente</button>
+                    <div id="dependentes-container"></div>
                 </div>
 
-                <p id="info_endereco">Dependentes</p>
-
-                <div class="container-inputs-cad-complementar small">
-                    <input id="cep" type="text" placeholder="Digite seu nome CEP" maxlength="9">
-                </div>
-
-                <div class="container-inputs-endereco">
-                    <input type="text" placeholder="Logradouro">
-                    <input type="number" placeholder="Número">
-                    <input type="text" placeholder="Bairro">
-                    <input type="text" placeholder="Cidade">
-                </div>
 
                 <div class="container-inside container-button">
                     <button type="button" id="actionButton" onclick="submitForm()">Continuar</button>
@@ -89,10 +81,6 @@
 <script>
 
 
-    /* Aplicando a máscara ao input de telefone */
-    var telefoneInput = document.getElementById('telefone');
-    Inputmask("(99) 99999-9999").mask(telefoneInput);
-
     /* função para abrir/fechar menu de acessibilidade */
     document.querySelector('.acessibility').addEventListener('click', function () {
         var optionsMenu = this.querySelector('.options');
@@ -108,10 +96,47 @@
         document.body.classList.toggle('high-contrast');
     };
 
+    document.getElementById('adicionarDependenteBtn').addEventListener('click', adicionarDependente);
+
+    function adicionarDependente() {
+        const container = document.getElementById('dependentes-container');
+
+        // Cria um novo dependente
+        const dependenteDiv = document.createElement('div');
+        dependenteDiv.className = 'dependente';
+
+        dependenteDiv.innerHTML = `
+    <h4>Dependente</h4>
+    
+    <label for="dataNascimento">Data de Nascimento:</label>
+    <input type="date" name="dataNascimento[]" required>
+    
+    <label for="deficiencia">Possui Deficiência?</label>
+    <select name="deficiencia[]">
+      <option value="nao">Não</option>
+      <option value="sim">Sim</option>
+    </select>
+    
+    <label for="tamanhoCalçado">Tamanho do Calçado:</label>
+    <input type="number" name="tamanhoCalçado[]" placeholder="Tamanho do calçado">
+    
+    <label for="tamanhoRoupa">Tamanho da Roupa:</label>
+    <input type="text" name="tamanhoRoupa[]" placeholder="Ex.: PP, P, M, G, GG">
+
+    <button type="button" class="removerDependenteBtn">X Remover Dependente</button>
+  `;
+
+        container.appendChild(dependenteDiv);
+
+        // Função para remover o dependente
+        dependenteDiv.querySelector('.removerDependenteBtn').addEventListener('click', () => {
+            container.removeChild(dependenteDiv);
+        });
+    }
+
+
 
 
 </script>
 
 </html>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/inputmask.es6.js" integrity="sha512-2w9AHa2ixK/ulBpiUMa2caaC5rDnUckJzUC1FwE80qSfmrOb8cE37v36427rDSqHwco+D5BJsCAHA2fNAYtmYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
