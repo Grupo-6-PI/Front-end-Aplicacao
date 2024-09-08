@@ -97,13 +97,12 @@
 .high-contrast #mensagem-pedido,
 .high-contrast #submit-button,
 .high-contrast .modal-content,
-.high-contrast .modal-body a 
-{
+.high-contrast .modal-body a {
     background-color: black !important;
     border: 2px solid yellow !important;
 }
 
-.high-contrast .modal-body a:hover{
+.high-contrast .modal-body a:hover {
     color: yellow !important;
 }
 
@@ -115,12 +114,12 @@
 .high-contrast .breadcrumbs a,
 .high-contrast #categorias-pedido,
 .high-contrast #mensagem-pedido,
-.high-contrast .modal-body p{
+.high-contrast .modal-body p {
     color: white;
 }
 
 .high-contrast .clear-cart,
-.high-contrast .remove-item{
+.high-contrast .remove-item {
     color: yellow;
 }
 
@@ -137,41 +136,38 @@
     color: yellow !important;
 }
 
-.high-contrast .card-container button,
-.high-contrast .button-row button,
-.high-contrast .container-button button,
-.high-contrast #adicionarDependenteBtn,
-.high-contrast .dependente input,
-.high-contrast .removerDependenteBtn {
-    background-color: black;
+.high-contrast .card-container button {
+    color: yellow;
     border: 2px solid yellow;
 }
 
-.high-contrast .dependente select{
+.high-contrast .dependente select {
     background-color: black;
     border: 2px solid yellow;
     color: white;
     border-radius: var(--border-radius);
-} 
+}
 
 .high-contrast .card-container button:hover,
 .high-contrast .button-row button:hover {
-    background-color: yellow;
-    color: black;
-}
 
-.high-contrast .side-box-login input {
-    border-radius: var(--border-radius);
-    padding-left: 4%;
-    font-weight: bolder;
-}
+    .high-contrast .card-container button:hover,
+    .high-contrast .button-row button:hover {
+        background-color: yellow;
+        color: black;
+    }
 
-.high-contrast .card-container img {
-    content: url('../assets/imgs/logo-alto-contraste.png');
-}
+    .high-contrast .side-box-login input {
+        border-radius: var(--border-radius);
+        padding-left: 4%;
+        font-weight: bolder;
+    }
 
-.high-contrast .banner-login,
-.high-contrast #dependentes-container,
-.high-contrast .dependente {
-    background: black !important;
+    .high-contrast .card-container img {
+        content: url('../assets/imgs/logo-alto-contraste.png');
+    }
+
+    .high-contrast .banner-login {
+        background: black !important;
+    }
 }
