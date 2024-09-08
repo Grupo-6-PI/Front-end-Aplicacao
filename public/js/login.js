@@ -1,4 +1,5 @@
 
+const ambiente_processo = require('../../ambiente');
 
 async function Login() {
 
@@ -7,31 +8,27 @@ async function Login() {
 
   if (validarEmail(emailUser) && validarSenha(senhaUser)) {
 
-    let usuario = {
-      "email": emailUser,
-      "senha": senhaUser
-    }
+    try {
 
-    let requisicao = await fetch("http://localhost:8080/autenticacao/login",{
-      method: 'POST',
-      headers: {"Content-type":"application/json; charset=UTF-8"},
-      body: JSON.stringify(usuario),
-    });
+      let baseURL = ambiente_processo.ambiente_processo === 'producao' 
+        ? 'https://daring-bat-mostly.ngrok-free.app/'
+        : 'http://localhost:8080';
 
-    if(requisicao.status == 200){
+      let requisicao = await axios.post(`${baseURL}/autenticacao/login`,{
+        email: emailUser,
+        senha: senhaUser
+      })
 
-      let dados = await requisicao.json();
+      let dados = requisicao.data;
 
       sessionStorage.setItem('ID_USER',dados.id);
       sessionStorage.setItem('NOME_USER',dados.nome);
       sessionStorage.setItem('EMAIL_USER',dados.email);
                 
       window.location.href = './dash-requisicoes.html'
-        
-    }else{
 
-      console.log("Codigo Erro:" + requisicao.status + "Mensagem de Erro"  + requisicao.statusText)
-
+    } catch (error) {
+      console.log(error)
     }
 
   }

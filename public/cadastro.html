@@ -20,6 +20,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -97,7 +98,6 @@
         var optionsMenu = this.querySelector('.options');
         if (optionsMenu.style.display === 'flex') {
             optionsMenu.style.display = 'none';
-            console.log("passou")
         } else {
             optionsMenu.style.display = 'flex';
         }
@@ -130,6 +130,15 @@
     /* redireciona para parte dois do cadastro caso for beneficiário */
     function continueBeneficiario() {
         if (validateForm()) {
+            
+            var usuarioSimples = {
+                "nome":document.getElementById('nome').value,
+                "email":document.getElementById('email').value,
+                "senha":document.getElementById('senha').value
+            }
+
+            sessionStorage.setItem("USUARIO_SIMPLES",usuarioSimples)
+
             window.location.href = './cadastro_complementar1.html';
         }
     }

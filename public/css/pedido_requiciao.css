@@ -1,0 +1,292 @@
+/* css reset */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", sans-serif;
+}
+
+/* variáveis */
+:root {
+    --primary-color: #670632;
+    --primary-color-low-opacity: #67063273;
+    --neutral-white: #ffffff;
+    --neutral-black: #000000;
+    --feedback-warning: #FFB648;
+    --feedback-danger: #FF4848;
+    --feedback-success: #27DD09;
+    --gradient: linear-gradient(180deg, #670632 31.17%, #CA2E74 100%);
+    --border-radius: 15px;
+    --box-shadow-01: 5px 4px 28.7px -7px rgba(0, 0, 0, 0.25);
+    --box-shadow-02: 4px 4px 64.2px 7px rgba(0, 0, 0, 0.25);
+}
+
+/* container principal */
+.container-pedido {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    width: 100vw;
+    height: 14vh;
+    border-bottom-left-radius: 7vh;
+    border-bottom-right-radius: 7vh;
+    box-shadow: var(--box-shadow-01);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-container {
+    width: 85%;
+    height: 12vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    img {
+        width: auto;
+        height: 10vh;
+    }
+}
+
+.content-pedido {
+    height: 88vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inside-content-pedido {
+    width: 85%;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-pedido {
+    display: flex;
+    flex-direction: column;
+    height: 15vh;
+    width: 100%;
+    justify-content: space-between;
+
+    p,
+    b {
+        font-size: 3vh !important;
+    }
+}
+
+.line {
+    width: 100%;
+    height: 0.1vh;
+    background-color: #00000028;
+}
+
+.container-categoria {
+    margin-top: 3%;
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+#label-categoria {
+    font-size: 3vh !important;
+}
+
+#categorias-pedido {
+    height: 10vh;
+    width: 50%;
+    background-color: #EFEFEF;
+    border-radius: var(--border-radius);
+    border: none;
+    color: #000000a7;
+    padding-left: 2%;
+
+    &:focus {
+        outline: none !important;
+    }
+}
+
+.msg-label{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+
+.container-mensagem {
+    height: 35vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 3%;
+
+    textarea {
+        min-height: 29vh;
+        min-width: 100%;
+        background-color: #EFEFEF;
+        border-radius: var(--border-radius);
+        border: none;
+        color: #0000005b;
+        padding-left: 2%;
+        padding-right: 2%;
+        padding-top: 2%;
+        margin-top: 1%;
+
+    }
+}
+
+#submit-button{
+    width: 15vw;
+    margin-left: 5%;
+    height: 7vh;
+    align-self: flex-end;
+    border: none;
+    border-radius: 10vh;
+    background-color: var(--primary-color);
+    color: white;
+    transition: 0.3s ease-in-out;
+
+    &:hover{
+        background-color: transparent;
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
+    }
+}
+/* Estilos para o modal */
+.modal {
+    display: none; /* Modal fica escondido por padrão */
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escurecido com opacidade */
+}
+
+/* Estilos para o conteúdo do modal */
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto; /* Centraliza verticalmente e horizontalmente */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px; /* Limita a largura do modal */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para o modal */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estilo para o botão de fechar */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 5vh !important;
+    font-weight: bold;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilo para a imagem dentro do modal */
+.modal-body img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+/* Estilo para o texto */
+.modal-body p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilo para o link */
+.modal-body a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 10vh;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+}
+
+.modal-body a:hover {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+
+
+@media (max-width: 768px) {
+    .container-pedido {
+        width: 100%;
+        height: auto;
+    }
+
+    .header-pedido p,b{
+        font-size: 2.4vh !important;
+    }
+
+    .navbar-container {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #categorias-pedido {
+        width: 100%;
+    }
+
+    #submit-button {
+        width: 100%;
+        height: 10vh;
+        margin-left: 0;
+        height: 6vh !important;
+        margin-top: 6%;
+    }
+
+    .container-mensagem {
+        flex-direction: column;
+        height: 45vh !important;
+    }
+
+    .inside-content-pedido{
+        height: 80vh !important;
+    }
+
+    textarea{
+        min-width: 160% !important;
+    }
+
+    .acessibility{
+        right: 5vw;
+        left: 82vw !important;
+        border: 2px solid white;
+
+        .options{
+            width: 50vw;
+        }
+    }
+}
