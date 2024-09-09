@@ -137,8 +137,10 @@
     color: yellow !important;
 }
 
-.high-contrast .card-container button {
-    color: yellow;
+.high-contrast .card-container button,
+.high-contrast .button-row button,
+.high-contrast .container-button button {
+    background-color: black;
     border: 2px solid yellow;
 }
 
@@ -151,6 +153,7 @@
 
 .high-contrast .card-container button:hover,
 .high-contrast .button-row button:hover {
+
 
     .high-contrast .card-container button:hover,
     .high-contrast .button-row button:hover {
