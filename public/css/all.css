@@ -97,7 +97,8 @@
 .high-contrast #mensagem-pedido,
 .high-contrast #submit-button,
 .high-contrast .modal-content,
-.high-contrast .modal-body a {
+.high-contrast .modal-body a,
+.high-contrast .cards-container {
     background-color: black !important;
     border: 2px solid yellow !important;
 }

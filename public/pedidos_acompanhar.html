@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEDIDO | Mooca Solidária</title>
+    <link rel="shortcut icon" href="./assets/imgs/favicon-tfg.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fontsa.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/all.css">
+    <link rel="stylesheet" href="./css/pedido.css">
+    <script src="./js/functions.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container-pedido">
+        <div class="navbar">
+            <div class="navbar-container">
+                <img src="./assets/imgs/logo-mooca.png" alt="">
+                <p>Boas vindas, <span id="nome_beneficiario">User!</span></p>
+            </div>
+        </div>
+
+       
+        <div class="mid-card">
+            <p id="card-header">Meus pedidos</p>
+            <div class="cards-container">
+                <div class="card">
+                    <h4>PEDIDO #123</h4>
+                    <h3>Cesta Básica</h3>
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+                    <p id="footer-card"><strong>Status:</strong> <span class="status pronto">Aceito</span> <img src="./assets/imgs/aceito.png" alt=""></i></p>
+                </div>
+                <div class="card">
+                    <h4>PEDIDO #124</h4>
+                    <h3>Cesta Básica</h3>
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+                    <p id="footer-card"><strong>Status:</strong> <span class="status negado">Negado</span> <img src="./assets/imgs/negado.png" alt=""></p>
+                </div>
+                <div class="card">
+                    <h4>PEDIDO #125</h4>
+                    <h3>Cesta Básica</h3>
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+                    <p id="footer-card"><strong>Status:</strong> <span class="status pronto">Aceito</span> <img src="./assets/imgs/aceito.png" alt=""></i></p>
+                </div>
+                <div class="card">
+                    <h4>PEDIDO #125</h4>
+                    <h3>Cesta Básica</h3>
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+                    <p id="footer-card"><strong>Status:</strong> <span class="status negado">Negado</span> <img src="./assets/imgs/negado.png" alt=""></p>
+                </div>
+    
+                <div class="card">
+                    <h4>PEDIDO #125</h4>
+                    <h3>Cesta Básica</h3>
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+                    <p id="footer-card"><strong>Status:</strong> <span class="status pronto">Aceito</span> <img src="./assets/imgs/aceito.png" alt=""></i></p>
+                </div>
+    
+                <div class="card">
+                    <h4>PEDIDO #125</h4>
+                    <h3>Cesta Básica</h3>
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+                    <p id="footer-card"><strong>Status:</strong> <span class="status negado">Negado</span> <img src="./assets/imgs/negado.png" alt=""></p>
+                </div>
+                
+            </div>
+        </div>
+
+     
+
+        <!-- Menu de acessibilidade -->
+        <div class="acessibility">
+            <img src="./assets/imgs/icons8-acessibilidade-40.png" alt="" />
+            <div class="options">
+                <p>Aumentar Fonte</p>
+                <p>Diminuir Fonte</p>
+                <p onclick="altoContraste()">Alto-contraste</p>
+            </div>
+        </div>
+
+        <!-- inserção do VLibras :) -->
+        <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+</body>
+
+<!-- inserção do VLibras - leitor e tradutor para acessiblidade :) -->
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+<script>
+
+
+    /* função para abrir/fechar menu de acessibilidade */
+    document.querySelector('.acessibility').addEventListener('click', function () {
+        var optionsMenu = this.querySelector('.options');
+        if (optionsMenu.style.display === 'flex') {
+            optionsMenu.style.display = 'none';
+        } else {
+            optionsMenu.style.display = 'flex';
+        }
+    });
+
+    /* adicionando a acessibilidade de alto contraste */
+    function altoContraste() {
+        document.body.classList.toggle('high-contrast');
+    };
+
+
+</script>
+
+</html>

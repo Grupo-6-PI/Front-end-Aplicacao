@@ -11,7 +11,7 @@
     <link href="https://fontsa.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./css/all.css">
-    <link rel="stylesheet" href="./css/pedido_requiciao.css">
+    <link rel="stylesheet" href="./css/pedido.css">
     <script src="./js/functions.js"></script>
 
 </head>
@@ -61,6 +61,7 @@
             </div>
         </div>
 
+         <!-- modal case de erro de envio do form  -->
         <div id="errorModal" class="modal">
             <div class="modal-content error">
                 <span class="close">&times;</span>
@@ -119,7 +120,7 @@
     };
 
     // Obter o modal
-    var modal = document.getElementById("errorModal");
+    var modal = document.getElementById("myModal");
 
     // Obter o botão de fechar o modal
     var span = document.getElementsByClassName("close")[0];
