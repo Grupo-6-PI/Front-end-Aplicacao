@@ -315,6 +315,10 @@ body {
         left: 85% !important;
         border: 2px solid white;
     }
+
+    .options{
+        width: 50vw !important;
+    }
 }
 
 @media (max-width: 576px) {

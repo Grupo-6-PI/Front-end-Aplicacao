@@ -412,6 +412,10 @@ canvas {
         border: 2px solid white;
     }
 
+    .options{
+        width: 50vw !important  ;
+    }
+
     body{
         background-color: #F5F5F5;
     }
