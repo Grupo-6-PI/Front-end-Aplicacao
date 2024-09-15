@@ -20,7 +20,7 @@ async function Login() {
       sessionStorage.setItem('NOME_USER',dados.nome);
       sessionStorage.setItem('EMAIL_USER',dados.email);
                 
-      window.location.href = './dash-requisicoes.html'
+      window.location.href = './dashboard/dash-requisicoes.html'
 
     } catch (error) {
       console.log(error)
@@ -62,9 +62,9 @@ async function Logout(id) {
 
   try {
 
-    let requisicao = await axios.post(`${window.BASE_URL}/autenticacao/logoff/${id}`)
+    await axios.post(`${window.BASE_URL}/autenticacao/logoff/${id}`)
               
-    window.location.href = './dash-requisicoes.html'
+    window.location.href = '/'
 
   } catch (error) {
     console.log(error)
