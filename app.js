@@ -63,6 +63,36 @@ app.get('/cadastro', (req, res) => {
     }
 });
 
+//CADASTRO COMPLEMENTAR 1
+app.get('/cadastro/complementar/parte-1', (req, res) => {
+    const html = renderHTML(path.join(__dirname, 'public', 'cadastro_complementar1.html'));
+    if (html) {
+        res.send(html);
+    } else {
+        res.status(500).send('Error loading the login page.');
+    }
+});
+
+//CADASTRO COMPLEMENTAR 1
+app.get('/cadastro/complementar/parte-2', (req, res) => {
+    const html = renderHTML(path.join(__dirname, 'public', 'cadastro_complementar2.html'));
+    if (html) {
+        res.send(html);
+    } else {
+        res.status(500).send('Error loading the login page.');
+    }
+});
+
+//CADASTRO COMPLEMENTAR 1
+app.get('/home', (req, res) => {
+    const html = renderHTML(path.join(__dirname, 'public/dashboard', 'dash-requisicoes.html'));
+    if (html) {
+        res.send(html);
+    } else {
+        res.status(500).send('Error loading the login page.');
+    }
+});
+
 app.listen(PORTA_APP, () => {
     console.log(`
     ---------------------------------------------------------

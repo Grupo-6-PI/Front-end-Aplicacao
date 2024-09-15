@@ -5,18 +5,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DASHBOARD | Mooca Solidária</title>
-    <link rel="shortcut icon" href="./assets/imgs/favicon-tfg.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="../assets/imgs/favicon-tfg.png" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="./css/dashboard.css" />
-    <link rel="stylesheet" href="./css/all.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/all.css" />
+
+    <script>
+        window.BASE_URL = "{{BASE_URL}}";
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="./js/functions.js"></script>
-    <script src="./js/DashBoard/acoes.js"></script>
+    <script src="../js/functions.js"></script>
+    <script src="../js/DashBoard/acoes.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="./js/DashBoard/requisicoes.js"></script>
+    <script src="../js/DashBoard/requisicoes.js"></script>
+    <script src="../js/login.js"></script>
 </head>
 
 <body onload="carregarInformacoes()" id="body">
@@ -26,38 +32,38 @@
             <div class="container-sidebar">
 
                 <div class="container-logo">
-                    <img width="auto" height="80" src="./assets/imgs/logo-mooca.png" alt="">
+                    <img width="auto" height="80" src="../assets/imgs/logo-mooca.png" alt="">
                 </div>
 
                 <div class="sidebar-options">
                     <div class="opt" id="opt-highlight">
                         <div class="icon-opt">
-                            <img src="./assets/imgs/icons8-casa-30.png" alt="">
+                            <img src="../assets/imgs/icons8-casa-30.png" alt="">
                         </div>
                         <a href="dash-requisicoes.html">Home </a>
                     </div>
                     <div class="opt">
                         <div class="icon-opt">
-                            <img src="./assets/imgs/icons8-saco-de-dinheiro-30.png" alt="">
+                            <img src="../assets/imgs/icons8-saco-de-dinheiro-30.png" alt="">
                         </div>
                         <a href="financeiro.html">Bazar </a>
                     </div>
                     <div class="opt">
                         <div class="icon-opt">
-                            <img src="./assets/imgs/icons8-bem-estar-50.png" alt="">
+                            <img src="../assets/imgs/icons8-bem-estar-50.png" alt="">
                         </div>
                         <a href="doacoes.html">Doações </a>
                     </div>
                     <div class="opt">
                         <div class="icon-opt">
-                            <img src="./assets/imgs/icons8-calendário-30.png" alt="">
+                            <img src="../assets/imgs/icons8-calendário-30.png" alt="">
                         </div>
                         <a href="calendario.html">Calendário </a>
                     </div>
                 </div>
 
                 <div class="logoff">
-                    <img src="./assets/imgs/icons8-sair-30 (1).png" alt="">
+                    <img src="../assets/imgs/icons8-sair-30 (1).png" alt="">
                     <p onclick="Logout(sessionStorage.getItem('ID_USER'))" >Sair</p>
                 </div>
 
@@ -74,7 +80,7 @@
                     </div>
                     <p>Visão Geral</p>
                     <div class="user">
-                        <img width="auto" height="35" src="./assets/imgs/icons8-usuário-30.png" alt="">
+                        <img width="auto" height="35" src="../assets/imgs/icons8-usuário-30.png" alt="">
                         <p id="nameUser">Admin</p>
                     </div>
                 </div>
@@ -86,7 +92,7 @@
                     <div class="kpi">
                         <div class="container-kpi">
                             <div class="elipse">
-                                <img src="./assets/imgs/icons8-flecha-48.png" alt="">
+                                <img src="../assets/imgs/icons8-flecha-48.png" alt="">
                             </div>
                             <p id="number" class="danger"> R$ 1.234,00</p>
                         </div>
@@ -99,7 +105,7 @@
                     <div class="kpi">
                         <div class="container-kpi">
                             <div class="elipse">
-                                <img src="./assets/imgs/icons8-flecha-48 (1).png" alt="">
+                                <img src="../assets/imgs/icons8-flecha-48 (1).png" alt="">
                             </div>
                             <p id="number" class="success"> R$ 1.234,00</p>
                         </div>
@@ -112,7 +118,7 @@
                     <div class="kpi">
                         <div class="container-kpi">
                             <div class="elipse">
-                                <img src="./assets/imgs/icons8-saco-de-dinheiro-30.png" alt="">
+                                <img src="../assets/imgs/icons8-saco-de-dinheiro-30.png" alt="">
                             </div>
                             <p id="number" class="warning"> R$ 1.234,00</p>
                         </div>
@@ -135,87 +141,6 @@
                 <div class="container-acoes">
                     <p class="label">Ações Pendentes</p>
                     <div class="main-box" id="card-atividades">
-
-                        <div class="inner-box" onclick="modal('myModal')">
-                            <div class="container-inner-box">
-                                <div class="elipse">
-                                    <img src="assets/imgs/icons8-voluntariado-30.png" alt="">
-                                </div>
-                                <p>Cestas básicas para XPTO</p>
-                            </div>
-                        </div>
-
-                        <div class="inner-box">
-                            <div class="container-inner-box">
-                                <div class="elipse">
-                                    <img src="assets/imgs/icons8-voluntariado-30.png" alt="">
-                                </div>
-                                <p>Medicamentos para SFG</p>
-                            </div>
-                        </div>
-
-                        <div class="inner-box">
-                            <div class="container-inner-box">
-                                <div class="elipse">
-                                    <img src="assets/imgs/icons8-voluntariado-30.png" alt="">
-                                </div>
-                                <p>Ação Roupas Infantis </p>
-                            </div>
-                        </div>
-
-                        <div class="inner-box">
-                            <div class="container-inner-box">
-                                <div class="elipse">
-                                    <img src="assets/imgs/icons8-voluntariado-30.png" alt="">
-                                </div>
-                                <p>Brinquedos para AACD</p>
-                            </div>
-                        </div>
-
-                        <div class="inner-box">
-                            <div class="container-inner-box">
-                                <div class="elipse">
-                                    <img src="assets/imgs/icons8-voluntariado-30.png" alt="">
-                                </div>
-                                <p>Cestas básicas para XPTO</p>
-                            </div>
-                        </div>
-
-                        <div class="inner-box">
-                            <div class="container-inner-box">
-                                <div class="elipse">
-                                    <img src="assets/imgs/icons8-voluntariado-30.png" alt="">
-                                </div>
-                                <p>Cestas básicas para XPTO</p>
-                            </div>
-                        </div>
-
-                        <div class="inner-box">
-                            <div class="container-inner-box">
-                                <div class="elipse">
-                                    <img src="assets/imgs/icons8-voluntariado-30.png" alt="">
-                                </div>
-                                <p>Cestas básicas para XPTO</p>
-                            </div>
-                        </div>
-
-                        <div class="inner-box">
-                            <div class="container-inner-box">
-                                <div class="elipse">
-                                    <img src="./assets/imgs/icons8-flecha-48.png" alt="">
-                                </div>
-                                <p>Cestas básicas para XPTO</p>
-                            </div>
-                        </div>
-
-                        <div class="inner-box">
-                            <div class="container-inner-box">
-                                <div class="elipse">
-                                    <img src="./assets/imgs/icons8-flecha-48.png" alt="">
-                                </div>
-                                <p>Cestas básicas para XPTO</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -240,7 +165,7 @@
     
 
     <div class="acessibility">
-        <img src="./assets/imgs/icons8-acessibilidade-40.png" alt="" />
+        <img src="../assets/imgs/icons8-acessibilidade-40.png" alt="" />
         <div class="options">
             <p onclick="aumentarFonte()">Aumentar Fonte</p>
             <p>Diminuir Fonte</p>
