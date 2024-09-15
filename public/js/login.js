@@ -1,6 +1,3 @@
-
-const ambiente_processo = require('../../ambiente');
-
 async function Login() {
 
   let emailUser = document.getElementById("email").value;
@@ -10,11 +7,9 @@ async function Login() {
 
     try {
 
-      let baseURL = ambiente_processo.ambiente_processo === 'producao' 
-        ? 'https://daring-bat-mostly.ngrok-free.app/'
-        : 'http://localhost:8080';
+      console.log(window.BASE_URL)
 
-      let requisicao = await axios.post(`${baseURL}/autenticacao/login`,{
+      let requisicao = await axios.post(`${window.BASE_URL}/autenticacao/login`,{
         email: emailUser,
         senha: senhaUser
       })
@@ -65,23 +60,14 @@ function validarSenha(senha) {
 
 async function Logout(id) {
 
-  if (id != null) {
+  try {
 
-    let requisicao = await fetch(`http://localhost:8080/autenticacao/logoff/${id}`,{
-      method: 'POST',
-      headers: {"Content-type":"application/json; charset=UTF-8"}
-    });
+    let requisicao = await axios.post(`${window.BASE_URL}/autenticacao/logoff/${id}`)
+              
+    window.location.href = './dash-requisicoes.html'
 
-    if(requisicao.status == 204){
-                
-      window.location.href = './index.html'
-        
-    }else{
-
-      console.log("Codigo Erro:" + requisicao.status + "Mensagem de Erro"  + requisicao.statusText)
-
-    }
-    
+  } catch (error) {
+    console.log(error)
   }
 
 }

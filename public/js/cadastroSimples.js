@@ -1,6 +1,4 @@
 
-const ambiente_processo = require('../../ambiente');
-
 async function submitForm() {
 
   let nomeUser = document.getElementById("nome").value;
@@ -9,11 +7,9 @@ async function submitForm() {
       
   if (validateForm(nomeUser,emailUser,senhaUser)) {
 
-    let baseURL = ambiente_processo.ambiente_processo === 'producao' 
-    ? 'https://daring-bat-mostly.ngrok-free.app/'
-    : 'http://localhost:8080';
+    console.log(window.BASE_URL)
       
-    let requisicao = await axios.post(`${baseURL}/usuarios/cadastro`,{
+    let requisicao = await axios.post(`${window.BASE_URL}/usuarios/cadastro`,{
       nome:nomeUser.toString(),
       email:emailUser.toString(),
       senha:senhaUser.toString()
@@ -23,7 +19,7 @@ async function submitForm() {
 
       var new_user = await requisicao.data
 
-      window.location.href = './login.html'
+      window.location.href = '/login'
       
     }else{
       
