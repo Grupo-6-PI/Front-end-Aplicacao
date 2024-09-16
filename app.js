@@ -93,6 +93,37 @@ app.get('/home', (req, res) => {
     }
 });
 
+//DashBoard Inicial
+app.get('/calendario', (req, res) => {
+    const html = renderHTML(path.join(__dirname, 'public/dashboard', 'calendario.html'));
+    if (html) {
+        res.send(html);
+    } else {
+        res.status(500).send('Error loading the login page.');
+    }
+});
+
+//DashBoard Inicial
+app.get('/financeiro', (req, res) => {
+    const html = renderHTML(path.join(__dirname, 'public/dashboard', 'financeiro.html'));
+    if (html) {
+        res.send(html);
+    } else {
+        res.status(500).send('Error loading the login page.');
+    }
+});
+
+//DashBoard Inicial
+app.get('/doacoes', (req, res) => {
+    const html = renderHTML(path.join(__dirname, 'public/dashboard', 'doacoes.html'));
+    if (html) {
+        res.send(html);
+    } else {
+        res.status(500).send('Error loading the login page.');
+    }
+});
+
+
 app.listen(PORTA_APP, () => {
     console.log(`
     ---------------------------------------------------------
