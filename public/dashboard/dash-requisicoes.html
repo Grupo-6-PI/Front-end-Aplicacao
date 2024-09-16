@@ -28,7 +28,7 @@
     <script src="../js/login.js"></script>
 </head>
 
-<body onload="validarSessao(),carregarInformacoes()" id="body">
+<body onload="carregarInformacoes()" id="body">
 
     <div class="container-principal">
         <div class="sidebar">
@@ -216,37 +216,6 @@ function aumentarFonte() {
 
         var nomeUser = document.getElementById('nameUser');
         nomeUser.innerHTML = sessionStorage.getItem('NOME_USER')
-
-    }
-
-    function modal(idModal,idAcao,idSpan){
-
-        var modal = document.getElementById(idModal)
-
-        // pega o botão que abre o modal
-        var btns = document.getElementById(idAcao);
-
-        // pega o elemento <span> que fecha o modal
-        var span = document.getElementById(idSpan);
-        
-        // quando o usuário clicar em qualquer .inner-box abre o modal 
-        
-            btns.onclick = function () {
-                modal.style.display = "block";
-            }
-        
-
-        // quando o usuário clicar em <span> (x), fecha o modal
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-
-        // quando o usuário clicar em qualquer lugar fora do modal, fecha o modal
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
 
     }
 

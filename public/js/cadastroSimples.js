@@ -6,8 +6,6 @@ async function submitForm() {
   let senhaUser = document.getElementById("senha").value;
       
   if (validateForm(nomeUser,emailUser,senhaUser)) {
-
-    console.log(window.BASE_URL)
       
     let requisicao = await axios.post(`${window.BASE_URL}/usuarios/cadastro`,{
       nome:nomeUser.toString(),
