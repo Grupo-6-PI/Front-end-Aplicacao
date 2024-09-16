@@ -20,7 +20,7 @@ async function Login() {
       sessionStorage.setItem('NOME_USER',dados.nome);
       sessionStorage.setItem('EMAIL_USER',dados.email);
                 
-      window.location.href = './dashboard/dash-requisicoes.html'
+      window.location.href = '/home'
 
     } catch (error) {
       console.log(error)
