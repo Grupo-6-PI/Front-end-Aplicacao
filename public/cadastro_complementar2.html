@@ -82,12 +82,9 @@
 <script>
 
 
-    /* Aplicando a máscara ao input de telefone */
-    var telefoneInput = document.getElementById('telefone');
-    Inputmask("(99) 99999-9999").mask(telefoneInput);
-
     /* função para abrir/fechar menu de acessibilidade */
     document.querySelector('.acessibility').addEventListener('click', function () {
+        console.log("passou")
         var optionsMenu = this.querySelector('.options');
         if (optionsMenu.style.display === 'flex') {
             optionsMenu.style.display = 'none';

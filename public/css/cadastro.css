@@ -108,7 +108,7 @@
 }
 
 .small {
-    height: 10vh !important;
+    height: 5vh !important;
 }
 
 #info_endereco {
@@ -124,7 +124,7 @@
     flex-direction: column;
     display: flex;
     width: 100%;
-    height: 20vh;
+    height: 15vh;
 
     input {
         height: 7vh;
@@ -141,6 +141,10 @@
     input:focus {
         border-bottom: 1.5px solid var(--primary-color);
     }
+}
+
+#logo-cad-compl{
+    width: 11vh !important;
 }
 
 /* input toggle de beneficiario */

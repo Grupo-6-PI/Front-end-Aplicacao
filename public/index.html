@@ -21,7 +21,7 @@
         <div class="banner"></div>
         <div class="card">
             <div class="card-container">
-                <img src="./assets/imgs/logo-mooca.png" alt="">
+                <img src="./assets/imgs/logo-mooca.png" alt="" id="logo-index">
                 <h1>Boas Vindas ao portal Mooca Solidária!</h1>
                 <p>Acesse aqui e junte-se a nós para fazer a diferença.</p>
                 <div class="buttons-container">
@@ -46,9 +46,9 @@
     <div vw class="enabled">
         <div vw-access-button class="active"></div>
         <div vw-plugin-wrapper>
-          <div class="vw-plugin-top-wrapper"></div>
+            <div class="vw-plugin-top-wrapper"></div>
         </div>
-      </div>
+    </div>
 </body>
 
 <!-- inserção do VLibras - leitor e tradutor para acessiblidade :) -->
@@ -70,8 +70,19 @@
     });
 
     /* adicionando a acessibilidade de alto contraste */
-    function altoContraste(){
+    function altoContraste() {
         document.body.classList.toggle('high-contrast');
+        const logo = document.getElementById('logo-index');
+
+        const altoContrasteAtivo = document.body.classList.contains('high-contrast');
+
+        // Troca para a logo em alto contraste
+        if (altoContrasteAtivo) {
+            logo.src = './assets/imgs/logo-alto-contraste.png';
+        } else {
+            // Volta para a logo padrão
+            logo.src = './assets/imgs/logo-mooca.png';
+        }
 
     };
 
