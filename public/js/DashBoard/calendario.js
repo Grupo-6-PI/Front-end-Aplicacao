@@ -1,3 +1,4 @@
+const { default: axios } = require("axios")
 
 async function ListarCalendario() {
 
@@ -22,16 +23,15 @@ async function ListarCalendario() {
     let sabado = document.getElementById('Sabado')
     sabado.innerHTML=""
 
-    let requisicao = await fetch("http://localhost:8080/calendarios",{
-        
-        method: 'GET',
-        headers: {"Content-type":"application/json; charset=UTF-8"}
-    
+    let requisicao = await axios.post(`${window.BASE_URL}/calendarios`,{
+        headers: {
+            'ngrok-skip-browser-warning': 'true'
+        }
     });
 
-    if(requisicao.ok){
+    if(requisicao.status == 200 ){
           
-        let dados = await requisicao.json();
+        let dados = await requisicao.data;
 
         preencherKanban(dados.domingo,domingo)
         
@@ -100,16 +100,15 @@ async function ListarCalendario() {
 
 async function ListarTipos(){
 
-    let retorno = await fetch(`http://localhost:8080/atividade/tipos`, {
-        
-        method: 'GET',
-        headers: {'Content-Type': 'application/json'}
-    
+    let retorno = await axios(`${window.BASE_URL}/atividade/tipos`,{
+        headers: {
+            'ngrok-skip-browser-warning': 'true'
+        }
     })
 
     if(retorno.status == 200){
 
-        let lista = await retorno.json()
+        let lista = await retorno.data
 
         let select = document.getElementById("tipoDoacao_add")
         select.innerHTML=""
@@ -199,16 +198,15 @@ function CriarModaisCalendario(dados) {
 
 async function BuscarAtividade(id){
 
-    let retorno = await fetch(`http://localhost:8080/calendarios/${id}`, {
-        
-        method: 'GET',
-        headers: {'Content-Type': 'application/json'}
-    
+    let retorno = await axios(`${window.BASE_URL}/calendarios/${id}`, {
+        headers: {
+            'ngrok-skip-browser-warning': 'true'
+        }
     })
     
     if(retorno.status == 200){
     
-        var acao = await retorno.json()
+        var acao = await retorno.data
     
         var modal = document.getElementById("myModal_edit");
 
@@ -325,12 +323,8 @@ async function editarCalendario(){
     
     let acao = JSON.parse(sessionStorage.getItem('alteracoes_acao'))
 
-    let retorno = await fetch(`http://localhost:8080/calendarios/atualizacao`, {
-        
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+    let retorno = await axios.post(`${window.BASE_URL}/calendarios/atualizacao`,{
         body: JSON.stringify(acao)
-    
     })
 
     if(retorno.status == 200){
@@ -353,11 +347,7 @@ async function editarCalendario(){
     
 async function deletaCalendario(id) {
 
-    let retorno = await fetch(`http://localhost:8080/calendarios/${id}`, {
-        method: 'DELETE',
-        headers: {'Content-Type': 'application/json'}
-    
-    })
+    let retorno = await axios.delete(`${window.BASE_URL}/calendarios/${id}`)
 
     if(retorno.status == 200){
 
@@ -412,22 +402,14 @@ async function salvarCalendario(){
     
     }
 
-    let retorno = await fetch(`http://localhost:8080/calendarios?ano=${ano}&mesNumeracao=${mes}&diaNumeracao=${dia}`, {
-        
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+    let retorno = await axios.post(`${window.BASE_URL}/calendarios?ano=${ano}&mesNumeracao=${mes}&diaNumeracao=${dia}`,{
         body: JSON.stringify(atividade)
-    
     })
 
-    if(retorno.status == 201){
-
-        alert("Criou")
-
-    }else{
+    if(retorno.status != 201){
 
         console.log(retorno.status)
-        console.log(retorno.statusText)
+        console.log(retorno.statusText)        
 
     }
 
