@@ -12,6 +12,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="../css/calendario.css">
     <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
     <script>
         window.BASE_URL = "{{BASE_URL}}";
@@ -22,6 +23,10 @@
     <script src="../js/functions.js"></script>
     <script src="../js/DashBoard/calendario.js"></script>
     <script src="../js/login.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
 </head>
 
@@ -86,25 +91,22 @@
                     </div>
                 </div>
             </div>
+
             <div class="kanban-container">
                 <div class="kanban-column">
                     <div class="kanban-header">Domingo</div>
                     <div class="kanban-content" id="Domingo">
-                        
-
                     </div>
                 </div>
                 <div class="kanban-column">
                     <div class="kanban-header">Segunda-feira</div>
                     <div class="kanban-content" id="Segunda">
-                        
+
                     </div>
                 </div>
                 <div class="kanban-column">
                     <div class="kanban-header">Terça-feira</div>
                     <div class="kanban-content" id="Terca">
-
-                        
 
                     </div>
                 </div>
@@ -112,27 +114,23 @@
                     <div class="kanban-header">Quarta-feira</div>
                     <div class="kanban-content" id="Quarta">
 
-                        
-
                     </div>
                 </div>
                 <div class="kanban-column">
                     <div class="kanban-header">Quinta-feira</div>
                     <div class="kanban-content" id="Quinta">
-                        
+
                     </div>
                 </div>
                 <div class="kanban-column">
                     <div class="kanban-header">Sexta-feira</div>
                     <div class="kanban-content" id="Sexta">
-                        
+
                     </div>
                 </div>
                 <div class="kanban-column">
                     <div class="kanban-header">Sábado</div>
                     <div class="kanban-content" id="Sabado">
-
-                        
                     </div>
                 </div>
             </div>
@@ -166,7 +164,7 @@
             </div>
         </div> -->
     </div>
-    
+
     <!-- Modal Adição -->
     <div id="myModal_add" class="modal">
         <div class="modal-content">
@@ -176,31 +174,54 @@
 
                 <div class="form-column">
                     <label for="tipoDoacao">Tipo da Doação</label>
-                <select id="tipoDoacao_add" name="tipoDoacao">
-                    <option value="cestaBasica">Cesta Básica</option>
-                    <option value="agasalho">Agasalho</option>
-                    <option value="sopao">Sopão</option>
-                    <option value="higiene">Itens de Higiene</option>
-                </select>
+                    <select id="tipoDoacao_add" name="tipoDoacao">
+                        <option value="cestaBasica">Cesta Básica</option>
+                        <option value="agasalho">Agasalho</option>
+                        <option value="sopao">Sopão</option>
+                        <option value="higiene">Itens de Higiene</option>
+                    </select>
 
-                <label for="nomeAcao">Nome da Ação</label>
-                <input placeholder="Digite o nome da ação" type="text" id="nomeAcao_add" name="nomeAcao" required>
+                    <label for="nomeAcao">Nome da Ação</label>
+                    <input placeholder="Digite o nome da ação" type="text" id="nomeAcao_add" name="nomeAcao" required>
 
-                <label for="descricaoAcao">Descrição da Ação</label>
-                <textarea placeholder="Digite a descrição da ação" id="descricaoAcao_add" name="descricaoAcao" rows="4" required></textarea>
+                    <label for="descricaoAcao">Descrição da Ação</label>
+                    <textarea placeholder="Digite a descrição da ação" id="descricaoAcao_add" name="descricaoAcao"
+                        rows="4" required></textarea>
                 </div>
-                
+
                 <div class="form-column">
                     <label for="dataHoraInicio">Data e Hora de Início</label>
                     <input type="datetime-local" id="dataHoraInicio_add" name="dataHoraInicio" required>
-    
+
                     <label for="dataHoraFim">Data e Hora de Fim</label>
                     <input type="datetime-local" id="dataHoraFim_add" name="dataHoraFim" required>
-    
+
+                    <label for="mapa-select">Endereço</label>
+                    <button id="mapa-select" onclick="openModalEndereco()">
+                        <img src="./assets/imgs/location.png" width="auto" height="20" alt="">
+                        Selecionar no mapa
+                    </button>
+
                     <button id="add-acao" type="submit" onclick="salvarCalendario()">Adicionar</button>
+
                 </div>
-                
+
             </form>
+        </div>
+    </div>
+
+    <!-- Modal Endereço -->
+    <div id="myModal_endereco" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Selecione o Endereço no Mapa</h2>
+            <div id="map"></div>
+
+            <!-- Botão de salvar endereço -->
+            <button id="salvar-endereco" onclick="salvarEndereco()">
+                Salvar endereço
+            </button>
+
         </div>
     </div>
 
@@ -213,30 +234,31 @@
 
                 <div class="form-column">
                     <label for="tipoDoacao">Tipo da Doação</label>
-                <select id="tipoDoacao_edit" name="tipoDoacao">
-                    <option value="cestaBasica">Cesta Básica</option>
-                    <option value="agasalho">Agasalho</option>
-                    <option value="sopao">Sopão</option>
-                    <option value="higiene">Itens de Higiene</option>
-                </select>
+                    <select id="tipoDoacao_edit" name="tipoDoacao">
+                        <option value="cestaBasica">Cesta Básica</option>
+                        <option value="agasalho">Agasalho</option>
+                        <option value="sopao">Sopão</option>
+                        <option value="higiene">Itens de Higiene</option>
+                    </select>
 
-                <label for="nomeAcao">Nome da Ação</label>
-                <input placeholder="Digite o nome da ação" type="text" id="nomeAcao_edit" name="nomeAcao" required>
+                    <label for="nomeAcao">Nome da Ação</label>
+                    <input placeholder="Digite o nome da ação" type="text" id="nomeAcao_edit" name="nomeAcao" required>
 
-                <label for="descricaoAcao">Descrição da Ação</label>
-                <textarea placeholder="Digite a descrição da ação" id="descricaoAcao_edit" name="descricaoAcao" rows="4" required></textarea>
+                    <label for="descricaoAcao">Descrição da Ação</label>
+                    <textarea placeholder="Digite a descrição da ação" id="descricaoAcao_edit" name="descricaoAcao"
+                        rows="4" required></textarea>
                 </div>
-                
+
                 <div class="form-column">
                     <label for="dataHoraInicio">Data e Hora de Início</label>
                     <input type="datetime-local" id="dataHoraInicio_edit" name="dataHoraInicio" required>
-    
+
                     <label for="dataHoraFim">Data e Hora de Fim</label>
                     <input type="datetime-local" id="dataHoraFim_edit" name="dataHoraFim" required>
-    
+
                     <button id="add-acao" type="submit" onclick="editarCalendario()">Salvar Alterações</button>
                 </div>
-                
+
             </form>
         </div>
     </div>
@@ -258,6 +280,8 @@
             <div class="vw-plugin-top-wrapper"></div>
         </div>
     </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </body>
 
 <!-- inserção do VLibras - leitor e tradutor para acessiblidade :) -->
@@ -268,132 +292,207 @@
 
 <script>
 
-function adicionarAcao(){
+    /* FUNÇÕES PARA MODAL DE ENDEREÇO E LEAFTMAP :) */
 
-    // Encontra o elemento de adicionar ação
-    var adicionarAcao = document.querySelectorAll('.adicionar-acao');
+    let isAddresSave = false
 
-    // Adiciona um evento de clique a cada elemento encontrado
-    adicionarAcao.forEach(function (element) {
+    function openModalEndereco() {
+
+        var modal = document.getElementById("myModal_endereco");
+        modal.style.display = "flex";
+    }
+
+    var chosenLocation;
+
+    function closeModalEndereco() {
+        var modal = document.getElementById("myModal_endereco");
+        modal.style.display = "none";
+
+        if(isAddresSave){
+        var buttonContent = document.getElementById("mapa-select");
+
+    buttonContent.innerHTML = `<img src="./assets/imgs/location.png" width="auto" height="20" alt="">Selecionar no mapa`
+}
         
-        element.addEventListener('click', function () {
-            
-            // Exibe o modal quando clicado
-            
-            var modal = document.getElementById("myModal_add");
-            
-            modal.style.display = "block";
-        
-        });
+    }
+
+
+    var closeBtn = document.querySelector("#myModal_endereco .close");
+    closeBtn.onclick = function () {
+        closeModalEndereco();
+    };
+
+
+    window.onclick = function (event) {
+        var modal = document.getElementById("myModal_endereco");
+        if (event.target == modal) {
+            closeModalEndereco();
+        }
+    };
+
+    // coordenadas da mooca solidaria p inicializar com o raio prox à ong
+    var map = L.map('map').setView([-23.563084, -46.598206], 15);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19
+    }).addTo(map);
+
     
+
+    map.on('click', function (e) {
+
+        chosenLocation = e.latlng;
+
+        L.marker(chosenLocation).addTo(map)
+            .bindPopup('Local escolhido: ' + chosenLocation.lat + ', ' + chosenLocation.lng)
+            .openPopup();
+
     });
 
-    // Encontra o elemento para fechar o modal
-    var span = document.getElementsByClassName("close")[0];
 
-    // Fecha o modal quando clicado no botão de fechar
-    span.onclick = function () {
-        var modal = document.getElementById("myModal_add");
-        modal.style.display = "none";
-    };
+    function salvarEndereco() {
+        
+        var buttonContent = document.getElementById("mapa-select")
 
-    // Fecha o modal se o usuário clicar fora dele
-    window.onclick = function (event) {
+                buttonContent.innerHTML = `
+        <img src="./assets/imgs/location.png" width="auto" height="20" alt="">
+        Coordenadas: ${chosenLocation.lat}, ${chosenLocation.lng}`
+        
+        isAddresSave = true
+
+        closeModalEndereco()
     
-        var modal = document.getElementById("myModal_add");
-        if (event.target == modal) {
+    }
+
+
+    // Ações
+
+    function adicionarAcao() {
+
+        // Encontra o elemento de adicionar ação
+        var adicionarAcao = document.querySelectorAll('.adicionar-acao');
+
+        // Adiciona um evento de clique a cada elemento encontrado
+        adicionarAcao.forEach(function (element) {
+
+            element.addEventListener('click', function () {
+
+                // Exibe o modal quando clicado
+
+                var modal = document.getElementById("myModal_add");
+
+                modal.style.display = "block";
+
+            });
+
+        });
+
+        // Encontra o elemento para fechar o modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // Fecha o modal quando clicado no botão de fechar
+        span.onclick = function () {
+            var modal = document.getElementById("myModal_add");
+            modal.style.display = "none";
+        };
+
+        // Fecha o modal se o usuário clicar fora dele
+        window.onclick = function (event) {
+
+            var modal = document.getElementById("myModal_add");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+
+    }
+
+    function modal(idModal, idAcao, isSpan) {
+        // pega o modal
+        var modal = document.getElementById(idModal);
+
+        // pega o botão que abre o modal
+        var btns = document.getElementById(idAcao);
+
+        // pega o elemento <span> que fecha o modal
+        var span = document.getElementById(isSpan);
+
+        // quando o usuário clicar em qualquer .inner-box abre o modal 
+
+        btns.onclick = function () {
+            modal.style.display = "block";
+        }
+
+
+        // quando o usuário clicar em <span> (x), fecha o modal
+        span.onclick = function () {
             modal.style.display = "none";
         }
-    };
-    
-}
 
-function modal(idModal,idAcao,isSpan){
-    // pega o modal
-    var modal = document.getElementById(idModal);
-
-    // pega o botão que abre o modal
-    var btns = document.getElementById(idAcao);
-
-    // pega o elemento <span> que fecha o modal
-    var span = document.getElementById(isSpan);
-
-    // quando o usuário clicar em qualquer .inner-box abre o modal 
-    
-    btns.onclick = function () {
-        modal.style.display = "block";
-    }
-    
-
-    // quando o usuário clicar em <span> (x), fecha o modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-
-    // quando o usuário clicar em qualquer lugar fora do modal, fecha o modal
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+        // quando o usuário clicar em qualquer lugar fora do modal, fecha o modal
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
         }
     }
-}
 
 function carregarInformacoes(){
     
     ListarCalendario()
     //ListarTipos()
 
-    var nomeUser = document.getElementById('nameUser');
-    nomeUser.innerHTML = sessionStorage.getItem('NOME_USER')
+        var nomeUser = document.getElementById('nameUser');
+        nomeUser.innerHTML = sessionStorage.getItem('NOME_USER')
 
-}
+    }
 
-function teste(){
+    function teste() {
 
-    let dataCriacao = document.getElementById('dataHoraInicio')
+        let dataCriacao = document.getElementById('dataHoraInicio')
 
-    let datetime = dataCriacao.value
+        let datetime = dataCriacao.value
 
-    console.log(datetime)
+        console.log(datetime)
 
-    let time = dataCriacao.value.slice(11)
+        let time = dataCriacao.value.slice(11)
 
-    let hora = parseInt(time.slice(0,2))
-    let minutos = parseInt(time.slice(3))
+        let hora = parseInt(time.slice(0, 2))
+        let minutos = parseInt(time.slice(3))
 
-    let data = dataCriacao.value.slice(0,10)
+        let data = dataCriacao.value.slice(0, 10)
 
-    let ano = data.slice(0,4)
-    let mes = data.slice(5,7)
-    let dia = data.slice(8)
+        let ano = data.slice(0, 4)
+        let mes = data.slice(5, 7)
+        let dia = data.slice(8)
 
-    console.log(data)
-    console.log(ano)
-    console.log(mes)
-    console.log(dia)
+        console.log(data)
+        console.log(ano)
+        console.log(mes)
+        console.log(dia)
 
-}
+    }
 
-// menu hamburger responsividade
-document.addEventListener('DOMContentLoaded', (event) => {
-    const hamburgerMenu = document.getElementById('hamburger-menu');
-    const sidebar = document.querySelector('.sidebar');
-    const content = document.querySelector('.content');
+    // menu hamburger responsividade
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const sidebar = document.querySelector('.sidebar');
+        const content = document.querySelector('.content');
 
-    hamburgerMenu.addEventListener('click', () => {
-        sidebar.classList.toggle('active');
-        content.classList.toggle('shift');
+        hamburgerMenu.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            content.classList.toggle('shift');
+        });
+
+        window.addEventListener('click', (event) => {
+            if (!sidebar.contains(event.target) && !hamburgerMenu.contains(event.target)) {
+                sidebar.classList.remove('active');
+                content.classList.remove('shift');
+            }
+        });
     });
 
-    window.addEventListener('click', (event) => {
-        if (!sidebar.contains(event.target) && !hamburgerMenu.contains(event.target)) {
-            sidebar.classList.remove('active');
-            content.classList.remove('shift');
-        }
-    });
-});
 
-    
 
     /* função para abrir/fechar menu de acessibilidade */
     document.querySelector('.acessibility').addEventListener('click', function () {
@@ -410,10 +509,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
         document.body.classList.toggle('high-contrast');
     };
 
-    // Modal de visualização da ação
 
-    
 
 </script>
+
+
 
 </html>

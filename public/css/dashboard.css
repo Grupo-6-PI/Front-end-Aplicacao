@@ -404,6 +404,10 @@ canvas {
         flex-direction: column !important;
         margin-bottom: 70% !important;
     }
+
+    .container-graficos{
+        margin-top: 3% !important;
+    }
 }
 @media (max-width: 768px) {
 
@@ -478,6 +482,16 @@ canvas {
     .container-grafico p{
         font-size: 2vh !important;
     }
+
+    .container-graficos{
+        margin-top: 3% !important;
+    }
+}
+
+@media (max-width: 468px) {
+    .container-graficos{
+        margin-top: 20% !important;
+    }
 }
 
 /* Classe para mostrar a sidebar */
@@ -507,7 +521,6 @@ body.high-contrast {
 }
 
 body.high-contrast .sidebar,
-body.high-contrast .content,
 body.high-contrast .navbar,
 body.high-contrast .kpi,
 body.high-contrast .grafico,
@@ -517,6 +530,10 @@ body.high-contrast .modal-content {
     background-color: var(--neutral-black);
     color: var(--neutral-white);
     border: 2px solid yellow;
+}
+
+body.high-contrast .content{
+    background-color: black;
 }
 
 body.high-contrast #opt-highlight, body.high-contrast .acessibility{
