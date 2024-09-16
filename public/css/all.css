@@ -77,6 +77,10 @@
     transition: 0.5s ease-in-out;
 }
 
+.high-contrast .hamburger-menu div{
+    background-color: yellow !important;
+}
+
 .high-contrast .card,
 .high-contrast .container-export,
 .high-contrast .kanban-column,
@@ -98,13 +102,63 @@
 .high-contrast #submit-button,
 .high-contrast .modal-content,
 .high-contrast .modal-body a,
-.high-contrast .cards-container {
+.high-contrast .cards-container,
+.high-contrast .dependente,
+.high-contrast .dependente input,
+.high-contrast #adicionarDependenteBtn,
+.high-contrast #actionButton,
+.high-contrast .icon-back,
+.high-contrast .removerDependenteBtn,
+.high-contrast .buttons-container button,
+.high-contrast .container-button button,
+.high-contrast .container-inputs-cad-complementar input,
+.high-contrast .container-inputs-endereco input,
+.high-contrast #quantidade,
+.high-contrast .container-preco,
+.high-contrast .left-financeiro button,
+.high-contrast .form-group input, 
+.high-contrast .form-group select,
+.high-contrast .button-row button{
     background-color: black !important;
-    border: 2px solid yellow !important;
+    border: 1.5px solid yellow !important;
+}
+
+.high-contrast .left-financeiro button:hover{
+    color: yellow;
+}
+
+.high-contrast .container-preco  {
+    background-color: black !important;
+    border: 1.5px solid yellow !important;
+}
+
+.high-contrast .container-preco  input{
+    background-color: black;
+}
+
+.high-contrast .container-inputs-endereco {
+    gap: 5% !important;
+    
+    input{
+        border-radius: 5vh !important;
+    }
 }
 
 .high-contrast .modal-body a:hover {
     color: yellow !important;
+}
+
+.high-contrast #info_endereco{
+    color: yellow !important;
+    font-weight: bold !important;
+}
+
+.high-contrast .dependente input,
+.high-contrast .container-inputs-cad-complementar input {
+    border-radius: 5vh;
+    padding-left: 2%;
+    
+    height: 10vh !important;
 }
 
 
@@ -115,7 +169,9 @@
 .high-contrast .breadcrumbs a,
 .high-contrast #categorias-pedido,
 .high-contrast #mensagem-pedido,
-.high-contrast .modal-body p {
+.high-contrast .modal-body p,
+.high-contrast .dependente,
+.high-contrast .dependente input {
     color: white;
 }
 
