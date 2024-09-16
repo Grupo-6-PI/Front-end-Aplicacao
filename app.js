@@ -83,7 +83,7 @@ app.get('/cadastro/complementar/parte-2', (req, res) => {
     }
 });
 
-//CADASTRO COMPLEMENTAR 1
+//DashBoard Inicial
 app.get('/home', (req, res) => {
     const html = renderHTML(path.join(__dirname, 'public/dashboard', 'dash-requisicoes.html'));
     if (html) {
