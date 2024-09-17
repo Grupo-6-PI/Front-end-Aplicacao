@@ -123,6 +123,16 @@ app.get('/doacoes', (req, res) => {
     }
 });
 
+//DashBoard Inicial
+app.get('/relatorio', (req, res) => {
+    const html = renderHTML(path.join(__dirname, 'public/dashboard', 'relatorio_export.html'));
+    if (html) {
+        res.send(html);
+    } else {
+        res.status(500).send('Error loading the login page.');
+    }
+});
+
 
 app.listen(PORTA_APP, () => {
     console.log(`
