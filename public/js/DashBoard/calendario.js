@@ -1,4 +1,3 @@
-const { default: axios } = require("axios")
 
 async function ListarCalendario() {
 
@@ -23,7 +22,7 @@ async function ListarCalendario() {
     let sabado = document.getElementById('Sabado')
     sabado.innerHTML=""
 
-    let requisicao = await axios.post(`${window.BASE_URL}/calendarios`,{
+    let requisicao = await axios(`${window.BASE_URL}/calendarios`,{
         headers: {
             'ngrok-skip-browser-warning': 'true'
         }
@@ -32,6 +31,8 @@ async function ListarCalendario() {
     if(requisicao.status == 200 ){
           
         let dados = await requisicao.data;
+
+        console.log(dados)
 
         preencherKanban(dados.domingo,domingo)
         
@@ -399,11 +400,10 @@ async function salvarCalendario(){
         descricao:descricao,
         tipoAtividadeId:tipoDoacao,
         emailModificador:emailMod,
-    
     }
 
-    let retorno = await axios.post(`${window.BASE_URL}/calendarios?ano=${ano}&mesNumeracao=${mes}&diaNumeracao=${dia}`,{
-        body: JSON.stringify(atividade)
+    let retorno = await axios.post(`${window.BASE_URL}/calendarios`,{
+        atividade
     })
 
     if(retorno.status != 201){
