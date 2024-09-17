@@ -324,8 +324,13 @@ async function editarCalendario(){
     
     let acao = JSON.parse(sessionStorage.getItem('alteracoes_acao'))
 
-    let retorno = await axios.post(`${window.BASE_URL}/calendarios/atualizacao`,{
-        body: JSON.stringify(acao)
+    let retorno = await axios.put(`${window.BASE_URL}/calendarios/atualizacao`,{
+        "id":acao.id,
+        "atividade":acao.atividade,
+        "dataCriacao":acao.dataCriacao,
+        "dataUltimaAtualizacao":acao.dataUltimaAtualizacao,
+        "emailModificador":acao.emailModificador,
+        "calendario":acao.calendario
     })
 
     if(retorno.status == 200){
@@ -367,7 +372,7 @@ async function deletaCalendario(id) {
 
 async function salvarCalendario(){
 
-    var tipoDoacao = document.getElementById('tipoDoacao_add').value
+    var tipoDoacao = parseFloat(document.getElementById('tipoDoacao_add').value)
     var nomeInsert = document.getElementById('nomeAcao_add').value
     var descricao = document.getElementById('descricaoAcao_add').value
     
@@ -388,22 +393,38 @@ async function salvarCalendario(){
 
     let data = dataInicio.value.slice(0,10)
 
-    let ano = data.slice(0,4)
-    let mes = data.slice(5,7)
-    let dia = data.slice(8)
+    let ano = parseInt(data.slice(0,4))
+    let mes = parseInt(data.slice(5,7))
+    let dia = parseInt(data.slice(8))
 
-    const atividade = {
-
-        nome:nomeInsert,
-        horaComeco:[horaComeco,minutosComeco],
-        horaFinal:[horaFim,minutosFim],
-        descricao:descricao,
-        tipoAtividadeId:tipoDoacao,
-        emailModificador:emailMod,
-    }
+    // const atividade = {
+    //     "nome":nomeInsert,
+    //     "horaComeco":[horaComeco,minutosComeco],
+    //     "horaFinal":[horaFim,minutosFim],
+    //     "descricao":descricao,
+    //     "tipoAtividadeId":tipoDoacao,
+    //     "emailModificador":emailMod,
+    //     "filtrodto":{
+    //         ano:ano,
+    //         mesNumeracao:mes,
+    //         diaNumeracao:dia,
+    //         diaNomeacao:null
+    //     }
+    // }
 
     let retorno = await axios.post(`${window.BASE_URL}/calendarios`,{
-        atividade
+        "nome":nomeInsert,
+        "horaComeco":[horaComeco,minutosComeco],
+        "horaFinal":[horaFim,minutosFim],
+        "descricao":descricao,
+        "tipoAtividadeId":tipoDoacao,
+        "emailModificador":emailMod,
+        "filtrodto":{
+            ano:ano,
+            mesNumeracao:mes,
+            diaNumeracao:dia,
+            diaNomeacao:null
+        }
     })
 
     if(retorno.status != 201){
