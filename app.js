@@ -133,6 +133,26 @@ app.get('/relatorio', (req, res) => {
     }
 });
 
+//DashBoard Inicial
+app.get('/home-beneficiado', (req, res) => {
+    const html = renderHTML(path.join(__dirname, 'public', 'pedido_requisicao.html'));
+    if (html) {
+        res.send(html);
+    } else {
+        res.status(500).send('Error loading the login page.');
+    }
+});
+
+//DashBoard Inicial
+app.get('/pedidos', (req, res) => {
+    const html = renderHTML(path.join(__dirname, 'public', 'pedidos_acompanhar.html'));
+    if (html) {
+        res.send(html);
+    } else {
+        res.status(500).send('Error loading the login page.');
+    }
+});
+
 
 app.listen(PORTA_APP, () => {
     console.log(`

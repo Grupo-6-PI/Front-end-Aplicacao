@@ -19,8 +19,17 @@ async function Login() {
       sessionStorage.setItem('ID_USER',dados.id);
       sessionStorage.setItem('NOME_USER',dados.nome);
       sessionStorage.setItem('EMAIL_USER',dados.email);
-                
-      window.location.href = '/home'
+      sessionStorage.setItem('NIVEL_USER',dados.nivelAcesso.apelido);
+
+      if(dados.nivelAcesso.apelido == "ADM" || dados.nivelAcesso.apelido == "Voluntário"){
+
+        window.location.href = '/home'
+
+      }else{
+
+        window.location.href = '/home-beneficiado'
+
+      }
 
     } catch (error) {
       console.log(error)
