@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="./css/all.css">
     <link rel="stylesheet" href="./css/pedido.css">
     <script src="./js/functions.js"></script>
+    <script src="./js/pedido.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </head>
 
@@ -27,7 +29,7 @@
         <div class="navbar">
             <div class="navbar-container">
                 <img src="./assets/imgs/logo-mooca.png" alt="">
-                <p>Boas vindas, <span id="nome_beneficiario">User!</span></p>
+                <p>Boas vindas, <span id="nameUser"></span></p>
             </div>
         </div>
 
@@ -49,7 +51,7 @@
                         <span id="label-categoria">Mensagem</span>
                         <textarea id="mensagem-pedido"></textarea>
                     </div>
-                    <button id="submit-button" onclick="openModal()">Enviar</button>
+                    <button id="submit-button" onclick="salvar_requisicao()">Enviar</button>
                 </div>
             </div>
         </div>
@@ -108,6 +110,10 @@
 
 <script>
 
+    listar_tipo()
+
+    var nomeUser = document.getElementById('nameUser');
+    nomeUser.innerHTML = sessionStorage.getItem('NOME_USER');
 
     /* função para abrir/fechar menu de acessibilidade */
     document.querySelector('.acessibility').addEventListener('click', function () {
@@ -129,10 +135,6 @@
 
     // Obter o botão de fechar o modal
     var span = document.getElementsByClassName("close")[0];
-
-    function openModal() {
-        modal.style.display = "flex"
-    }
 
 
     // Fechar o modal ao clicar no botão "X"
