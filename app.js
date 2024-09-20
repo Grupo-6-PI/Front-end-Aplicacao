@@ -3,6 +3,8 @@ const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
 const dotenv = require("dotenv");
+const http = require('http');
+const ngrok = require('@ngrok/ngrok');
 
 // Definindo qual configuração de ambiente vai ser usada
 const ambiente_processo = 'producao';  // troque o valor para 'desenvolvimento' caso precise
@@ -13,6 +15,8 @@ dotenv.config({ path: caminho_env });
 const PORTA_APP = process.env.APP_PORT;
 const HOST_APP = process.env.APP_HOST;
 const BASE_URL = process.env.BASE_URL;
+const NGROK_AUTH_TOKEN = process.env.NGROK_AUTH_TOKEN;
+const NGROK_DOMAIN = process.env.NGROK_DOMAIN;
 
 const app = express();
 
@@ -24,16 +28,15 @@ app.use(cors());
 function renderHTML(filePath) {
     try {
         let html = fs.readFileSync(filePath, 'utf8');
-        return html.replace('{{BASE_URL}}',BASE_URL)
+        return html.replace('{{BASE_URL}}', BASE_URL);
     } catch (err) {
         console.error(`Error reading HTML file: ${filePath}`, err);
         return null;
     }
 }
 
-// ROTAS PARA AS PAGINAS
+// ROTAS PARA AS PÁGINAS
 
-//INDEX
 app.get('/', (req, res) => {
     const html = renderHTML(path.join(__dirname, 'index.html'));
     if (html) {
@@ -43,7 +46,6 @@ app.get('/', (req, res) => {
     }
 });
 
-//LOGIN
 app.get('/login', (req, res) => {
     const html = renderHTML(path.join(__dirname, 'public', 'login.html'));
     if (html) {
@@ -53,7 +55,6 @@ app.get('/login', (req, res) => {
     }
 });
 
-//CADASTRO
 app.get('/cadastro', (req, res) => {
     const html = renderHTML(path.join(__dirname, 'public', 'cadastro.html'));
     if (html) {
@@ -153,8 +154,11 @@ app.get('/pedidos', (req, res) => {
     }
 });
 
+// Start the server using HTTP and integrate Ngrok
+const server = http.createServer(app);
 
-app.listen(PORTA_APP, () => {
+// Start the server listening on the specified port
+server.listen(PORTA_APP, () => {
     console.log(`
     ---------------------------------------------------------
     Servidor do seu site já está rodando! Acesse: http://${HOST_APP}:${PORTA_APP}
@@ -163,4 +167,14 @@ app.listen(PORTA_APP, () => {
     ---------------------------------------------------------
     Para alterar o ambiente, comente ou descomente as linhas 7 ou 8 no arquivo 'app.js'.
     `);
+
+    ngrok.connect({
+        addr: PORTA_APP, 
+        authtoken: NGROK_AUTH_TOKEN, // Utilizando o token da sua conta
+        domain: NGROK_DOMAIN // O domínio estático que você reservou
+    })
+    .then((listener) => {
+        console.log(`Ingress established at: ${listener.url()}`);
+    })
+    .catch(err => console.error('Ngrok error:', err));
 });
