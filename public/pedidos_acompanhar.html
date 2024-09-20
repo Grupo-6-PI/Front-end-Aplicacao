@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="./css/all.css">
     <link rel="stylesheet" href="./css/pedido.css">
     <script src="./js/functions.js"></script>
+    <script src="./js/pedido.js"></script>
 
 </head>
 
@@ -27,7 +28,7 @@
         <div class="navbar">
             <div class="navbar-container">
                 <img src="./assets/imgs/logo-mooca.png" alt="">
-                <p>Boas vindas, <span id="nome_beneficiario">User!</span></p>
+                <p>Boas vindas, <span id="nome_beneficiario"></span></p>
             </div>
         </div>
 
@@ -106,6 +107,8 @@
 
 <script>
 
+    var nomeUser = document.getElementById('nameUser');
+    nomeUser.innerHTML = sessionStorage.getItem('NOME_USER');
 
     /* função para abrir/fechar menu de acessibilidade */
     document.querySelector('.acessibility').addEventListener('click', function () {
