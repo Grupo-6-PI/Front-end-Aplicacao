@@ -35,12 +35,12 @@
        
         <div class="mid-card">
             <p id="card-header">Meus pedidos</p>
-            <div class="cards-container">
+            <div class="cards-container" id="cards">
                 <div class="card">
                     <h4>PEDIDO #123</h4>
                     <h3>Cesta Básica</h3>
                     <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
-                    <p id="footer-card"><strong>Status:</strong> <span class="status pronto">Aceito</span> <img src="./assets/imgs/aceito.png" alt=""></i></p>
+                    <p id="footer-card"><strong>Status:</strong> <span class="status pronto">Pronto</span> <img src="./assets/imgs/aceito.png" alt=""></i></p>
                 </div>
                 <div class="card">
                     <h4>PEDIDO #124</h4>
@@ -52,27 +52,7 @@
                     <h4>PEDIDO #125</h4>
                     <h3>Cesta Básica</h3>
                     <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
-                    <p id="footer-card"><strong>Status:</strong> <span class="status pronto">Aceito</span> <img src="./assets/imgs/aceito.png" alt=""></i></p>
-                </div>
-                <div class="card">
-                    <h4>PEDIDO #125</h4>
-                    <h3>Cesta Básica</h3>
-                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
-                    <p id="footer-card"><strong>Status:</strong> <span class="status negado">Negado</span> <img src="./assets/imgs/negado.png" alt=""></p>
-                </div>
-    
-                <div class="card">
-                    <h4>PEDIDO #125</h4>
-                    <h3>Cesta Básica</h3>
-                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
-                    <p id="footer-card"><strong>Status:</strong> <span class="status pronto">Aceito</span> <img src="./assets/imgs/aceito.png" alt=""></i></p>
-                </div>
-    
-                <div class="card">
-                    <h4>PEDIDO #125</h4>
-                    <h3>Cesta Básica</h3>
-                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
-                    <p id="footer-card"><strong>Status:</strong> <span class="status negado">Negado</span> <img src="./assets/imgs/negado.png" alt=""></p>
+                    <p id="footer-card"><strong>Status:</strong> <span class="status andamento">Produzindo</span></i></p>
                 </div>
                 
             </div>
@@ -106,6 +86,8 @@
 </script>
 
 <script>
+
+    //listar_pedidos()
 
     var nomeUser = document.getElementById('nameUser');
     nomeUser.innerHTML = sessionStorage.getItem('NOME_USER');
