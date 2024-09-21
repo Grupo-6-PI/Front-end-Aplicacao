@@ -16,7 +16,6 @@ const PORTA_APP = process.env.APP_PORT;
 const HOST_APP = process.env.APP_HOST;
 const BASE_URL = process.env.BASE_URL;
 const NGROK_AUTH_TOKEN = process.env.NGROK_AUTH_TOKEN;
-const NGROK_DOMAIN = process.env.NGROK_DOMAIN;
 
 const app = express();
 
@@ -157,8 +156,32 @@ app.get('/pedidos', (req, res) => {
 // Start the server using HTTP and integrate Ngrok
 const server = http.createServer(app);
 
-// Start the server listening on the specified port
-server.listen(PORTA_APP, () => {
+if(process.env.AMBIENTE_PROCESSO == 'producao'){
+
+const NGROK_DOMAIN = process.env.NGROK_DOMAIN;
+
+    server.listen(PORTA_APP, () => {
+        console.log(`
+        ---------------------------------------------------------
+        Servidor do seu site já está rodando! Acesse: http://${HOST_APP}:${PORTA_APP}
+        Ambiente: ${process.env.AMBIENTE_PROCESSO}
+        Base URL: ${BASE_URL}
+        ---------------------------------------------------------
+        Para alterar o ambiente, comente ou descomente as linhas 7 ou 8 no arquivo 'app.js'.
+        `);
+
+        ngrok.connect({
+            addr: PORTA_APP, 
+            authtoken: NGROK_AUTH_TOKEN, // Utilizando o token da sua conta
+            domain: NGROK_DOMAIN // O domínio estático que você reservou
+        })
+        .then((listener) => {
+            console.log(`Ingress established at: ${listener.url()}`);
+        })
+        .catch(err => console.error('Ngrok error:', err));
+    });
+}else{
+    server.listen(PORTA_APP, () => {
     console.log(`
     ---------------------------------------------------------
     Servidor do seu site já está rodando! Acesse: http://${HOST_APP}:${PORTA_APP}
@@ -167,14 +190,10 @@ server.listen(PORTA_APP, () => {
     ---------------------------------------------------------
     Para alterar o ambiente, comente ou descomente as linhas 7 ou 8 no arquivo 'app.js'.
     `);
+    // Establish Ngrok connection
+    ngrok.connect({ addr: PORTA_APP,  authtoken: NGROK_AUTH_TOKEN })
+        .then((listener) => console.log(`Ingress established at: ${listener.url()}`))
+        .catch(err => console.error('Ngrok error:', err));  
+    });
 
-    ngrok.connect({
-        addr: PORTA_APP, 
-        authtoken: NGROK_AUTH_TOKEN, // Utilizando o token da sua conta
-        domain: NGROK_DOMAIN // O domínio estático que você reservou
-    })
-    .then((listener) => {
-        console.log(`Ingress established at: ${listener.url()}`);
-    })
-    .catch(err => console.error('Ngrok error:', err));
-});
+}
