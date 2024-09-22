@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="./css/pedido.css">
     <script src="./js/functions.js"></script>
     <script src="./js/pedido.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </head>
 
@@ -36,7 +37,7 @@
         <div class="mid-card">
             <p id="card-header">Meus pedidos</p>
             <div class="cards-container" id="cards">
-                <div class="card">
+                <!-- <div class="card">
                     <h4>PEDIDO #123</h4>
                     <h3>Cesta Básica</h3>
                     <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
@@ -53,7 +54,7 @@
                     <h3>Cesta Básica</h3>
                     <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
                     <p id="footer-card"><strong>Status:</strong> <span class="status andamento">Produzindo</span></i></p>
-                </div>
+                </div> -->
                 
             </div>
         </div>
@@ -87,9 +88,9 @@
 
 <script>
 
-    //listar_pedidos()
+    listar_pedidos()
 
-    var nomeUser = document.getElementById('nameUser');
+    var nomeUser = document.getElementById('nome_beneficiario');
     nomeUser.innerHTML = sessionStorage.getItem('NOME_USER');
 
     /* função para abrir/fechar menu de acessibilidade */
