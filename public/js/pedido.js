@@ -36,26 +36,23 @@ async function salvar_requisicao(){
     var assunto = parseInt(document.getElementById("categorias-pedido").value); 
     var descricao = document.getElementById("mensagem-pedido").value;
 
-    await axios.post(`${window.BASE_URL}/requisicoes`,{
-        "assuntoRequisicaoId":assunto,
-        "descricao":descricao
-    }).then((response) => {
-
-        if(response.status == 201){
-            modalAcerto.style.display = "flex"
-        }
-
+    var requisicao = await axios.post(`${window.BASE_URL}/requisicoes`,{
+        assuntoId:assunto,
+        descricao:descricao,
+        usuarioId:sessionStorage.getItem('ID_USER'),
+        emailModificador:sessionStorage.getItem('EMAIL_USER'),
+        data:null
     })
-    .catch((error) => {
 
-        modalErro.style.display = "flex"
+    if(requisicao.status == 201){
 
-        console.log(`
-        Status erro : ${error.status}
-        Mensagem erro : ${error.statusText}    
-        `)
+        modalAcerto.style.display ='flex'
 
-    })
+    }else{
+
+        modalErro.style.display = 'flex'
+
+    }
 
 }
 
@@ -64,7 +61,7 @@ async function listar_pedidos(){
     var cards = document.getElementById('cards');
     cards.innerHTML=""
 
-    var requisicao = await axios(`${window.BASE_URL}/?`,{
+    var requisicao = await axios(`${window.BASE_URL}/requisicoes/lista-requisicoes/${parseFloat(sessionStorage.getItem('ID_USER'))}`,{
         headers: {
             'ngrok-skip-browser-warning': 'true'
         }
@@ -74,23 +71,25 @@ async function listar_pedidos(){
 
         var response = await requisicao.data
 
+        console.log(response)
+
         response.map((pedido) => {
 
-            if(pedido.status == "Pronto"){
+            if(pedido.situacao.situacao == "Cumprida"){
 
                 cards.innerHTML+=`
                     <div class="card">
                         <h4>PEDIDO #${pedido.id}</h4>
-                        <h3>${pedido.assunto}</h3>
+                        <h3>${pedido.assuntoRequisicao.assunto}</h3>
                         <p>"${pedido.descricao}"</p>
                         <p id="footer-card"><strong>Status:</strong> <span class="status pronto">Pronto</span> <img src="./assets/imgs/aceito.png" alt=""></i></p>
                     </div>
                 `
-            }else if(pedido.assunto == "Em andamento"){
+            }else if(pedido.situacao.situacao == "recusada"){
                 cards.innerHTML+=`
                     <div class="card">
                         <h4>PEDIDO #${pedido.id}</h4>
-                        <h3>${pedido.assunto}</h3>
+                        <h3>${pedido.assuntoRequisicao.assunto}</h3>
                         <p>"${pedido.descricao}"</p>
                         <p id="footer-card"><strong>Status:</strong> <span class="status negado">Negado</span> <img src="./assets/imgs/negado.png" alt=""></i></p>
                     </div>
@@ -99,7 +98,7 @@ async function listar_pedidos(){
                 cards.innerHTML+=`
                     <div class="card">
                         <h4>PEDIDO #${pedido.id}</h4>
-                        <h3>${pedido.assunto}</h3>
+                        <h3>${pedido.assuntoRequisicao.assunto}</h3>
                         <p>"${pedido.descricao}"</p>
                         <p id="footer-card"><strong>Status:</strong> <span class="status andamento">Produzindo</span></i></p>
                     </div>
