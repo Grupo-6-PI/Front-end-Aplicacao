@@ -1,11 +1,15 @@
 
 async function buscarDados(){
 
-    let retorno = await axios.get('http://localhost:8080/requisicoes/dash_requisicao')
+    let retorno = await axios(`${window.BASE_URL}/requisicoes/dash_requisicao`,{
+        headers: {
+            'ngrok-skip-browser-warning': 'true'
+        }
+    })
 
     if(retorno.status == 200){
 
-        let dados = retorno.data
+        let dados = await retorno.data
 
         console.log(dados)
 

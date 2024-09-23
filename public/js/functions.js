@@ -1,25 +1,31 @@
 
 function goToLogin(){
 
-  window.location.href = './login.html'
+  window.location.href = '/login'
 
 }
 
 function goToIndex() {
 
-  window.location.href = './index.html'
+  window.location.href = '/'
 
 }
 
 function goToCadastro() {
   
-  window.location.href = './cadastro.html'
+  window.location.href = '/cadastro'
 
 }
 
 function goToCadastroComplementar1() {
   
-  window.location.href = './cadastro_complmentar1.hmtl'
+  window.location.href = '/cadastro/complementar/parte-1'
+
+}
+
+function goToCadastroComplementar2() {
+  
+  window.location.href = '/cadastro/complementar/parte-2'
 
 }
 

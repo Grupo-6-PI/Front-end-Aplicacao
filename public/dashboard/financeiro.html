@@ -10,13 +10,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="./css/financeiro.css">
-    <link rel="stylesheet" href="./css/dashboard.css">
-    <link rel="stylesheet" href="./css/all.css">
-    <script src="./js/functions.js"></script>
-    <script src="js/DashBoard/calendario.js"></script>
+
+        <script>
+            window.BASE_URL = "{{BASE_URL}}";
+        </script>
+
+    <link rel="stylesheet" href="../css/financeiro.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/all.css">
+    <script src="../js/functions.js"></script>
+    <script src="../js/DashBoard/calendario.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="js/login.js"></script>
+    <script src="../js/login.js"></script>
 
 </head>
 
@@ -33,31 +38,31 @@
                 <div class="sidebar-options">
                     <div class="opt">
                         <div class="icon-opt">
-                            <img src="./assets/imgs/icons8-casa-30.png" alt="">
+                            <img src="../assets/imgs/icons8-casa-30.png" alt="">
                         </div>
-                        <a href="dash-requisicoes.html">Home </a>
+                        <a href="/home">Home </a>
                     </div>
                     <div class="opt" id="opt-highlight">
                         <div class="icon-opt">
-                            <img src="./assets/imgs/icons8-saco-de-dinheiro-30.png" alt="">
+                            <img src="../assets/imgs/icons8-saco-de-dinheiro-30.png" alt="">
                         </div>
-                        <a href="financeiro.html">Bazar </a>
+                        <a href="/financeiro">Bazar </a>
                         <div class="goToExport" onclick="openPopup()">+</div>
                         <div class="frameExport" style="display: none;">
-                            <a href="relatorio_export.html">Exportar Relatório</a>
+                            <a href="/relatorio">Exportar Relatório</a>
                         </div>
                     </div>
                     <div class="opt">
                         <div class="icon-opt">
-                            <img src="./assets/imgs/icons8-bem-estar-50.png" alt="">
+                            <img src="../assets/imgs/icons8-bem-estar-50.png" alt="">
                         </div>
-                        <a href="doacoes.html">Doações </a>
+                        <a href="/doacoes">Doações </a>
                     </div>
                     <div class="opt">
                         <div class="icon-opt">
-                            <img src="./assets/imgs/icons8-calendário-30.png" alt="">
+                            <img src="../assets/imgs/icons8-calendário-30.png" alt="">
                         </div>
-                        <a href="calendario.html">Calendário </a>
+                        <a href="/calendario">Calendário </a>
                     </div>
                 </div>
 

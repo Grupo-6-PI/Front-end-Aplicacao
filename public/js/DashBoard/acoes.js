@@ -1,3 +1,33 @@
+function modal(idModal,idAcao,idSpan){
+
+    var modal = document.getElementById(idModal)
+
+    // pega o botão que abre o modal
+    var btns = document.getElementById(idAcao);
+
+    // pega o elemento <span> que fecha o modal
+    var span = document.getElementById(idSpan);
+    
+    // quando o usuário clicar em qualquer .inner-box abre o modal 
+    
+        btns.onclick = function () {
+            modal.style.display = "block";
+        }
+    
+
+    // quando o usuário clicar em <span> (x), fecha o modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // quando o usuário clicar em qualquer lugar fora do modal, fecha o modal
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+}
 
 
 async function ListarAtividades() {
@@ -5,18 +35,17 @@ async function ListarAtividades() {
     var card = document.getElementById('card-atividades')
     card.innerHTML = "";
 
-    let requisicao = await fetch("http://localhost:8080/atividade/lista-atividade",{
+    try{
+
+        let requisicao = await axios(`${window.BASE_URL}/atividade/lista-atividade`,{
+            headers: {
+                'ngrok-skip-browser-warning': 'true'
+            }
+        })
         
-        method: 'GET',
-        headers: {"Content-type":"application/json; charset=UTF-8"}
-    
-    });
+        let data = await requisicao.data
 
-    if(requisicao.ok){
-          
-        let dados = await requisicao.json();
-
-        dados.map((atividade) => {
+        data.map((atividade) => {
             card.innerHTML += `
             <div class="inner-box" id="acao${atividade.id}" onclick="modal('myModal${atividade.id}','acao${atividade.id}','close${atividade.id}')">
                 <div class="container-inner-box">
@@ -28,11 +57,10 @@ async function ListarAtividades() {
             </div>
             `
         })
-        
-    }else{
 
-        console.log("Deu ruim")
 
+    }catch(error){
+        console.log(error)
     }
 
 }
@@ -42,16 +70,15 @@ async function CriarModaisAcoes() {
     var card = document.getElementById('modais')
     card.innerHTML = ""
 
-    let requisicao = await fetch("http://localhost:8080/atividade/lista-atividade",{
-    
-        method: 'GET',
-        headers: {"Content-type":"application/json; charset=UTF-8"}
-    
-    });
+    let requisicao = await axios(`${window.BASE_URL}/atividade/lista-atividade`,{
+        headers: {
+            'ngrok-skip-browser-warning': 'true'
+        }
+    })
 
-    if(requisicao.ok){
+    if(requisicao.status == 200){
           
-        let dados = await requisicao.json();
+        let dados = await requisicao.data;
 
         dados.map((atividade) => {
         
