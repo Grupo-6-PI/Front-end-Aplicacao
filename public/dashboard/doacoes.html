@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOAÇÕES | Mooca Solidária</title>
-    <link rel="shortcut icon" href="./assets/imgs/favicon-tfg.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/imgs/favicon-tfg.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
         rel="stylesheet">
 
-        <script>
+        <!-- <script>
             window.BASE_URL = "{{BASE_URL}}";
-        </script>
+        </script> -->
     
     <link rel="stylesheet" href="../css/doacoes.css">
     <link rel="stylesheet" href="../css/dashboard.css">
@@ -22,6 +22,7 @@
     <script src="../js/DashBoard/calendario.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../js/login.js"></script>
+    <script src="../js/DashBoard/requisicoes.js"></script>
 
 </head>
 
@@ -32,7 +33,7 @@
             <div class="container-sidebar">
 
                 <div class="container-logo">
-                    <img width="auto" height="80" src="./assets/imgs/logo-mooca.png" alt="">
+                    <img width="auto" height="80" src="../assets/imgs/logo-mooca.png" alt="">
                 </div>
 
                 <div class="sidebar-options">
@@ -63,7 +64,7 @@
                 </div>
 
                 <div class="logoff">
-                    <img src="./assets/imgs/icons8-sair-30 (1).png" alt="">
+                    <img src="../assets/imgs/icons8-sair-30 (1).png" alt="">
                     <p onclick="Logout(sessionStorage.getItem('ID_USER'))">Sair</p>
                 </div>
 
@@ -80,7 +81,7 @@
                     </div>
                     <p>Doações</p>
                     <div class="user">
-                        <img width="auto" height="35" src="./assets/imgs/icons8-usuário-30.png" alt="">
+                        <img width="auto" height="35" src="../assets/imgs/icons8-usuário-30.png" alt="">
                         <p id="nameUser">Admin</p>
                     </div>
                 </div>
@@ -95,7 +96,7 @@
                         </div>
                         <div class="doacao-info">
                             <div class="doacao-tipo">
-                                <img src="assets/imgs/icone-pizza.png" alt="Ícone de Doação" class="doacao-icon">
+                                <img src="../assets/imgs/icone-pizza.png" alt="Ícone de Doação" class="doacao-icon">
                                 <div id="label-doacao-tipo">
                                     <p><strong>Tipo de doação:</strong></p>
                                     <p>Alimentício</p>
@@ -108,8 +109,8 @@
                         </div>
                     </div>
                     <div class="aceitar-negar">
-                        <img src="assets/imgs/aceitar.png" alt="">
-                        <img src="assets/imgs/negar.png" alt="">
+                        <img src="../assets/imgs/aceitar.png" alt="">
+                        <img src="../assets/imgs/negar.png" alt="">
                     </div>
 
 
@@ -124,7 +125,7 @@
                         </div>
                         <div class="doacao-info">
                             <div class="doacao-tipo">
-                                <img src="assets/imgs/icone-pizza.png" alt="Ícone de Doação" class="doacao-icon">
+                                <img src="../assets/imgs/icone-pizza.png" alt="Ícone de Doação" class="doacao-icon">
                                 <div id="label-doacao-tipo">
                                     <p><strong>Tipo de doação:</strong></p>
                                     <p>Alimentício</p>
@@ -137,8 +138,8 @@
                         </div>
                     </div>
                     <div class="aceitar-negar">
-                        <img src="assets/imgs/aceitar.png" alt="">
-                        <img src="assets/imgs/negar.png" alt="">
+                        <img src="../assets/imgs/aceitar.png" alt="">
+                        <img src="../assets/imgs/negar.png" alt="">
                     </div>
 
 
@@ -153,7 +154,7 @@
                         </div>
                         <div class="doacao-info">
                             <div class="doacao-tipo">
-                                <img src="assets/imgs/icone-pizza.png" alt="Ícone de Doação" class="doacao-icon">
+                                <img src="../assets/imgs/icone-pizza.png" alt="Ícone de Doação" class="doacao-icon">
                                 <div id="label-doacao-tipo">
                                     <p><strong>Tipo de doação:</strong></p>
                                     <p>Alimentício</p>
@@ -166,8 +167,8 @@
                         </div>
                     </div>
                     <div class="aceitar-negar">
-                        <img src="assets/imgs/aceitar.png" alt="">
-                        <img src="assets/imgs/negar.png" alt="">
+                        <img src="../assets/imgs/aceitar.png" alt="">
+                        <img src="../assets/imgs/negar.png" alt="">
                     </div>
 
 
@@ -182,7 +183,7 @@
                         </div>
                         <div class="doacao-info">
                             <div class="doacao-tipo">
-                                <img src="assets/imgs/icone-pizza.png" alt="Ícone de Doação" class="doacao-icon">
+                                <img src="../assets/imgs/icone-pizza.png" alt="Ícone de Doação" class="doacao-icon">
                                 <div id="label-doacao-tipo">
                                     <p><strong>Tipo de doação:</strong></p>
                                     <p>Alimentício</p>
@@ -195,8 +196,8 @@
                         </div>
                     </div>
                     <div class="aceitar-negar">
-                        <img src="assets/imgs/aceitar.png" alt="">
-                        <img src="assets/imgs/negar.png" alt="">
+                        <img src="../assets/imgs/aceitar.png" alt="">
+                        <img src="../assets/imgs/negar.png" alt="">
                     </div>
 
 
@@ -211,7 +212,7 @@
                         </div>
                         <div class="doacao-info">
                             <div class="doacao-tipo">
-                                <img src="assets/imgs/icone-pizza.png" alt="Ícone de Doação" class="doacao-icon">
+                                <img src="../assets/imgs/icone-pizza.png" alt="Ícone de Doação" class="doacao-icon">
                                 <div id="label-doacao-tipo">
                                     <p><strong>Tipo de doação:</strong></p>
                                     <p>Alimentício</p>
@@ -224,8 +225,8 @@
                         </div>
                     </div>
                     <div class="aceitar-negar">
-                        <img src="assets/imgs/aceitar.png" alt="">
-                        <img src="assets/imgs/negar.png" alt="">
+                        <img src="../assets/imgs/aceitar.png" alt="">
+                        <img src="../assets/imgs/negar.png" alt="">
                     </div>
 
 
@@ -240,7 +241,7 @@
                         </div>
                         <div class="doacao-info">
                             <div class="doacao-tipo">
-                                <img src="assets/imgs/icone-pizza.png" alt="Ícone de Doação" class="doacao-icon">
+                                <img src="../assets/imgs/icone-pizza.png" alt="Ícone de Doação" class="doacao-icon">
                                 <div id="label-doacao-tipo">
                                     <p><strong>Tipo de doação:</strong></p>
                                     <p>Alimentício</p>
@@ -253,8 +254,8 @@
                         </div>
                     </div>
                     <div class="aceitar-negar">
-                        <img src="assets/imgs/aceitar.png" alt="">
-                        <img src="assets/imgs/negar.png" alt="">
+                        <img src="../assets/imgs/aceitar.png" alt="">
+                        <img src="../assets/imgs/negar.png" alt="">
                     </div>
 
 
@@ -269,7 +270,7 @@
                         </div>
                         <div class="doacao-info">
                             <div class="doacao-tipo">
-                                <img src="assets/imgs/icone-pizza.png" alt="Ícone de Doação" class="doacao-icon">
+                                <img src="../assets/imgs/icone-pizza.png" alt="Ícone de Doação" class="doacao-icon">
                                 <div id="label-doacao-tipo">
                                     <p><strong>Tipo de doação:</strong></p>
                                     <p>Alimentício</p>
@@ -282,8 +283,8 @@
                         </div>
                     </div>
                     <div class="aceitar-negar">
-                        <img src="assets/imgs/aceitar.png" alt="">
-                        <img src="assets/imgs/negar.png" alt="">
+                        <img src="../assets/imgs/aceitar.png" alt="">
+                        <img src="../assets/imgs/negar.png" alt="">
                     </div>
 
 
@@ -314,12 +315,12 @@
                             </p>
                             <p>
                                 <strong>Endereço:</strong> 
-                                <span id="endereco">Rua das Flores, 123 - SP - Brasil</span>
+                                <span id="endereco">Rua das Flores, 123 - SP</span>
                             </p>
-                            <p>
+                            <!-- <p>
                                 <strong>ID Família:</strong> 
                                 <span id="id_familia">1000</span>
-                            </p>
+                            </p> -->
                           </div>
                           <div class="familia">
                             <p>
@@ -338,10 +339,10 @@
                                 <strong>Possui PCD?</strong> 
                                 <span id="boolean_pcd">Não</span>
                             </p>
-                            <p>
+                            <!-- <p>
                                 <strong>Urgência:</strong> 
                                 <span class="urgencia-media">Média</span>
-                            </p>
+                            </p> -->
                             <p>
                                 <strong>Renda Familiar:</strong> 
                                 <span id="renda_familia">1.000 R$ / mês</span>
@@ -379,9 +380,9 @@
     </div>
     </div>
 
-    <!-- Menu de acessibilidade -->
+    <!-- Menu de acessibilidade  -->
     <div class="acessibility">
-        <img src="./assets/imgs/icons8-acessibilidade-40.png" alt="" />
+        <img src="../assets/imgs/icons8-acessibilidade-40.png" alt="" />
         <div class="options">
             <p>Aumentar Fonte</p>
             <p>Diminuir Fonte</p>
@@ -406,6 +407,9 @@
 
 <script>
 
+
+    var nomeUser = document.getElementById('nameUser');
+    nomeUser.innerHTML = sessionStorage.getItem('NOME_USER');
 
     // Obter o modal
     var modal = document.getElementById("myModal");

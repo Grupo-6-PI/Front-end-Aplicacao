@@ -1,3 +1,4 @@
+const { default: axios } = require("axios");
 
 async function buscarDados(){
 
@@ -169,3 +170,19 @@ async function buscarDados(){
 
 }
 
+async function listarRequisicoes(){
+
+    var conteiner = document.getElementById("doacoes")
+    conteiner.innerHTML=""
+
+    try{
+
+        var requisicao = await axios(`${window.BASE_URL}/`)
+
+    }catch(error){
+
+        console.log(error)
+
+    }
+
+}
