@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HISTÓRICO | Mooca Solidária</title>
+    <link rel="shortcut icon" href="./assets/imgs/favicon-tfg.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet" />
+
+    <script>
+        window.BASE_URL = "{{BASE_URL}}";
+    </script>
+
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/all.css" />
+    <link rel="stylesheet" href="../css/historico.css" />
+    <script src="../js/functions.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body onload="carregarInformacoes()" id="body">
+
+    <div class="container-principal">
+        <div class="sidebar">
+            <div class="container-sidebar">
+
+                <div class="container-logo">
+                    <img width="auto" height="80" src="./assets/imgs/logo-mooca.png" alt="">
+                </div>
+
+                <div class="sidebar-options">
+                    <div class="opt">
+                        <div class="icon-opt">
+                            <img src="../assets/imgs/icons8-casa-30.png" alt="">
+                        </div>
+                        <a href="/home">Home </a>
+                    </div>
+                    <div class="opt">
+                        <div class="icon-opt">
+                            <img src="../assets/imgs/icons8-saco-de-dinheiro-30.png" alt="">
+                        </div>
+                        <a href="/financeiro">Bazar </a>
+                    </div>
+                    <div class="opt" id="opt-highlight">
+                        <div class="icon-opt">
+                            <img src="../assets/imgs/icons8-bem-estar-50.png" alt="">
+                        </div>
+                        <a href="/doacoes">Doações </a>
+                    </div>
+                    <div class="opt">
+                        <div class="icon-opt">
+                            <img src="../assets/imgs/icons8-calendário-30.png" alt="">
+                        </div>
+                        <a href="/calendario">Calendário </a>
+                    </div>
+                </div>
+
+                <div class="logoff">
+                    <img src="./assets/imgs/icons8-sair-30 (1).png" alt="">
+                    <p onclick="Logout(sessionStorage.getItem('ID_USER'))">Sair</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="navbar">
+                <div class="container-navbar">
+                    <div class="hamburger-menu" id="hamburger-menu">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <p>Histórico de Doações</p>
+                    <div class="user">
+                        <img width="auto" height="35" src="./assets/imgs/icons8-usuário-30.png" alt="">
+                        <p id="nameUser">Admin</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-historico">
+                <div class="negadas-container">
+                    <h3 class="negadas-titulo">Requisições Negadas</h3>
+                    <div class="negadas-lista">
+                      <div class="negadas-item">
+                        <p class="negadas-id">ID #2121</p>
+                        <p class="negadas-nome">Sarah Ferreira</p>
+                        <button class="negadas-botao">
+                          <span>&#8634;</span>
+                        </button>
+                      </div>
+                  
+                      <div class="negadas-item">
+                        <p class="negadas-id">ID #2121</p>
+                        <p class="negadas-nome">Sarah Ferreira</p>
+                        <button class="negadas-botao">
+                          <span>&#8634;</span>
+                        </button>
+                      </div>
+                  
+                      <div class="negadas-item">
+                        <p class="negadas-id">ID #2121</p>
+                        <p class="negadas-nome">Sarah Ferreira</p>
+                        <button class="negadas-botao">
+                          <span>&#8634;</span>
+                        </button>
+                      </div>
+                  
+                      <div class="negadas-item">
+                        <p class="negadas-id">ID #2121</p>
+                        <p class="negadas-nome">Sarah Ferreira</p>
+                        <button class="negadas-botao">
+                          <span>&#8634;</span>
+                        </button>
+                      </div>
+                      <div class="negadas-item">
+                        <p class="negadas-id">ID #2121</p>
+                        <p class="negadas-nome">Sarah Ferreira</p>
+                        <button class="negadas-botao">
+                          <span>&#8634;</span>
+                        </button>
+                      </div>
+                      <div class="negadas-item">
+                        <p class="negadas-id">ID #2121</p>
+                        <p class="negadas-nome">Sarah Ferreira</p>
+                        <button class="negadas-botao">
+                          <span>&#8634;</span>
+                        </button>
+                      </div>
+                      <div class="negadas-item">
+                        <p class="negadas-id">ID #2121</p>
+                        <p class="negadas-nome">Sarah Ferreira</p>
+                        <button class="negadas-botao">
+                          <span>&#8634;</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="negadas-container aceitas-container">
+                    <h3 class="negadas-titulo aceitas">Requisições Aceitas</h3>
+                    <div class="negadas-lista aceitas-lista">
+                      <div class="negadas-item">
+                        <p class="negadas-id">ID #2121</p>
+                        <p class="negadas-nome">Sarah Ferreira</p>
+                      </div>
+                  
+                      <div class="negadas-item">
+                        <p class="negadas-id">ID #2121</p>
+                        <p class="negadas-nome">Sarah Ferreira</p>
+                      </div>
+                  
+                      <div class="negadas-item">
+                        <p class="negadas-id">ID #2121</p>
+                        <p class="negadas-nome">Sarah Ferreira</p>
+                      </div>
+                  
+                      <div class="negadas-item">
+                        <p class="negadas-id">ID #2121</p>
+                        <p class="negadas-nome">Sarah Ferreira</p>
+                      </div>
+                      <div class="negadas-item">
+                        <p class="negadas-id">ID #2121</p>
+                        <p class="negadas-nome">Sarah Ferreira</p>
+                      </div>
+                      <div class="negadas-item">
+                        <p class="negadas-id">ID #2121</p>
+                        <p class="negadas-nome">Sarah Ferreira</p>
+                      </div>
+                      <div class="negadas-item">
+                        <p class="negadas-id">ID #2121</p>
+                        <p class="negadas-nome">Sarah Ferreira</p>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+
+        </div>
+
+    </div>
+    </div>
+
+
+
+    <div class="acessibility">
+        <img src="./assets/imgs/icons8-acessibilidade-40.png" alt="" />
+        <div class="options">
+            <p onclick="aumentarFonte()">Aumentar Fonte</p>
+            <p>Diminuir Fonte</p>
+            <p onclick="altoContraste()">Alto-contraste</p>
+        </div>
+    </div>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+</body>
+
+<!-- inserção do VLibras - leitor e tradutor para acessiblidade :) -->
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget("https://vlibras.gov.br/app");
+</script>
+<script src="js/DashBoard/requisicoes.js"></script>
+<script src="js/login.js"></script>
+<script src="js/DashBoard/acoes.js"></script>
+
+</html>
+
+<script>
+
+
+
+    function carregarInformacoes() {
+
+        buscarDados()
+
+        var nomeUser = document.getElementById('nameUser');
+        nomeUser.innerHTML = sessionStorage.getItem('NOME_USER')
+
+    }
+
+    // menu hamburger responsividade
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const sidebar = document.querySelector('.sidebar');
+        const content = document.querySelector('.content');
+
+        hamburgerMenu.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            content.classList.toggle('shift');
+        });
+
+        window.addEventListener('click', (event) => {
+            if (!sidebar.contains(event.target) && !hamburgerMenu.contains(event.target)) {
+                sidebar.classList.remove('active');
+                content.classList.remove('shift');
+            }
+        });
+    });
+
+    /* função para abrir/fechar menu de acessibilidade */
+    document.querySelector('.acessibility').addEventListener('click', function () {
+        var optionsMenu = this.querySelector('.options');
+        if (optionsMenu.style.display === 'flex') {
+            optionsMenu.style.display = 'none';
+        } else {
+            optionsMenu.style.display = 'flex';
+        }
+    });
+
+    /* adicionando a acessibilidade de alto contraste */
+    function altoContraste() {
+        document.body.classList.toggle('high-contrast');
+    };
+
+    function openPopup() {
+        const popup = document.getElementsByClassName('frameExport')[0];
+
+        if (popup.style.display === 'none' || popup.style.display === '') {
+            popup.style.display = 'flex';
+        } else {
+            popup.style.display = 'none';
+        }
+    }
+</script>
+</script>

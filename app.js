@@ -7,7 +7,7 @@ const http = require('http');
 const ngrok = require('@ngrok/ngrok');
 
 // Definindo qual configuração de ambiente vai ser usada
-const ambiente_processo = 'producao';  // troque o valor para 'desenvolvimento' caso precise
+const ambiente_processo = 'desenvolvimento';  // troque o valor para 'desenvolvimento' caso precise
 const caminho_env = ambiente_processo === 'producao' ? '.env' : '.env.dev';
 
 dotenv.config({ path: caminho_env });
@@ -145,7 +145,17 @@ app.get('/home-beneficiado', (req, res) => {
 
 //DashBoard Inicial
 app.get('/pedidos', (req, res) => {
-    const html = renderHTML(path.join(__dirname, 'public', 'pedidos_acompanhar.html'));
+    const html = renderHTML(path.join(__dirname, 'public/dashboard', 'pedidos_acompanhar.html'));
+    if (html) {
+        res.send(html);
+    } else {
+        res.status(500).send('Error loading the login page.');
+    }
+});
+
+//DashBoard Inicial
+app.get('/historico', (req, res) => {
+    const html = renderHTML(path.join(__dirname, 'public/dashboard', 'historico_doacoes.html'));
     if (html) {
         res.send(html);
     } else {
