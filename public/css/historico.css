@@ -1,0 +1,227 @@
+/* css reset */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", sans-serif;
+  }
+  
+  /* variáveis */
+  :root {
+    --primary-color: #670632;
+    --primary-color-low-opacity: #67063273;
+    --neutral-white: #ffffff;
+    --neutral-black: #000000;
+    --feedback-warning: #FFB648;
+    --feedback-danger: #FF4848;
+    --feedback-success: #27DD09;
+    --gradient: linear-gradient(180deg, #670632 31.17%, #CA2E74 100%);
+    --border-radius: 15px;
+    --box-shadow-01: 5px 4px 28.7px -7px rgba(0, 0, 0, 0.25);
+    --box-shadow-02: 4px 4px 64.2px 7px rgba(0, 0, 0, 0.25);
+    --font-size: 20px;
+  }
+  
+  body {
+    display: flex;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden !important;
+  }
+  
+  .container-historico {
+    width: 90%;
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+
+  .negadas-container {
+    width: 30vw;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  
+  .negadas-titulo {
+    color: #d32f2f;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .aceitas{
+    color: #3F9730 !important;
+  }
+  
+  .negadas-lista {
+    max-height: 75vh;
+    overflow-y: auto;
+  }
+  
+  .negadas-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 10px;
+    min-height: 10vh;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .negadas-id {
+    font-weight: bold;
+  }
+  
+  .negadas-nome {
+    color: #333;
+  }
+  
+  .negadas-botao {
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .negadas-botao:hover {
+    background-color: #b71c1c;
+  }
+  
+  .negadas-lista::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .negadas-lista::-webkit-scrollbar-thumb {
+    background-color: #d32f2f;
+    border-radius: 10px;
+  }
+  
+  .negadas-lista::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+  }
+
+  
+  .aceitas-botao:hover {
+    background-color: #3F9730;
+  }
+  
+  .aceitas-lista::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .aceitas-lista::-webkit-scrollbar-thumb {
+    background-color: #3F9730;
+    border-radius: 10px;
+  }
+  
+  .aceitas-lista::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+  }
+
+
+/* Estilos responsivos para celulares (menor que 768px) */
+@media (max-width: 768px) {
+
+    .content{
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .sidebar {
+        position: absolute;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        transition: all 0.3s ease;
+        z-index: 1;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .hamburger-menu {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+    }
+    
+    .container-historico {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .negadas-container, .aceitas-container {
+        width: 90%;
+        margin: 10px 0;
+    }
+
+    .negadas-lista, .aceitas-lista {
+        max-height: 60vh;
+    }
+
+    .logoff {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .navbar {
+        padding: 10px;
+    }
+
+    .user img {
+        height: 30px;
+        width: auto;
+    }
+}
+
+/* Para telas menores que 480px (smartphones pequenos) */
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+    }
+
+    .hamburger-menu {
+        display: block;
+        margin-left: 10px;
+    }
+
+    .negadas-container, .aceitas-container {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .negadas-item, .aceitas-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 5px;
+    }
+
+    .negadas-id, .negadas-nome {
+        font-size: 14px;
+    }
+
+    .negadas-botao {
+        width: 35px;
+        height: 35px;
+        align-self: flex-end;
+        justify-self: flex-end;
+        margin: 10px;
+    }
+}

@@ -118,7 +118,10 @@
 .high-contrast .left-financeiro button,
 .high-contrast .form-group input, 
 .high-contrast .form-group select,
-.high-contrast .button-row button{
+.high-contrast .button-row button,
+.high-contrast .negadas-container,
+.high-contrast .negadas-lista > div,
+.high-contrast .negadas-botao{
     background-color: black !important;
     border: 1.5px solid yellow !important;
 }
@@ -171,13 +174,16 @@
 .high-contrast #mensagem-pedido,
 .high-contrast .modal-body p,
 .high-contrast .dependente,
-.high-contrast .dependente input {
+.high-contrast .dependente input,
+.high-contrast .negadas-lista > div p {
     color: white;
 }
 
 .high-contrast .clear-cart,
-.high-contrast .remove-item {
-    color: yellow;
+.high-contrast .remove-item,
+.high-contrast .negadas-titulo,
+.high-contrast .aceitas {
+    color: yellow !important;
 }
 
 .high-contrast .card-container h1,
