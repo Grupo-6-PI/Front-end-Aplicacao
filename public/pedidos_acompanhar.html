@@ -29,13 +29,26 @@
         <div class="navbar">
             <div class="navbar-container">
                 <img src="./assets/imgs/logo-mooca.png" alt="">
-                <p>Boas vindas, <span id="nome_beneficiario"></span></p>
+
+                <p>
+                    Boas vindas, <span id="nome_beneficiario"></span>
+                </p>
+
+                <div id="logoff-user">
+                    <img id="img-logoff" src="../assets/imgs/icons8-sair-30 (1).png" >
+                    <a href="index.html" onclick="Logout(sessionStorage.getItem ('ID_USER'))">Sair</a>
+
+                </div>
+
             </div>
         </div>
 
-       
+
         <div class="mid-card">
-            <p id="card-header">Meus pedidos</p>
+            <div class="header-card-pedidos">
+                <p id="card-header">Meus pedidos</p>
+                <a href="pedido_requisicao.html">Adicionar pedido</a>
+            </div>
             <div class="cards-container" id="cards">
                 <!-- <div class="card">
                     <h4>PEDIDO #123</h4>
@@ -55,11 +68,11 @@
                     <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
                     <p id="footer-card"><strong>Status:</strong> <span class="status andamento">Produzindo</span></i></p>
                 </div> -->
-                
+
             </div>
         </div>
 
-     
+
 
         <!-- Menu de acessibilidade -->
         <div class="acessibility">
