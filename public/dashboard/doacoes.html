@@ -54,6 +54,10 @@
                             <img src="../assets/imgs/icons8-bem-estar-50.png" alt="">
                         </div>
                         <a href="/doacoes">Doações </a>
+                        <div class="goToExport" onclick="openPopup()">+</div>
+                        <div class="frameExport" style="display: none;">
+                            <a href="/historico">Historico</a>
+                        </div>
                     </div>
                     <div class="opt">
                         <div class="icon-opt">
@@ -471,6 +475,16 @@
         document.body.classList.toggle('high-contrast');
     };
 
+
+    function openPopup() {
+        const popup = document.getElementsByClassName('frameExport')[0];
+
+        if (popup.style.display === 'none' || popup.style.display === '') {
+            popup.style.display = 'flex';
+        } else {
+            popup.style.display = 'none';
+        }
+    }
 
 
 </script>
