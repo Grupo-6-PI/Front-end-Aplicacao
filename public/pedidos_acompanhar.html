@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="./css/pedido.css">
     <script src="./js/functions.js"></script>
     <script src="./js/pedido.js"></script>
+    <script src="./js/login.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </head>
@@ -36,7 +37,7 @@
 
                 <div id="logoff-user">
                     <img id="img-logoff" src="../assets/imgs/icons8-sair-30 (1).png" >
-                    <a href="index.html" onclick="Logout(sessionStorage.getItem ('ID_USER'))">Sair</a>
+                    <p onclick="Logout(sessionStorage.getItem ('ID_USER'))">Sair</p>
 
                 </div>
 
@@ -47,7 +48,7 @@
         <div class="mid-card">
             <div class="header-card-pedidos">
                 <p id="card-header">Meus pedidos</p>
-                <a href="pedido_requisicao.html">Adicionar pedido</a>
+                <a href="/formulario">Adicionar pedido</a>
             </div>
             <div class="cards-container" id="cards">
                 <!-- <div class="card">

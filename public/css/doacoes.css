@@ -211,6 +211,43 @@ body {
     margin-bottom: 4%;
 }
 
+.goToExport {
+    margin-left: 5%;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bolder;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    transition: 0.3s ease-in-out;
+  
+    &:hover {
+      background-color: #670632b4;
+    }
+  }
+
+  .frameExport {
+    width: 12vw;
+    height: 6vh;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    position: absolute;
+    left: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+  }
+  
+  .frameExport a {
+    color: white !important;
+    text-decoration: none;
+  
+  }
+
 
 /* Responsividade */
 @media (max-width: 1024px) {
