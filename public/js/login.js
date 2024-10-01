@@ -27,7 +27,7 @@ async function Login() {
 
       }else{
 
-        window.location.href = '/home-beneficiado'
+        window.location.href = '/formulario'
 
       }
 
