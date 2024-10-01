@@ -1,4 +1,3 @@
-const { default: axios } = require("axios");
 
 async function buscarDados(){
 
