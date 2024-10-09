@@ -1,7 +1,7 @@
 
 async function listar_categoria(){
 
-    var lista = document.getElementById('container-select-categoria')
+    var lista = document.getElementById('select-categoria')
     lista.innerHTML=""
 
     try {
@@ -17,13 +17,16 @@ async function listar_categoria(){
         data.map((tipo) => {
 
             lista.innerHTML+=`
-                <option value="${tipo.id}">${tipo.nome}</option>
+               <option value="${tipo.id}">${tipo.nome}</option>
             `
 
-        })
+         })
+
+
+        
 
     }catch (error) {
         console.log(error)
     }
 
-}
+} 
