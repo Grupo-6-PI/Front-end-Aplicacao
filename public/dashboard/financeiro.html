@@ -22,6 +22,7 @@
     <script src="../js/DashBoard/calendario.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../js/login.js"></script>
+    <script src="../js/DashBoard/financeiro.js"></script>
 
 </head>
 
@@ -98,11 +99,8 @@
 
                     <div class="container-select-categoria">
                         <label for="select_categoria">Categoria</label>
-                        <select name="select_categoria" id="select_categoria">
-                            <option value="">Calçado Adulto</option>
-                            <option value="">Calçado Infantil</option>
-                            <option value="">Vestuário Adulto</option>
-                            <option value="">Vestuário Infantil</option>
+                        <select name="select_categoria" id="select-categoria">
+                            <option value="">Categoria</option>
                         </select>
                     </div>
 
@@ -205,12 +203,14 @@
 </script>
 
 <script>
+    listar_categoria()
 
 
     function carregarInformacoes() {
 
         var nomeUser = document.getElementById('nameUser');
         nomeUser.innerHTML = sessionStorage.getItem('NOME_USER')
+        
 
     }
 
