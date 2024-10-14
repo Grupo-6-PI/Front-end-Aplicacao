@@ -63,7 +63,7 @@ app.get('/cadastro', (req, res) => {
 });
 
 //CADASTRO COMPLEMENTAR 1
-app.get('/cadastro/complementar/parte-1', (req, res) => {
+app.get('/cadastro-complementar-parte-1', (req, res) => {
     const html = renderHTML(path.join(__dirname, 'public', 'cadastro_complementar1.html'));
     if (html) {
         res.send(html);
@@ -73,7 +73,7 @@ app.get('/cadastro/complementar/parte-1', (req, res) => {
 });
 
 //CADASTRO COMPLEMENTAR 1
-app.get('/cadastro/complementar/parte-2', (req, res) => {
+app.get('/cadastro-complementar-parte-2', (req, res) => {
     const html = renderHTML(path.join(__dirname, 'public', 'cadastro_complementar2.html'));
     if (html) {
         res.send(html);
@@ -165,6 +165,7 @@ app.get('/historico', (req, res) => {
 const server = http.createServer(app);
     
     server.listen(PORTA_APP, () => {
+
         console.log(`
         ---------------------------------------------------------
         Servidor do seu site já está rodando! Acesse: http://${HOST_APP}:${PORTA_APP}
@@ -173,4 +174,7 @@ const server = http.createServer(app);
         ---------------------------------------------------------
         Para alterar o ambiente, comente ou descomente as linhas 7 ou 8 no arquivo 'app.js'.
         `);
-    });
+
+    }
+
+);

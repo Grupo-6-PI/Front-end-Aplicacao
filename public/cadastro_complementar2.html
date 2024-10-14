@@ -20,7 +20,11 @@
     <link rel="stylesheet" href="./css/cadastro_complementar.css">
     <link rel="stylesheet" href="./css/all.css">
     <script src="./js/functions.js"></script>
+    <script src="./js/cadastroCompleto.js"></script>
     <!-- biblioteca Inputmask p/ formatação -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js"></script>
 
 </head>
 
@@ -42,17 +46,18 @@
                     <h1>Informações Complementares</h1>
                 </div>
                 
-                <input id="telefone" type="number" placeholder="Digite seu telefone" maxlength="11">
+                <input type="text" id="telefone" name="telefone" placeholder="Número de Telefone">
 
                 <div class="dependente-section">
                     <h1>Dependentes</h1>
-                    <button id="adicionarDependenteBtn" type="button" onclick="adicionarDependente()" style="cursor: pointer;">Adicionar Dependente</button>
+                    <button id="adicionarDependenteBtn" type="button" style="cursor: pointer;">Adicionar Dependente</button>
    
-                    <div id="dependentes-container"></div>
+                    <div id="dependentes-container">                        
+                    </div>
                 </div>
 
                 <div class="container-inside container-button">
-                    <button type="button" id="actionButton" onclick="submitForm()">Continuar</button>
+                    <button type="button" id="actionButton" onclick="cadastroComplementar3()">Continuar</button>
                 </div>
             </div>
         </div>
@@ -97,6 +102,10 @@
         }
     });
 
+    $(document).ready(function(){
+        $("#telefone").inputmask("(99) 99999-9999");
+    });
+
     /* adicionando a acessibilidade de alto contraste */
     function altoContraste() {
         document.body.classList.toggle('high-contrast');
@@ -119,8 +128,8 @@
     
     <label for="deficiencia">Possui Deficiência?</label>
     <select name="deficiencia[]">
-      <option value="nao">Não</option>
-      <option value="sim">Sim</option>
+      <option value="false">Não</option>
+      <option value="true">Sim</option>
     </select>
     
     <label for="tamanhoCalçado">Tamanho do Calçado:</label>
@@ -136,8 +145,11 @@
 
         // Função para remover o dependente
         dependenteDiv.querySelector('.removerDependenteBtn').addEventListener('click', () => {
+        
             container.removeChild(dependenteDiv);
+        
         });
+
     }
 
 </script>

@@ -112,6 +112,7 @@
 .high-contrast .buttons-container button,
 .high-contrast .container-button button,
 .high-contrast .container-inputs-cad-complementar input,
+.high-contrast .container-inputs-endereco select,
 .high-contrast .container-inputs-endereco input,
 .high-contrast #quantidade,
 .high-contrast .container-preco,
@@ -142,6 +143,10 @@
 .high-contrast .container-inputs-endereco {
     gap: 5% !important;
     
+    select{
+        border-radius: 5vh !important;
+    }
+
     input{
         border-radius: 5vh !important;
     }

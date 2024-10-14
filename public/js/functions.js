@@ -19,14 +19,12 @@ function goToCadastro() {
 
 function goToCadastroComplementar1() {
   
-  window.location.href = '/cadastro/complementar/parte-1'
+  window.location.href = '/cadastro-complementar-parte-1'
 
 }
 
 function goToCadastroComplementar2() {
   
-  window.location.href = '/cadastro/complementar/parte-2'
+  window.location.href = '/cadastro-complementar-parte-2'
 
 }
-
-    

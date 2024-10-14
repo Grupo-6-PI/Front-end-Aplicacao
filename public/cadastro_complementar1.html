@@ -5,38 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CADASTRO | Mooca Solidária</title>
-    <link rel="shortcut icon" href="./assets/imgs/favicon-tfg.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/imgs/favicon-tfg.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fontsa.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="./css/login.css">
-    <link rel="stylesheet" href="./css/cadastro.css">
-    <link rel="stylesheet" href="./css/cadastro_complementar.css">
-    <link rel="stylesheet" href="./css/all.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/cadastro.css">
+    <link rel="stylesheet" href="css/cadastro_complementar.css">
+    <link rel="stylesheet" href="css/all.css">
 
     <script>
         window.BASE_URL = "{{BASE_URL}}";
     </script>
 
-    <script src="./js/functions.js"></script>
-    <script src="./js/cadastroCompleto.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/cadastroCompleto.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </head>
 
-<body>
+<body onload="load()">
     <div class="container-login">
         <div class="banner-login">
             <div class="icon-back" onclick="goToCadastro()">
-                <img src="./assets/imgs/icons8-voltar-50.png" alt="">
+                <img src="assets/imgs/icons8-voltar-50.png" alt="">
             </div>
         </div>
         <div class="side-box-login">
             <div class="container-side-box">
                
                 <div id="logo-cad-compl" class="container-inside container-logo">
-                    <img src="./assets/imgs/logo-mooca.png" alt="">
+                    <img src="assets/imgs/logo-mooca.png" alt="">
                 </div>
 
                
@@ -58,14 +58,18 @@
                 </div>
 
                 <div class="container-inputs-endereco">
-                    <input type="text" placeholder="Logradouro">
-                    <input type="number" placeholder="Número">
-                    <input type="text" placeholder="Bairro">
-                    <input type="text" placeholder="Cidade">
+                    <input id="logradouro" type="text" placeholder="Logradouro">
+                    <input id="numero" type="Number" placeholder="Número">
+                    <select id="Cidade">
+                        <option value="">Selecione a Cidade</option>
+                    </select>
+                    <select id="Bairro">
+                        <option value="">Selecione o Bairro</option>
+                    </select>
                 </div>
 
                 <div class="container-inside container-button">
-                    <button type="button" id="actionButton" onclick="goToCadastroComplementar2()">Continuar</button>
+                    <button type="button" id="actionButton" onclick="cadastroComplementar2()">Continuar</button>
                 </div>
             </div>
         </div>
@@ -97,6 +101,13 @@
 </script>
 
 <script>
+
+    function load(){
+
+        getCidades()
+        getBairros()
+    }
+
 
      /* função para abrir/fechar menu de acessibilidade */
     document.querySelector('.acessibility').addEventListener('click', function () {
