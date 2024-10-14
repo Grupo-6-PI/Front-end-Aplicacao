@@ -223,6 +223,8 @@ async function BuscarAtividade(id){
     
         var dataInicio = document.getElementById('dataHoraInicio_edit')
         
+
+        
         let mes = acao.calendario.mesNumeracao.toString().padStart(2, '0')
         
         let dia = acao.calendario.diaNumeracao.toString().padStart(2, '0')

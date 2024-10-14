@@ -15,8 +15,6 @@ async function submitForm() {
       
     if(requisicao.status == 201){
 
-      var new_user = await requisicao.data
-
       window.location.href = '/login'
       
     }else{
