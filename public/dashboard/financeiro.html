@@ -136,24 +136,6 @@
                                     <button class="clear-cart">Limpar cesta</button>
                                 </div>
                                 <div class="cart-items">
-                                    <div class="cart-item">
-                                        <div class="item-info">
-                                            <span>10,00 Calçado Adulto</span>
-                                        </div>
-                                        <button class="remove-item">x</button>
-                                    </div>
-                                    <div class="cart-item">
-                                        <div class="item-info">
-                                            <span>15,00 Roupa Infantil</span>
-                                        </div>
-                                        <button class="remove-item">x</button>
-                                    </div>
-                                    <div class="cart-item">
-                                        <div class="item-info">
-                                            <span>20,00 Decoração</span>
-                                        </div>
-                                        <button class="remove-item">x</button>
-                                    </div>
                                 </div>
                                 <div class="cart-footer">
                                     <div class="cart-subtotal"><b>Subtotal: </b>R$ 45,00</div>
@@ -204,17 +186,13 @@
 
 <script>
     listar_categoria()
+    listar_vendas()
 
 
     function carregarInformacoes() {
 
         var nomeUser = document.getElementById('nameUser');
         nomeUser.innerHTML = sessionStorage.getItem('NOME_USER')
-        
-
-        listar_categoria()
-
-        listar_categoria()
 
     }
 
