@@ -30,3 +30,40 @@ async function listar_categoria(){
     }
 
 } 
+
+async function listar_vendas(){
+
+    var lista = document.getElementById('cart-items')
+    lista.innerHTML=""
+
+    try {
+
+        var requisicao = await axios(`${window.BASE_URL}/vendas/listar-vendas`,{
+            headers: {
+                'ngrok-skip-browser-warning': 'true'
+            }
+        })
+
+        var data = await requisicao.data
+
+        data.map((tipo) => {
+
+            lista.innerHTML+=`
+               <div class="cart-item">
+                    <div class="item-info">
+                        <span>${tipo.quantidade} ${tipo.categoria.nome} ${tipo.valor}</span>
+                    </div>
+                    <button class="remove-item">x</button>
+                </div>
+            `
+
+         })
+
+
+        
+
+    }catch (error) {
+        console.log(error)
+    }
+
+} 
