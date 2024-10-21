@@ -4,10 +4,8 @@ const fs = require("fs");
 const path = require("path");
 const dotenv = require("dotenv");
 const http = require('http');
-const ngrok = require('@ngrok/ngrok');
 
-// Definindo qual configuração de ambiente vai ser usada
-const ambiente_processo = 'desenvolvimento';  // troque o valor para 'desenvolvimento' caso precise
+const ambiente_processo = 'desenvolvimento';
 const caminho_env = ambiente_processo === 'producao' ? '.env' : '.env.dev';
 
 dotenv.config({ path: caminho_env });
