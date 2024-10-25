@@ -1,4 +1,6 @@
 
+const dadosConst = {}
+
 async function ListarCalendario() {
 
     let domingo = document.getElementById('Domingo')
@@ -29,10 +31,8 @@ async function ListarCalendario() {
     });
 
     if(requisicao.status == 200 ){
-          
-        let dados = await requisicao.data;
 
-        console.log(dados)
+        let dados = await requisicao.data;
 
         preencherKanban(dados.domingo,domingo)
         
@@ -51,7 +51,7 @@ async function ListarCalendario() {
         if(dados.domingo != []){
             
             CriarModaisCalendario(dados.domingo)
-        
+
         }
 
         if(dados.segunda != []){
@@ -90,6 +90,7 @@ async function ListarCalendario() {
         
         }
 
+        ativarModais()
         
     }else{
 
