@@ -30,7 +30,7 @@ async function ListarCalendario() {
         }
     });
 
-    if(requisicao.status == 200 ){
+    if(requisicao.status == 200){
 
         let dados = await requisicao.data;
 
@@ -91,6 +91,7 @@ async function ListarCalendario() {
         }
 
         ativarModais()
+        adicionarAcao()
         
     }else{
 
