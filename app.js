@@ -5,7 +5,7 @@ const path = require("path");
 const dotenv = require("dotenv");
 const http = require('http');
 
-const ambiente_processo = 'desenvolvimento';
+const ambiente_processo = 'producao';
 const caminho_env = ambiente_processo === 'producao' ? '.env' : '.env.dev';
 
 dotenv.config({ path: caminho_env });
