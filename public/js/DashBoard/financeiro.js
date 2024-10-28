@@ -124,6 +124,12 @@ function removerProduto(index) {
     atualizarExtrato(); // Atualiza o extrato visual
 }
 
+function removerCesta() {
+    filaProdutos = []; // Limpa a fila de produtos
+    atualizarExtrato(); // Atualiza o extrato visual
+    alert("Todos os produtos foram removidos da cesta."); // Mensagem de confirmação
+}
+
 // Função de finalizar compra
 async function finalizarCompra() {
     if (filaProdutos.length === 0) {
@@ -149,13 +155,21 @@ async function finalizarCompra() {
     }
 }
 
-// Event listener para o botão de finalizar
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const finalizarButton = document.getElementById('finalizar-vendas');
+    const limparCestaButton = document.getElementById('limpar-cesta'); // Adicione seu botão para limpar a cesta
     
     if (finalizarButton) {
         finalizarButton.addEventListener('click', finalizarCompra);
     } else {
         console.error("Botão 'finalizar-vendas' não encontrado no DOM.");
+    }
+
+    if (limparCestaButton) {
+        limparCestaButton.addEventListener('click', removerCesta); // Adiciona o event listener para limpar a cesta
+    } else {
+        console.error("Botão 'limpar-cesta' não encontrado no DOM.");
     }
 });
