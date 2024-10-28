@@ -23,6 +23,12 @@ async function listar_categoria() {
 }
 
 async function listar_vendas() {
+    const email = sessionStorage.getItem('EMAIL_USER');
+    if (!email) {
+        console.error("Email do usuário não encontrado no sessionStorage.");
+        return;
+    }
+    
     var lista = document.getElementById('cart-items');
     var itens = document.getElementById('total_itens');
     var valor = document.getElementById('cart-subtotal');
@@ -32,20 +38,19 @@ async function listar_vendas() {
     let totalValor = 0;
 
     try {
-        var requisicao = await axios(`${window.BASE_URL}/vendas/listar-vendas`, {
-            headers: {
-                'ngrok-skip-browser-warning': 'true'
-            }
+        const requisicao = await axios.get(`${window.BASE_URL}/vendas/listar-vendas`, {
+            params: { email },
+            headers: { 'ngrok-skip-browser-warning': 'true' }
         });
 
-        var data = requisicao.data;
+        const data = requisicao.data;
 
-        data.map((venda) => {
+        data.forEach((venda) => {
             totalValor += venda.valor;
             totalItens += venda.quantidade;
 
             lista.innerHTML += `
-               <div class="cart-item">
+                <div class="cart-item">
                     <div class="item-info">
                         <span>${venda.quantidade}x ${venda.categoria.nome} - R$${venda.valor.toFixed(2)}</span>
                     </div>
@@ -58,49 +63,53 @@ async function listar_vendas() {
         valor.innerHTML = `<strong>Subtotal:</strong> R$ ${totalValor.toFixed(2)}`;
 
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 }
 
-document.querySelector('addProduto').addEventListener('click', async () => {
-    const categoriaId = document.getElementById('select-categoria').value;
-    const quantidade = document.getElementById('quantidade').value;
-    const valor = document.querySelector('.container-preco input').value.replace(',', '.');
 
-    
-    const emailModificador = localStorage.getItem('EMAIL_USER'); // Certifique-se de que o email está salvo no local storage
 
-    
-    const produtoData = {
-        quantidade: parseInt(quantidade),
-        valor: parseFloat(valor),
-        categoria: {
-            id: parseInt(categoriaId)
-        },
-        emailModificador: emailModificador,
-        calendario: null 
-    };
 
-    try {
-        const response = await axios.post(`${window.BASE_URL}/vendas/registrarVenda`, produtoData, {
-            headers: {
-                'ngrok-skip-browser-warning': 'true'
-            }
-        });
 
-        console.log(response.data);
-        alert('Produto adicionado com sucesso!');
 
-        
-        document.getElementById('quantidade').value = '';
-        document.querySelector('.container-preco input').value = '';
-        document.getElementById('select-categoria').value = '';
+async function adicionar_produto_lista() {
+    document.getElementById('addProduto').addEventListener('click', async () => {
+        const categoriaId = document.getElementById('select-categoria').value;
+        const quantidade = document.getElementById('quantidade').value;
+        const valor = document.querySelector('.container-preco input').value.replace(',', '.');
 
-        
-        listar_vendas();
+        const email = sessionStorage.getItem('EMAIL_USER');
 
-    } catch (error) {
-        console.error(error);
-        alert('Erro ao adicionar o produto. Tente novamente.');
-    }
-});
+        const produtoData = {
+            quantidade: parseInt(quantidade),
+            valor: parseFloat(valor),
+            categoria: { id: parseInt(categoriaId) },
+            emailModificador: email,
+            calendario: null
+        };
+
+        try {
+            const response = await axios.post(`${window.BASE_URL}/vendas/registrarVenda`, produtoData, {
+                headers: { 'ngrok-skip-browser-warning': 'true' }
+            });
+
+            console.log(response.data);
+            alert('Produto adicionado com sucesso!');
+
+            // Limpar campos do formulário
+            document.getElementById('quantidade').value = '';
+            document.querySelector('.container-preco input').value = '';
+            document.getElementById('select-categoria').value = '';
+
+            // Atualizar extrato de compras
+            listar_vendas();
+
+        } catch (error) {
+            console.error(error);
+            alert('Erro ao adicionar o produto. Tente novamente.');
+        }
+    });
+}
+
+
+
