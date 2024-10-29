@@ -1,15 +1,17 @@
 async function listar_categoria() {
-    const lista = document.getElementById('select-categoria');
+    var lista = document.getElementById('select-categoria');
     lista.innerHTML = "";
 
     try {
-        const requisicao = await axios(`${window.BASE_URL}/vendas/listar-categorias`, {
-            headers: { 'ngrok-skip-browser-warning': 'true' }
+        var requisicao = await axios(`${window.BASE_URL}/vendas/listar-categorias`, {
+            headers: {
+                'ngrok-skip-browser-warning': 'true'
+            }
         });
 
-        const data = requisicao.data;
+        var data = requisicao.data;
 
-        data.forEach((tipo) => {
+        data.map((tipo) => {
             lista.innerHTML += `
                <option value="${tipo.id}">${tipo.nome}</option>
             `;
@@ -23,7 +25,6 @@ async function listar_categoria() {
 // Função para listar as vendas
 // Array para armazenar os produtos adicionados antes de finalizar a compra
 let filaProdutos = [];
-
 async function listar_vendas() {
     const email = sessionStorage.getItem('EMAIL_USER');
     if (!email) {
@@ -64,6 +65,44 @@ async function adicionar_produto_lista() {
         const categoriaSelect = document.getElementById('select-categoria');
         const categoriaId = categoriaSelect.value;
         const categoriaNome = categoriaSelect.options[categoriaSelect.selectedIndex].text; // Captura o nome da categoria
+    try {
+        const requisicao = await axios.get(`${window.BASE_URL}/vendas/listar-vendas`, {
+            params: { email },
+            headers: { 'ngrok-skip-browser-warning': 'true' }
+        });
+
+        const data = requisicao.data;
+
+        data.forEach((venda) => {
+            totalValor += venda.valor;
+            totalItens += venda.quantidade;
+
+            lista.innerHTML += `
+                <div class="cart-item">
+                    <div class="item-info">
+                        <span>${venda.quantidade}x ${venda.categoria.nome} - R$${venda.valor.toFixed(2)}</span>
+                    </div>
+                    <button class="remove-item">x</button>
+                </div>
+            `;
+        });
+
+        itens.innerText = `Total de itens: ${totalItens}`;
+        valor.innerHTML = `<strong>Subtotal:</strong> R$ ${totalValor.toFixed(2)}`;
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+
+
+
+
+
+async function adicionar_produto_lista() {
+    document.getElementById('addProduto').addEventListener('click', async () => {
+        const categoriaId = document.getElementById('select-categoria').value;
         const quantidade = document.getElementById('quantidade').value;
         const valor = document.querySelector('.container-preco input').value.replace(',', '.');
 
@@ -173,3 +212,25 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Botão 'limpar-cesta' não encontrado no DOM.");
     }
 });
+        try {
+            const response = await axios.post(`${window.BASE_URL}/vendas/registrarVenda`, produtoData, {
+                headers: { 'ngrok-skip-browser-warning': 'true' }
+            });
+
+            console.log(response.data);
+            alert('Produto adicionado com sucesso!');
+
+            // Limpar campos do formulário
+            document.getElementById('quantidade').value = '';
+            document.querySelector('.container-preco input').value = '';
+            document.getElementById('select-categoria').value = '';
+
+            // Atualizar extrato de compras
+            listar_vendas();
+
+        } catch (error) {
+            console.error(error);
+            alert('Erro ao adicionar o produto. Tente novamente.');
+        }
+    });
+}
