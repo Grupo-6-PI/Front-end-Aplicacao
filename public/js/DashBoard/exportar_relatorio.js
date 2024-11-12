@@ -1,76 +1,84 @@
 function gerarRelatorioPDF() {
-    const PDFDocument = window.PDFDocument;  // Use a versão standalone do PDFKit
 
-    // Criar novo documento PDF
-    const doc = new PDFDocument();
+    var periodoStart = 'Janeiro'
+    var periodoFinish = 'Dezembro'
+    var periodoYear = '2024'
 
-    // Criar um array para armazenar o PDF gerado como bytes
-    const stream = doc.pipe(new pdfkit.Stream());
+    const { jsPDF } = window.jspdf;
 
-    // Configurações e texto inicial no PDF
-    doc.font('Helvetica-Bold')
-        .fontSize(25)
-        .text('Relatório Financeiro', 100, 100);
+    const doc = new jsPDF();
 
-    // Adicionar uma imagem (certifique-se de que o caminho esteja correto)
-    doc.image('./assets/imgs/logo-mooca.png', {
-        fit: [250, 300],
-        align: 'center',
-        valign: 'center'
+    doc.setFillColor(103, 6, 50); 
+    doc.rect(0, 0, 210, 30, 'F');
+    doc.setFontSize(16);
+    doc.setTextColor(255, 255, 255); 
+    doc.text("Relatório Financeiro | Mooca Solidária", 105, 20, { align: "center" });
+    doc.setFontSize(10);
+    doc.text(`Período: ${periodoStart} - ${periodoFinish} ${periodoYear}`, 105, 26, { align: "center" });
+
+    // Configurações da tabela
+    const tableYStart = 40;
+    doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0);
+
+    // Título da seção de transações
+    doc.text("Resumo das Transações", 10, tableYStart);
+
+    // Cabeçalho da Tabela
+    doc.setFillColor(230, 230, 230); // Cor cinza claro para o cabeçalho
+    doc.rect(10, tableYStart + 10, 190, 10, 'F');
+    doc.setTextColor(0, 0, 0);
+    doc.text("Data", 15, tableYStart + 17);
+    doc.text("Descrição", 50, tableYStart + 17);
+    doc.text("Categoria", 110, tableYStart + 17);
+    doc.text("Valor (R$)", 170, tableYStart + 17, { align: "right" });
+
+    // Linhas da Tabela
+    let y = tableYStart + 25;
+    let total = 0;
+
+    dados.forEach((item, index) => {
+        doc.setFillColor(index % 2 === 0 ? 245 : 255); // Alternância de cores nas linhas
+        doc.rect(10, y - 5, 190, 10, 'F'); // Linha de fundo
+
+        // Preenchimento das células
+        doc.setTextColor(0, 0, 0);
+        doc.text(item.data, 15, y);
+        doc.text(item.descricao, 50, y);
+        doc.text(item.categoria, 110, y);
+        doc.text(item.valor.toFixed(2), 170, y, { align: "right" });
+
+        total += item.valor;
+        y += 10;
     });
 
-    // Adicionar mais texto e uma página extra
-    doc.addPage()
-        .fontSize(25)
-        .text('Aqui está um gráfico...', 100, 100);
+    // Linha do Total
+    y += 5;
+    doc.setFillColor(0, 102, 204);
+    doc.rect(10, y - 5, 190, 10, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.text("Total Geral", 110, y);
+    doc.text(total.toFixed(2), 170, y, { align: "right" });
 
-    // Adicionar exemplo de forma vetorial
-    doc.save()
-        .moveTo(100, 150)
-        .lineTo(100, 250)
-        .lineTo(200, 250)
-        .fill('#FF3300');
+    // Rodapé
+    doc.setFontSize(10);
+    doc.setTextColor(150);
+    doc.text("Este relatório foi gerado automaticamente pelo sistema.", 105, 285, { align: "center" });
+    doc.text("Página 1 de 1", 200, 290, { align: "right" });
 
-    doc.scale(0.6)
-        .translate(470, -380)
-        .path('M 250,75 L 323,301 131,161 369,161 177,301 z')
-        .fill('red', 'even-odd')
-        .restore();
-
-    // Adicionar link
-    doc.addPage()
-        .fillColor('blue')
-        .text('Aqui está um link!', 100, 100)
-        .underline(100, 100, 160, 27, { color: '#0000FF' })
-        .link(100, 100, 160, 27, 'http://google.com/');
-
-    // Finalizar a criação do PDF
-    doc.end();
-
-    // Aguardar a conclusão do stream de dados
-    const chunks = [];
-    stream.on('data', chunk => chunks.push(chunk));
-    
-    stream.on('end', function() {
-        const blob = new Blob(chunks, { type: 'application/pdf' });
-        
-        // Cria uma URL a partir do blob
-        const url = URL.createObjectURL(blob);
-        
-        // Exibir o PDF em um iframe ou abrir o download
-        const iframe = document.createElement('iframe');
-        iframe.src = url;
-        iframe.style.width = '100%';
-        iframe.style.height = '500px';
-        
-        // Adicionar o iframe ao corpo da página para visualização
-        document.body.appendChild(iframe);
-        
-        // Alternativamente, para forçar o download do PDF
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'relatorio.pdf';
-        a.textContent = 'Baixar PDF';
-        document.body.appendChild(a);
-    });
+    // Salva o PDF
+    doc.save("relatorio_financeiro.pdf");
 }
+
+
+// Dados de exemplo (substitua com os seus próprios dados)
+const dados = [
+    { data: "01/01/2024", descricao: "Venda de produto", categoria: "Receita", valor: 1500.00 },
+    { data: "05/01/2024", descricao: "Compra de materiais", categoria: "Despesa", valor: -300.00 },
+    { data: "15/02/2024", descricao: "Serviços prestados", categoria: "Receita", valor: 2000.00 },
+    { data: "28/02/2024", descricao: "Aluguel", categoria: "Despesa", valor: -1200.00 },
+    // Adicione mais dados conforme necessário
+];
+
+// Adiciona a função ao escopo global
+window.gerarRelatorioPDF = gerarRelatorioPDF;
