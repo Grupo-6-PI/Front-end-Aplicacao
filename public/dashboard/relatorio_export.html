@@ -11,19 +11,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
         rel="stylesheet" />
 
-        <script>
-            window.BASE_URL = "{{BASE_URL}}";
-        </script>
+    <script>
+        window.BASE_URL = "{{BASE_URL}}";
+    </script>
 
     <link rel="stylesheet" href="../css/dashboard.css" />
     <link rel="stylesheet" href="../css/all.css" />
     <link rel="stylesheet" href="../css/relatorio_export.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../js/functions.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="../js/DashBoard/acoes.js"></script>
     <script src="../js/login.js"></script>
-    <script src="../js/DashBoard/export.js"></script>
+    <script src="../js/DashBoard/exportar_relatorio.js"></script>
+    <script src="../js/DashBoard/financeiro.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdfkit/js/pdfkit.standalone.js"></script>
+
 </head>
 
 <body onload="carregarInformacoes()" id="body">
@@ -102,7 +106,7 @@
 
 
                             <div class="input-div">
-                                <label for="datetime2">Data Início</label>
+                                <label for="datetime2">Data Fim</label>
                                 <input id="datetime2" type="date">
 
                             </div>
@@ -121,7 +125,7 @@
                         </div> -->
 
                         <div class="button-row">
-                            <button onclick="exportarRelatorio('pdf')">
+                            <button onclick="gerarRelatorioPDF()">
                                 <img src="./assets/imgs/download.png" alt="">
                                 Exportar em .PDF
                             </button>
@@ -138,11 +142,8 @@
                 </div>
             </div>
 
-
         </div>
     </div>
-
-
 
     <div class="acessibility">
         <img src="./assets/imgs/icons8-acessibilidade-40.png" alt="" />
@@ -161,20 +162,7 @@
     </div>
 </body>
 
-<!-- inserção do VLibras - leitor e tradutor para acessiblidade :) -->
-<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 <script>
-    new window.VLibras.Widget("https://vlibras.gov.br/app");
-</script>
-<script src="js/DashBoard/requisicoes.js"></script>
-<script src="js/login.js"></script>
-<script src="js/DashBoard/acoes.js"></script>
-
-</html>
-
-<script>
-
-
 
 async function carregarInformacoes() {
     try {
@@ -229,5 +217,7 @@ async function carregarInformacoes() {
             popup.style.display = 'none';
         }
     }
+
 </script>
-</script>
+
+</html>

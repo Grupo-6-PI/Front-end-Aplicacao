@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
@@ -159,6 +159,7 @@ app.get('/historico', (req, res) => {
         res.status(500).send('Error loading the login page.');
     }
 });
+
 
 const server = http.createServer(app);
     
