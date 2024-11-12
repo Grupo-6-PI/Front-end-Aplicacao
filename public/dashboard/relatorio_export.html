@@ -22,7 +22,7 @@
     <script src="../js/functions.js"></script>
     <script src="../js/DashBoard/acoes.js"></script>
     <script src="../js/login.js"></script>
-    <script src="../js/DashBoard/financeiro.js"></script>
+    <script src="../js/DashBoard/export.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
@@ -109,18 +109,16 @@
 
                         </div>
 
-                        <div class="form-group" id="last">
-                            <div class="input-div">
+                        <!-- <div class="form-group" id="last"> -->
+                            <!-- <div class="input-div">
                                 <div class="input-div">
                                     <label for="categoria">Categoria</label>
                                     <select id="categoria">
-                                        <option value="Tudo">Tudo</option>
-                                        <option value="Vestuário">Vestuário</option>
                                     </select>
                                 </div>
 
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="button-row">
                             <button onclick="exportarRelatorio('pdf')">
@@ -131,9 +129,9 @@
                                 <img src="./assets/imgs/download.png" alt="">
                                 Exportar em .CSV
                             </button>
-                            <button onclick="exportarRelatorio('xml')">
+                            <button onclick="exportarRelatorio('txt')">
                                 <img src="./assets/imgs/download.png" alt="">
-                                Exportar em .XML
+                                Exportar em .TXT
                             </button>
                         </div>
                     </div>
@@ -180,7 +178,6 @@
 
 async function carregarInformacoes() {
     try {
-        await listar_categoria(); // Carrega a lista de categorias para o filtro
         const nomeUser = document.getElementById('nameUser');
         nomeUser.innerHTML = sessionStorage.getItem('NOME_USER');
     } catch (error) {
