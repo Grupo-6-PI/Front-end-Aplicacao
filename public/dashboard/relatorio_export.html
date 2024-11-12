@@ -175,13 +175,6 @@
 
 <script>
 
-<<<<<<< HEAD
-    function carregarInformacoes() {
-        buscarDados()
-
-        var nomeUser = document.getElementById('nameUser');
-        nomeUser.innerHTML = sessionStorage.getItem('NOME_USER')
-=======
 async function carregarInformacoes() {
     try {
         await listar_categoria(); // Carrega a lista de categorias para o filtro
@@ -189,7 +182,6 @@ async function carregarInformacoes() {
         nomeUser.innerHTML = sessionStorage.getItem('NOME_USER');
     } catch (error) {
         console.error("Erro ao carregar informações:", error);
->>>>>>> e7168c4cd52d8262aed9085f13a9402f84c93f4b
     }
 }
 
