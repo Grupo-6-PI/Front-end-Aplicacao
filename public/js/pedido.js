@@ -61,7 +61,7 @@ async function listar_pedidos(){
     var cards = document.getElementById('cards');
     cards.innerHTML=""
 
-    var requisicao = await axios(`${window.BASE_URL}/requisicoes/lista-requisicoes/${parseFloat(sessionStorage.getItem('ID_USER'))}`,{
+    var requisicao = await axios(`${window.BASE_URL}/requisicoes/lista-requisicoes/${parseInt(sessionStorage.getItem('ID_USER'))}`,{
         headers: {
             'ngrok-skip-browser-warning': 'true'
         }

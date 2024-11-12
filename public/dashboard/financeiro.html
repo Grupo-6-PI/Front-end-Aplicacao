@@ -118,7 +118,7 @@
                     </div>
 
 
-                    <button class="button">Adicionar Produto</button>
+                    <button class="button" id="addProduto">Adicionar Produto</button>
 
                 </div>
 
@@ -132,32 +132,14 @@
                         <div class="body-card">
                             <div class="cart-summary">
                                 <div class="cart-header">
-                                    <div class="cart-total-items">Total de Itens: 3</div>
-                                    <button class="clear-cart">Limpar cesta</button>
+                                    <div class="cart-total-items" id="total_itens">Total de itens: 0</div>
+                                    <button class="clear-cart" id="limpar-cesta">Limpar cesta</button>
                                 </div>
-                                <div class="cart-items">
-                                    <div class="cart-item">
-                                        <div class="item-info">
-                                            <span>10,00 Calçado Adulto</span>
-                                        </div>
-                                        <button class="remove-item">x</button>
-                                    </div>
-                                    <div class="cart-item">
-                                        <div class="item-info">
-                                            <span>15,00 Roupa Infantil</span>
-                                        </div>
-                                        <button class="remove-item">x</button>
-                                    </div>
-                                    <div class="cart-item">
-                                        <div class="item-info">
-                                            <span>20,00 Decoração</span>
-                                        </div>
-                                        <button class="remove-item">x</button>
-                                    </div>
+                                <div class="cart-items" id="cart-items">
                                 </div>
                                 <div class="cart-footer">
-                                    <div class="cart-subtotal"><b>Subtotal: </b>R$ 45,00</div>
-                                    <button class="finalize-button">Finalizar</button>
+                                    <div class="cart-subtotal" id="cart-subtotal"><b>Subtotal:</b> R$ 00,00</div>
+                                    <button class="finalize-button" id="finalizar-vendas">Finalizar</button>
                                 </div>
                             </div>
                         </div>
@@ -204,17 +186,16 @@
 
 <script>
     listar_categoria()
+    document.addEventListener("DOMContentLoaded", function() {
+    adicionar_produto_lista();
+});
+
 
 
     function carregarInformacoes() {
 
         var nomeUser = document.getElementById('nameUser');
         nomeUser.innerHTML = sessionStorage.getItem('NOME_USER')
-        
-
-        listar_categoria()
-
-        listar_categoria()
 
     }
 

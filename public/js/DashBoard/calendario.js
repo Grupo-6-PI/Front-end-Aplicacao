@@ -1,4 +1,3 @@
-
 async function ListarCalendario() {
 
     let domingo = document.getElementById('Domingo')
@@ -28,11 +27,9 @@ async function ListarCalendario() {
         }
     });
 
-    if(requisicao.status == 200 ){
-          
-        let dados = await requisicao.data;
+    if(requisicao.status == 200){
 
-        console.log(dados)
+        let dados = await requisicao.data;
 
         preencherKanban(dados.domingo,domingo)
         
@@ -51,7 +48,7 @@ async function ListarCalendario() {
         if(dados.domingo != []){
             
             CriarModaisCalendario(dados.domingo)
-        
+
         }
 
         if(dados.segunda != []){
@@ -90,6 +87,8 @@ async function ListarCalendario() {
         
         }
 
+        ativarModais()
+        adicionarAcao()
         
     }else{
 
@@ -177,6 +176,7 @@ function CriarModaisCalendario(dados) {
                     <h2>Número identificador: ${atividade.atividade.id}</h2>
                     <i>${atividade.atividade.nome}</i>
                     <h3>Data prevista para acontecer: </h3> ${atividade.calendario.diaNomeacao}, ${atividade.calendario.diaNumeracao}/${atividade.calendario.mesNumeracao}/${atividade.calendario.ano}
+                    <h3>Local de realização: </h3> ${atividade.endereco.logradouro} - ${atividade.endereco.numero ?? 'Sem numeração'} , ${atividade.endereco.bairro.nome}, ${atividade.endereco.bairro.cidade.nome}
                     <h3>Descrição: </h3>
                     ${atividade.atividade.descricao}
                     <div class="modal-acoes">
@@ -399,33 +399,70 @@ async function salvarCalendario(){
     let mes = parseInt(data.slice(5,7))
     let dia = parseInt(data.slice(8))
 
+    let endereco = sessionStorage.getItem("Endereco");
+
+    let regex = /^(.+?),\s*(\d+)\s*-\s*(.+?),\s*(.+)$/;
+
+    let match = endereco.match(regex);
+    
+    let enderecoResult;
+
+    if (match) {
+    
+        let logradouro = match[1].trim();
+        let numero = parseInt(match[2].trim());
+        let bairro = match[3].trim();
+        let cidadeEstado = match[4].trim();
+    
+        enderecoResult = { logradouro, numero, bairro, cidadeEstado };
+    
+    } else {
+    
+        console.log("Erro na transformação do Endereço");
+    
+    }
+
     // const atividade = {
-    //     "nome":nomeInsert,
-    //     "horaComeco":[horaComeco,minutosComeco],
-    //     "horaFinal":[horaFim,minutosFim],
-    //     "descricao":descricao,
-    //     "tipoAtividadeId":tipoDoacao,
-    //     "emailModificador":emailMod,
-    //     "filtrodto":{
+    //     nome:nomeInsert,
+    //     horaComeco:[horaComeco,minutosComeco],
+    //     horaFinal:[horaFim,minutosFim],
+    //     descricao:descricao,
+    //     tipoAtividadeId:tipoDoacao,
+    //     emailModificador:emailMod,
+    //     filtrodto:{
     //         ano:ano,
     //         mesNumeracao:mes,
     //         diaNumeracao:dia,
     //         diaNomeacao:null
+    //     },
+    //     endereco:{
+    //         logradouro:enderecoResult.logradouro,
+    //         numero: enderecoResult.numero,
+    //         bairro: enderecoResult.bairro,
+    //         cidade: enderecoResult.cidadeEstado
     //     }
     // }
 
+    //console.log(atividade)
+
     let retorno = await axios.post(`${window.BASE_URL}/calendarios`,{
-        "nome":nomeInsert,
-        "horaComeco":[horaComeco,minutosComeco],
-        "horaFinal":[horaFim,minutosFim],
-        "descricao":descricao,
-        "tipoAtividadeId":tipoDoacao,
-        "emailModificador":emailMod,
-        "filtrodto":{
+        nome:nomeInsert,
+        horaComeco:[horaComeco,minutosComeco],
+        horaFinal:[horaFim,minutosFim],
+        descricao:descricao,
+        tipoAtividadeId:tipoDoacao,
+        emailModificador:emailMod,
+        filtrodto:{
             ano:ano,
             mesNumeracao:mes,
             diaNumeracao:dia,
             diaNomeacao:null
+        },
+        endereco:{
+            logradouro:enderecoResult.logradouro,
+            numero: enderecoResult.numero,
+            bairro: enderecoResult.bairro,
+            cidade: enderecoResult.cidadeEstado
         }
     })
 

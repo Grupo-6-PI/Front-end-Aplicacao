@@ -14,7 +14,6 @@ function modal(idModal,idAcao,idSpan){
             modal.style.display = "block";
         }
     
-
     // quando o usuário clicar em <span> (x), fecha o modal
     span.onclick = function () {
         modal.style.display = "none";
@@ -28,7 +27,6 @@ function modal(idModal,idAcao,idSpan){
     }
 
 }
-
 
 async function ListarAtividades() {
 
@@ -57,6 +55,21 @@ async function ListarAtividades() {
             </div>
             `
         })
+
+        for(let i = 0;i<data.length; i++){
+
+            let requi = data[i]
+
+            let doacoes = document.getElementById(`acao${requi.id}`)
+
+            doacoes.click()            
+            doacoes.click()
+
+            let span = document.getElementById(`close${requi.id}`);
+
+            span.click()
+
+        }
 
 
     }catch(error){
@@ -96,6 +109,8 @@ async function CriarModaisAcoes() {
             `
         
         })
+
+        
         
     }else{
 

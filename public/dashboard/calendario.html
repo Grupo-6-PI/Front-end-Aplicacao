@@ -19,18 +19,18 @@
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/all.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../js/functions.js"></script>
     <script src="../js/DashBoard/calendario.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../js/login.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
-</head>
+</head> 
 
-<body onload="carregarInformacoes()">
+<body>
 
     <div class="container-principal">
         <div class="sidebar">
@@ -96,6 +96,12 @@
                 <div class="kanban-column">
                     <div class="kanban-header">Domingo</div>
                     <div class="kanban-content" id="Domingo">
+                        <div class="acao-kanban" id="acao1" onclick="modal('myModal1-view','acao1','span1')">
+                            Teste Front
+                        </div>
+                        <div class="adicionar-acao" onclick="adicionarAcao()">
+                            +
+                        </div>
                     </div>
                 </div>
                 <div class="kanban-column">
@@ -142,12 +148,13 @@
 
     <!-- Modal Visualização -->
     <div id="modais-view">
-        <!-- <div id="myModal-view" class="modal">
+        <div id="myModal-view" class="modal">
             <div class="modal-content">
-                <span class="close-view" style="align-self: flex-end; font-size: 10vh; cursor: pointer; font-weight: bolder;"> X</span>
+                <span id="span" class="close-view" style="align-self: flex-end; font-size: 10vh; cursor: pointer; font-weight: bolder;"> X</span>
                 <h2>Ação #010203</h2>
                 <i>Cestas básicas para XPTO</i>
                 <h3>Data prevista para acontecer: </h3> Terça-feira, 12/12/2000
+                <h3>Local de realização: </h3> Rua da mooca - 15,Parque da Mooca, São Paulo
                 <h3>Descrição: </h3>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, nostrum? Voluptatem, eum impedit inventore ex fugiat ratione quasi vitae voluptas optio veniam odit qui ducimus deserunt placeat nobis ea exercitationem?Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates ea incidunt unde optio voluptatibus culpa impedit, perferendis qui soluta error dignissimos quae eum fuga minima, officia eos magnam, numquam possimus! Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
                 <div class="modal-acoes">
@@ -162,7 +169,7 @@
                 </div>
                 
             </div>
-        </div> -->
+        </div>
     </div>
 
     <!-- Modal Adição -->
@@ -202,7 +209,7 @@
                         Selecionar no mapa
                     </button>
 
-                    <button id="add-acao" type="submit" onclick="salvarCalendario()">Adicionar</button>
+                    <button id="add-acao" onclick="salvarCalendario()">Adicionar</button>
 
                 </div>
 
@@ -292,78 +299,126 @@
 
 <script>
 
-    /* FUNÇÕES PARA MODAL DE ENDEREÇO E LEAFTMAP :) */
+    /* FUNÇÕES PARA MODAL DE ENDEREÇO E LEAFTMAP */
 
-    let isAddresSave = false
+    let isAddresSave = false;
+    let chosenLocation;
+    let chosenAddress = '';
 
     function openModalEndereco() {
-
         var modal = document.getElementById("myModal_endereco");
         modal.style.display = "flex";
     }
-
-    var chosenLocation;
 
     function closeModalEndereco() {
         var modal = document.getElementById("myModal_endereco");
         modal.style.display = "none";
 
-        if(isAddresSave){
-        var buttonContent = document.getElementById("mapa-select");
-
-    buttonContent.innerHTML = `<img src="./assets/imgs/location.png" width="auto" height="20" alt="">Selecionar no mapa`
-}
-        
+        if (isAddresSave) {
+            var buttonContent = document.getElementById("mapa-select");
+            buttonContent.innerHTML = `
+                <img src="./assets/imgs/location.png" width="auto" height="20" alt="">
+                ${chosenAddress || 'Selecionar no mapa'}
+            `;
+        }
     }
-
 
     var closeBtn = document.querySelector("#myModal_endereco .close");
     closeBtn.onclick = function () {
         closeModalEndereco();
     };
 
-
     window.onclick = function (event) {
         var modal = document.getElementById("myModal_endereco");
-        if (event.target == modal) {
+        if (event.target === modal) {
             closeModalEndereco();
         }
     };
 
-    // coordenadas da mooca solidaria p inicializar com o raio prox à ong
     var map = L.map('map').setView([-23.563084, -46.598206], 15);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19
     }).addTo(map);
 
-    
-
     map.on('click', function (e) {
+        chosenLocation = e.latlng; // salva a localização escolhida
 
-        chosenLocation = e.latlng;
-
+        // Adiciona marcador e exibe popup com as coordenadas
         L.marker(chosenLocation).addTo(map)
             .bindPopup('Local escolhido: ' + chosenLocation.lat + ', ' + chosenLocation.lng)
             .openPopup();
-
     });
 
+function getAddressFromCoordinates(lat, lng) {
+    return fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`)
+        .then(response => response.json())
+        .then(data => {
+            if (data && data.address) {
+                const { road, house_number, suburb, city, state } = data.address;
+                chosenAddress = `${road || 'Rua desconhecida'}, ${house_number || ''} - ${suburb || city || ''}, ${state || ''}`;
+                return chosenAddress;
+            } else {
+                chosenAddress = "Endereço não encontrado";
+                return chosenAddress;
+            }
+        })
+        .catch(error => {
+            console.error("Erro ao obter o endereço:", error);
+            chosenAddress = "Erro ao buscar endereço";
+            return chosenAddress;
+        });
+}
 
-    function salvarEndereco() {
-        
-        var buttonContent = document.getElementById("mapa-select")
+function salvarEndereco() {
+    if (chosenLocation) { // verifica se uma localização foi escolhida
+        getAddressFromCoordinates(chosenLocation.lat, chosenLocation.lng).then(address => {
+            var buttonContent = document.getElementById("mapa-select");
+            buttonContent.innerHTML = `
+                <img src="./assets/imgs/location.png" width="auto" height="20" alt="">
+                ${address}
+            `;
+            
+            sessionStorage.setItem("Endereco",address)
 
-                buttonContent.innerHTML = `
-        <img src="./assets/imgs/location.png" width="auto" height="20" alt="">
-        Coordenadas: ${chosenLocation.lat}, ${chosenLocation.lng}`
-        
-        isAddresSave = true
-
-        closeModalEndereco()
-    
+            isAddresSave = true;
+            closeModalEndereco();
+        });
+    } else {
+        alert("Por favor, escolha uma localização no mapa.");
     }
+}
 
+    function ativarModais(){
+
+        let dias = ["Domingo","Segunda","Terca","Quarta","Quinta","Sexta","Sabado"]
+
+        dias.map((dia) => {
+
+            let divs = document.querySelectorAll(`#${dia} .acao-kanban`);
+
+            let arrayDivs = Array.from(divs);
+
+            arrayDivs.map((div) => {
+            
+                div.click()
+                div.click()
+            
+                let divId = div.id.match(/\d+/)[0]
+            
+                let spanId = `span${divId}`
+            
+                let spanElement = document.getElementById(spanId);
+            
+                if (spanElement) {
+                    spanElement.click();
+                }
+            
+            })
+            
+        })
+
+    }
 
     // Ações
 
@@ -418,11 +473,9 @@
         var span = document.getElementById(isSpan);
 
         // quando o usuário clicar em qualquer .inner-box abre o modal 
-
         btns.onclick = function () {
             modal.style.display = "block";
         }
-
 
         // quando o usuário clicar em <span> (x), fecha o modal
         span.onclick = function () {
@@ -435,6 +488,7 @@
                 modal.style.display = "none";
             }
         }
+
     }
 
     function carregarInformacoes() {
@@ -446,6 +500,8 @@
         nomeUser.innerHTML = sessionStorage.getItem('NOME_USER')
 
     }
+
+    
 
     function teste() {
 
@@ -492,8 +548,6 @@
         });
     });
 
-
-
     /* função para abrir/fechar menu de acessibilidade */
     document.querySelector('.acessibility').addEventListener('click', function () {
         var optionsMenu = this.querySelector('.options');
@@ -509,7 +563,7 @@
         document.body.classList.toggle('high-contrast');
     };
 
-
+    carregarInformacoes()
 
 </script>
 

@@ -23,7 +23,7 @@
     <script src="../js/login.js"></script>
 </head>
 
-<body onload="carregarInformacoes()" id="body">
+<body id="body">
 
     <div class="container-principal">
         <div class="sidebar">
@@ -87,7 +87,7 @@
             <div class="container-historico">
                 <div class="negadas-container">
                     <h3 class="negadas-titulo">Requisições Negadas</h3>
-                    <div class="negadas-lista">
+                    <div class="negadas-lista" id="lista_negadas">
                       <div class="negadas-item">
                         <p class="negadas-id">ID #2121</p>
                         <p class="negadas-nome">Sarah Ferreira</p>
@@ -145,7 +145,7 @@
 
                   <div class="negadas-container aceitas-container">
                     <h3 class="negadas-titulo aceitas">Requisições Aceitas</h3>
-                    <div class="negadas-lista aceitas-lista">
+                    <div class="negadas-lista aceitas-lista" id="lista_aceitas">
                       <div class="negadas-item">
                         <p class="negadas-id">ID #2121</p>
                         <p class="negadas-nome">Sarah Ferreira</p>
@@ -222,12 +222,15 @@
 
     function carregarInformacoes() {
 
-        buscarDados()
+      listarRequisicoesAceitas()
+      listarRequisicoesRecusadas()
 
-        var nomeUser = document.getElementById('nameUser');
-        nomeUser.innerHTML = sessionStorage.getItem('NOME_USER')
+      var nomeUser = document.getElementById('nameUser');
+      nomeUser.innerHTML = sessionStorage.getItem('NOME_USER')
 
     }
+
+    carregarInformacoes()
 
     // menu hamburger responsividade
     document.addEventListener('DOMContentLoaded', (event) => {
