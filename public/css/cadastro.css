@@ -57,7 +57,6 @@
 
 /* container do header */
 .container-header {
-    height: 15vh !important;
 
     h1 {
         font-weight: bold;
@@ -133,6 +132,46 @@
     font-weight: 600;
 }
 
+
+.radio-beneficiario{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+/* Esconde o botão de rádio padrão */
+.form-check-input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--primary-color); /* Cor da borda do botão de rádio */
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Cor do botão quando selecionado */
+.form-check-input[type="radio"]:checked {
+    background-color:  var(--primary-color); /* Cor do círculo interno quando selecionado */
+    border-color:  var(--primary-color); /* Cor da borda ao ser selecionado */
+}
+
+/* Estilo ao passar o mouse */
+.form-check-input[type="radio"]:hover {
+    border-color:  var(--primary-color); /* Cor da borda ao passar o mouse */
+}
+
+/* Personaliza o label */
+.form-check-label {
+    margin-left: 8px;
+    font-weight: 500;
+    color: #333;
+}   
+
 /* container dos inputs da pagina de cadastro complementar */
 .container-inputs-cad-complementar {
 
@@ -173,6 +212,20 @@
     font-size: small;
     margin-top: 7%;
     color: #0000008d;
+}
+
+/* Animação de saída suave */
+.fade-out {
+    animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 
 /* responsividade para todas as telas */

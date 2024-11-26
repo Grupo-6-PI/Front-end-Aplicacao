@@ -33,8 +33,6 @@
     <div class="acessibility">
         <img src="./assets/imgs/icons8-acessibilidade-40.png" alt="" />
         <div class="options">
-            <p>Aumentar Fonte</p>
-            <p>Diminuir Fonte</p>
             <p onclick="altoContraste()">Alto-contraste</p>
         </div>
     </div>
@@ -46,7 +44,7 @@
             </div>
         </div>
         <div class="side-box-login">
-            
+
             <div class="container-side-box">
                 <div class="container-inside container-logo">
                     <img src="./assets/imgs/logo-mooca.png" alt="">
@@ -63,10 +61,20 @@
                     <input type="password" id="senha" placeholder="Digite sua senha">
                 </div>
 
-                <div class="toggle-beneficiario">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
-                        <label class="form-check-label" for="flexSwitchCheckChecked">Sou beneficiário</label>
+                <div class="radio-beneficiario">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="userType" id="radioDonation" value="donation"
+                            checked>
+                        <label class="form-check-label" for="radioDonation">
+                            Quero uma doação
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="userType" id="radioVolunteer"
+                            value="volunteer">
+                        <label class="form-check-label" for="radioVolunteer">
+                            Quero ser voluntário
+                        </label>
                     </div>
                 </div>
 
@@ -76,7 +84,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 
     <!-- inserção do VLibras :) -->
@@ -134,7 +142,17 @@
     /* redireciona para parte dois do cadastro caso for beneficiário */
     function continueBeneficiario() {
         if (validateForm()) {
-            
+
+            var currentScreen = document.querySelector('.container-login');
+
+        // Adiciona a classe de fade-out para a tela atual
+        currentScreen.classList.add('fade-out');
+
+        // Aguarda a animação terminar antes de redirecionar
+        setTimeout(function () {
+            window.location.href = 'proxima-pagina.html'; // Substitua pelo caminho da próxima página
+        }, 500); // Tempo igual ao da animação fadeOut
+
             var usuarioSimples = {
                 "usuario": {
                     "nome": document.getElementById("nome").value,
@@ -144,7 +162,7 @@
                         "cpf": "",
                         "dataNascimento": "",
                         "endereco": {
-                            "logradouro": "",
+                                "logradouro": "",
                             "numero": 0,
                             "cep": "",
                             "bairro": {
@@ -154,7 +172,7 @@
                                 }
                             },
                             "situacao": {
-                                "id":1
+                                "id": 1
                             }
                         },
                         "familia": {
@@ -184,36 +202,47 @@
                     "nivelAcesso": {
                         "id": 3
                     },
-                    "contato":{
-                        "informacoesContato":"numero",
-                        "dataCriacao":"",
-                        "dataUltimaAtualizacao":"",
-                        "emailModificador":document.getElementById("email").value,
-                        "tipoContato":{
-                          "id":2
+                    "contato": {
+                        "informacoesContato": "numero",
+                        "dataCriacao": "",
+                        "dataUltimaAtualizacao": "",
+                        "emailModificador": document.getElementById("email").value,
+                        "tipoContato": {
+                            "id": 2
                         }
                     }
                 },
                 "dependentes": []
             }
 
-            sessionStorage.setItem("JSON",JSON.stringify(usuarioSimples))
+            sessionStorage.setItem("JSON", JSON.stringify(usuarioSimples))
 
             goToCadastroComplementar1()
         }
     }
 
-    /* escuta o evento do toggle */
-    document.getElementById('flexSwitchCheckChecked').addEventListener('change', function () {
+    document.addEventListener('DOMContentLoaded', function () {
         var actionButton = document.getElementById('actionButton');
-        if (this.checked) {
-            actionButton.innerText = 'Continuar';
-            actionButton.onclick = continueBeneficiario;
-        } else {
-            actionButton.innerText = 'Cadastrar';
-            actionButton.onclick = submitForm;
+
+        function updateUI() {
+            var selectedValue = document.querySelector('input[name="userType"]:checked').value; 
+
+            if (selectedValue === 'donation') {
+                actionButton.innerText = 'Continuar';
+                actionButton.onclick = continueBeneficiario; 
+            } else if (selectedValue === 'volunteer') {
+                actionButton.innerText = 'Cadastrar';
+                actionButton.onclick = submitForm;
+            }
         }
+
+        updateUI();
+        document.querySelectorAll('input[name="userType"]').forEach(function (radio) {
+            radio.addEventListener('change', updateUI);
+        });
     });
+
+
 
     /* adicionando a acessibilidade de alto contraste */
     function altoContraste() {

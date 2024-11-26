@@ -282,3 +282,143 @@ body{
         height: fit-content;
     }
 }
+
+
+
+
+/* Transição suave em elementos */
+* {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Efeito no banner */
+.banner-login {
+    transition: background-position 0.4s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.banner-login:hover {
+    background-position: 60%;
+}
+
+/* Card de login */
+.side-box-login {
+    width: 55%;
+    height: inherit;
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+    position: relative;
+    z-index: 9;
+    box-shadow: var(--box-shadow-02);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeSlideIn 0.8s ease-out;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+/* Animação sutil de entrada */
+@keyframes fadeSlideIn {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Inputs com leve transição */
+.container-inputs input {
+    height: 7vh;
+    align-items: baseline;
+    outline: none;
+    background-color: #00000000;
+    border-style: none;
+    border-bottom: 1px solid rgb(66, 66, 66);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.container-inputs input:focus {
+    border-bottom: 1.5px solid var(--primary-color);
+}
+
+/* Botões com efeito sutil */
+.container-button button {
+    border-style: none;
+    width: 100%;
+    height: 10vh;
+    color: white;
+    font-size: 1.3rem;
+    background-color: var(--primary-color);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.container-button button:hover {
+    transform: scale(1.02);
+    background-color: #00000000;
+    border: 2.5px solid var(--primary-color);
+    color: var(--primary-color);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.container-button button:active {
+    transform: scale(0.98);
+}
+
+/* Ícone de voltar */
+.icon-back {
+    width: 40px;
+    height: 40px;
+    background-color: #670632;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.icon-back:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Ícone de acessibilidade */
+.acessibility img {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.acessibility img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+/* Textos com fade-in */
+.container-header h1,
+.container-header p,
+.container-button p {
+    opacity: 0;
+    animation: fadeInText 0.6s ease-out;
+    animation-delay: 0.2s;
+    animation-fill-mode: forwards;
+}
+
+/* Animação sutil para fade-in */
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Logo com efeito leve */

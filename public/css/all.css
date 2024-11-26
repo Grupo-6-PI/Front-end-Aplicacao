@@ -45,7 +45,7 @@
 
 /* opções do menu de acessibiilidade */
 .acessibility .options {
-    height: 20vh;
+    height: 10vh;
     width: 10vw;
     background-color: var(--primary-color);
     position: absolute;

@@ -37,8 +37,6 @@
         <div class="acessibility">
             <img src="./assets/imgs/icons8-acessibilidade-40.png" alt="">
             <div class="options">
-                <p>Aumentar fonte</p>
-                <p>Diminuir fonte</p>
                 <p onclick="altoContraste()">Alto-contraste</p>
             </div>
         </div>
@@ -61,6 +59,12 @@
 </html>
 
 <script>
+
+    document.querySelector('.acessibility').addEventListener('click', function () {
+        var optionsMenu = this.querySelector('.options');
+        optionsMenu.classList.toggle('show');
+    });
+
 
     /* função para abrir/fechar menu de acessibilidade */
     document.querySelector('.acessibility').addEventListener('click', function () {
