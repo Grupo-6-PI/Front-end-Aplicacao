@@ -24,7 +24,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../js/functions.js"></script>
     <script src="../js/DashBoard/acoes.js"></script>
-    <script src="../js/DashBoard/requisicoes.js"></script>
+    <script src="../js/DashBoard/kpis.js"></script>
     <script src="../js/login.js"></script>
 </head>
 
@@ -43,7 +43,7 @@
                         <div class="icon-opt">
                             <img src="../assets/imgs/icons8-casa-30.png" alt="">
                         </div>
-                        <a href="/home">Home </a>
+                        <a href="/home">Home</a>
                     </div>
                     <div class="opt">
                         <div class="icon-opt">
@@ -89,47 +89,44 @@
                 </div>
             </div>
 
-            <!-- <div class="kpis">
+            <div class="kpis">
                 <div class="label-kpi">
-                    <p class="label">Entrada</p>
-                    <div class="kpi">
-                        <div class="container-kpi">
-                            <div class="elipse">
-                                <img src="../assets/imgs/icons8-flecha-48.png" alt="">
-                            </div>
-                            <p id="number" class="danger"> R$ 1.234,00</p>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="label-kpi">
-                    <p class="label">Saída</p>
-                    <div class="kpi">
-                        <div class="container-kpi">
-                            <div class="elipse">
-                                <img src="../assets/imgs/icons8-flecha-48 (1).png" alt="">
-                            </div>
-                            <p id="number" class="success"> R$ 1.234,00</p>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="label-kpi">
-                    <p class="label">Resultado</p>
+                    <p class="label">Entrada Últimos 30 Dias</p>
                     <div class="kpi">
                         <div class="container-kpi">
                             <div class="elipse">
                                 <img src="../assets/imgs/icons8-saco-de-dinheiro-30.png" alt="">
                             </div>
-                            <p id="number" class="warning"> R$ 1.234,00</p>
+                            <p id="total-vendas" class="success"></p> 
                         </div>
-
                     </div>
                 </div>
+                
+                <div class="label-kpi">
+                    <p class="label">Requisições Totais</p>
+                    <div class="kpi">
+                        <div class="container-kpi">
+                            <div class="elipse">
+                                <img src="../assets/imgs/icons8-flecha-48 (1).png" alt="">
+                            </div>
+                            <p id="quantidade-requisicoes-totais" class="success"></p> 
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="label-kpi">
+                    <p class="label">Requisições Negadas</p>
+                    <div class="kpi">
+                        <div class="container-kpi">
+                            <div class="elipse">
+                                <img src="../assets/imgs/icons8-flecha-48.png" alt="">
+                            </div>
+                            <p id="quantidade-requisicoes-negadas" class="danger"></p> 
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            </div> -->
 
             <div class="container-graficos">
                 <div class="container-grafico">
@@ -211,6 +208,9 @@ function aumentarFonte() {
         CriarModaisAcoes()
         ListarAtividades()
         buscarDados()
+        obterEntradaUltimos30Dias();
+        obterRequisicoesNegadasUltimos30Dias();
+        obterQuantidadeTotalRequisicoesUltimos30Dias();
 
         var nomeUser = document.getElementById('nameUser');
         nomeUser.innerHTML = sessionStorage.getItem('NOME_USER')
