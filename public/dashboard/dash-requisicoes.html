@@ -25,6 +25,8 @@
     <script src="../js/functions.js"></script>
     <script src="../js/DashBoard/acoes.js"></script>
     <script src="../js/DashBoard/kpis.js"></script>
+    <script src="../js/DashBoard/requisicoes.js"></script>
+    <script src="../js/DashBoard/gráfico.js"></script>
     <script src="../js/login.js"></script>
 </head>
 
@@ -130,7 +132,21 @@
 
             <div class="container-graficos">
                 <div class="container-grafico">
-                    <p class="label">Relação de doações Requeridas e Cumpridas</p>
+                    <p class="label">
+                        <select id="assunto_requisicao">
+                            <option value=0>Todas as categorias</option>
+                            <option value=1>Cestas</option>
+                            <option value=2>Vestuarios</option>
+                            <option value=3>Saude e Bem-estar</option>
+                            <option value=4>Outros</option>
+                        </select> 
+                        na visualização
+                        <select id="periodo_tempo">
+                            <option selected value=1>Anual - Trimestre</option>
+                            <option value=2>Mês Atual</option>
+                            <option value=3>Semana Atual</option>
+                        </select>
+                    </p>
                     <div class="grafico">
                         <div style="width: 100%; margin: auto;">
                             <canvas id="stackedBarChart"></canvas>
@@ -189,6 +205,21 @@
 
 <script>
 
+function addChangeEventListeners() {
+    const select1 = document.getElementById('assunto_requisicao');
+    const select2 = document.getElementById('periodo_tempo');
+
+    select1.addEventListener('change', () => {
+        escolhaGrafico(select1.value, select2.value);
+    });
+
+    select2.addEventListener('change', () => {
+        escolhaGrafico(select1.value, select2.value);
+    });
+}
+
+addChangeEventListeners();
+
 function aumentarFonte() {
         var body = document.getElementById('body');
         var style = window.getComputedStyle(body, null).getPropertyValue('font-size');
@@ -207,7 +238,7 @@ function aumentarFonte() {
 
         CriarModaisAcoes()
         ListarAtividades()
-        buscarDados()
+        buscarDadosGráficoGeral()
         obterEntradaUltimos30Dias();
         obterRequisicoesNegadasUltimos30Dias();
         obterQuantidadeTotalRequisicoesUltimos30Dias();

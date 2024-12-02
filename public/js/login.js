@@ -27,7 +27,7 @@ async function Login() {
 
       }else{
 
-        window.location.href = '/formulario'
+        window.location.href = '/pedidos'
 
       }
 
