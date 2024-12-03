@@ -96,14 +96,14 @@ async function CriarModaisAcoes() {
         dados.map((atividade) => {
         
             card.innerHTML += `
-                <div id="myModal${atividade.id}" class="modal">
+                <div id="myModal${atividade.atividade.id}" class="modal">
                     <div class="modal-content">
-                        <span class="close" id="close${atividade.id}"> X</span>
-                        <h2>Ação ${atividade.id}</h2>
-                        <i>${atividade.nome}</i>
-                        <h3>Data prevista para acontecer: </h3> Terça-feira, 12/12/2000
+                        <span class="close" id="close${atividade.atividade.id}"> X</span>
+                        <h2>Ação ${atividade.atividade.id}</h2>
+                        <i>${atividade.atividade.nome}</i>
+                        <h3>Data prevista para acontecer: </h3> ${atividade.calendario.diaNomeacao}, ${atividade.calendario.diaNumeracao}/${atividade.calendario.mesNumeracao}/${atividade.calendario.ano}
                         <h3>Descrição: </h3>
-                        ${atividade.descricao}    
+                        ${atividade.atividade.descricao}    
                     </div>
                 </div>
             `
