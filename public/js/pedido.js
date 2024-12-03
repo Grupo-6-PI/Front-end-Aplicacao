@@ -100,7 +100,7 @@ async function listar_pedidos(){
                         <h4>PEDIDO #${pedido.id}</h4>
                         <h3>${pedido.assuntoRequisicao.assunto}</h3>
                         <p>"${pedido.descricao}"</p>
-                        <p id="footer-card"><strong>Status:</strong> <span class="status andamento">Produzindo</span></i></p>
+                        <p id="footer-card"><strong>Status:</strong> <span class="status andamento">Em análise</span></i></p>
                     </div>
                 `
             }
