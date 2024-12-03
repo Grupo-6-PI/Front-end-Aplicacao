@@ -45,12 +45,12 @@ async function ListarAtividades() {
 
         data.map((atividade) => {
             card.innerHTML += `
-            <div class="inner-box" id="acao${atividade.id}" onclick="modal('myModal${atividade.id}','acao${atividade.id}','close${atividade.id}')">
+            <div class="inner-box" id="acao${atividade.atividade.id}" onclick="modal('myModal${atividade.atividade.id}','acao${atividade.atividade.id}','close${atividade.atividade.id}')">
                 <div class="container-inner-box">
                     <div class="elipse">
                         <img src="assets/imgs/icons8-voluntariado-30.png" alt="">
                     </div>
-                    <p>${atividade.nome}</p>
+                    <p>${atividade.atividade.nome}</p>
                 </div>
             </div>
             `
