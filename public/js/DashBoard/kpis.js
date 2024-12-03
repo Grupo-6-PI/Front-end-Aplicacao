@@ -1,16 +1,28 @@
 async function obterEntradaUltimos30Dias() {
-    const valorTotal = document.getElementById('total-vendas');
+    const valorTotal = document.getElementById('total-vendas'); 
 
     try {
         const resposta = await axios.get(`${window.BASE_URL}/vendas/kpi-ultimos-30-dias`, {
-            headers: { 'ngrok-skip-browser-warning': 'true' }
+            headers: { 'ngrok-skip-browser-warning': 'true' },
         });
 
-        valorTotal.innerHTML = `<strong>R$ ${resposta.valorTotal}</strong>`;
+        console.log("Resposta da API:", resposta.data);
+
+        if (resposta.data && typeof resposta.data.valor === "number") {
+            const valor = resposta.data.valor;
+            console.log("Valor recebido:", valor);
+
+            valorTotal.innerHTML = `<strong>R$ ${valor.toFixed(2)}</strong>`;
+        } else {
+            console.warn("O campo 'valor' está faltando ou não é um número.");
+            valorTotal.innerHTML = `<strong>R$ 0.00</strong>`;
+        }
     } catch (error) {
         console.error("Erro ao buscar as vendas dos últimos 30 dias:", error);
+        valorTotal.innerHTML = `<strong>Erro ao carregar dados</strong>`;
     }
 }
+
 async function obterRequisicoesNegadasUltimos30Dias() {
     const quantidadeNegadas = document.getElementById('quantidade-requisicoes-negadas');
 
