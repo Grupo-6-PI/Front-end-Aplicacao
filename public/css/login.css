@@ -201,6 +201,12 @@ body{
     }
 }
 
+@media (max-width: 780px){
+    .side-box-login{
+        width: 100% !important;
+    }
+}
+
 @media (max-width: 768px) {
     .container-login {
         flex-direction: column;

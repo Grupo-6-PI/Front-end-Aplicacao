@@ -190,6 +190,17 @@ body {
     font-size: small;
 }
 
+.options-dash{
+    height: max-content;
+    margin-top: 5%;
+    align-items: center;
+}
+
+#labelGraph{
+    display: flex;
+    flex-direction: column;
+}
+
 .kpi {
     width: 90%;
     height: inherit;

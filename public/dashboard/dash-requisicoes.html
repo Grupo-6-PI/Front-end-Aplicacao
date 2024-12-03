@@ -132,22 +132,22 @@
 
             <div class="container-graficos">
                 <div class="container-grafico">
-                    <p class="label">
-                        <select id="assunto_requisicao">
-                            <option value=0>Todas as categorias</option>
-                            <option value=1>Cestas</option>
-                            <option value=2>Vestuarios</option>
-                            <option value=3>Saude e Bem-estar</option>
-                            <option value=4>Outros</option>
-                        </select> 
-                        na visualização
-                        <select id="periodo_tempo">
-                            <option selected value=1>Anual - Trimestre</option>
-                            <option value=2>Mês Atual</option>
-                            <option value=3>Semana Atual</option>
-                        </select>
-                    </p>
-                    <div class="grafico">
+                    <p class="label">Relatório Trimestral</p>
+                    <div class="grafico" id="labelGraph">
+                        <p class="options-dash">
+                            <select id="assunto_requisicao">
+                                <option value=0>Todas as categorias</option>
+                                <option value=1>Cestas</option>
+                                <option value=2>Vestuarios</option>
+                                <option value=3>Saude e Bem-estar</option>
+                                <option value=4>Outros</option>
+                            </select> 
+                            <select id="periodo_tempo">
+                                <option selected value=1>Anual - Trimestre</option>
+                                <option value=2>Mês Atual</option>
+                                <option value=3>Semana Atual</option>
+                            </select>
+                        </p>
                         <div style="width: 100%; margin: auto;">
                             <canvas id="stackedBarChart"></canvas>
                         </div>
