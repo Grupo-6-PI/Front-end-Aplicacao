@@ -10,8 +10,6 @@ const caminho_env = ambiente_processo === 'producao' ? '.env' : '.env.dev';
 
 dotenv.config({ path: caminho_env });
 
-const PORTA_APP = process.env.APP_PORT;
-const HOST_APP = process.env.APP_HOST;
 const BASE_URL = process.env.BASE_URL;
 
 const app = express();
@@ -163,11 +161,11 @@ app.get('/historico', (req, res) => {
 
 const server = http.createServer(app);
     
-    server.listen(PORTA_APP, () => {
+    server.listen(3000, () => {
 
         console.log(`
         ---------------------------------------------------------
-        Servidor do seu site já está rodando! Acesse: http://${HOST_APP}:${PORTA_APP}
+        Servidor do seu site já está rodando! Acesse: http://localhost:3000
         Ambiente: ${process.env.AMBIENTE_PROCESSO}
         Base URL: ${BASE_URL}
         ---------------------------------------------------------
