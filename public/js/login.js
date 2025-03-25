@@ -9,7 +9,7 @@ async function Login() {
 
       console.log(window.BASE_URL)
 
-      let requisicao = await axios.post(`${window.BASE_URL}/autenticacao/login`,{
+      let requisicao = await axios.post(`${window.BASE_URL}/api/autenticacao/login`,{
         email: emailUser,
         senha: senhaUser
       })
